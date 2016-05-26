@@ -10,5 +10,5 @@ Feature:
   @selenium
   Scenario: Clicking on an object
     Given I am on the home page
-    When I click on the object labelled "Code"
+    When I select "Code"
     Then I see its associated text

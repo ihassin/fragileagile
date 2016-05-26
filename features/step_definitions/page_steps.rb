@@ -10,7 +10,7 @@ Then(/^I see an object labelled "([^"]*)"$/) do |arg1|
   expect(page).to have_content(arg1)
 end
 
-When(/^I click on the object labelled "([^"]*)"$/) do |arg1|
+When(/^I select "([^"]*)"$/) do |arg1|
   click_button arg1
 end
 
