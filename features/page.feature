@@ -11,4 +11,4 @@ Feature:
   Scenario: Clicking on an object
     Given I am on the home page
     When I click on the object labelled "Code"
-    Then I see the text associated with it
+    Then I see its associated text

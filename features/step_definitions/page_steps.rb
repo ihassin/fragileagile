@@ -14,12 +14,12 @@ When(/^I click on the object labelled "([^"]*)"$/) do |arg1|
   click_button arg1
 end
 
-Then(/^I see the text associated with it$/) do
-  a = page.driver.browser.switch_to.alert
-  the_text = a.text
+Then(/^I see its associated text$/) do
+  alert = page.driver.browser.switch_to.alert
+  alert_text = alert.text
 
-  expect(the_text).to match 'Code'
-  a.accept
+  expect(alert_text).to match 'Code'
+  alert.accept
 end
 
 def go_home
