@@ -1,0 +1,13 @@
+%legend
+  Welcome to "From fragile to agile and everything in between!"
+
+-if flash[:error]
+  .alert.alert-danger
+    =raw flash[:error]
+
+=button_tag 'Code', id: 'Code', onclick: "code_click();"
+
+:javascript
+  function code_click() {
+    alert('Code, * Point 1, * Point 2');
+  }
