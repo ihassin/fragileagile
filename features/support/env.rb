@@ -2,11 +2,12 @@ require 'cucumber/rails'
 require "selenium-webdriver"
 require 'capybara/cucumber'
 
-# Capybara.configure do |config|
-#   config.run_server = false
-#   config.default_driver = :selenium
-#   #config.app_host = 'https://www.google.com' # change url
-# end
+begin
+  DatabaseCleaner.strategy = :deletion
+#  Cucumber::Rails::Database.javascript_strategy = :deletion
+rescue NameError
+  raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
+end
 
 Capybara.register_driver :selenium do |app|
   Capybara::Selenium::Driver.new(app, :browser => :firefox)

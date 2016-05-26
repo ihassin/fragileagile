@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Subject.find_or_create_by!(title: 'Code', top: 50, left: 100, comments: 'Comment about code')
+Subject.find_or_create_by!(title: 'Fragile', top: 100, left: 100, comments: 'Comment about fragile')

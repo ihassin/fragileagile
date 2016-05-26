@@ -5,9 +5,27 @@
   .alert.alert-danger
     =raw flash[:error]
 
-=button_tag 'Code', id: 'Code', onclick: "code_click();"
+-@subjects.each do |subject|
+  =button_tag "#{subject.title}",
+    id: "#{subject.title}",
+    onclick: "subjectClick('#{subject.title}', '#{subject.comments}');",
+    style: "position: absolute; left: #{subject.left}px; top: #{subject.top}px"
+
+%canvas(id="myCanvas" width="578" height="200")
 
 :javascript
-  function code_click() {
-    alert('Code, * Point 1, * Point 2');
+  var canvas = document.getElementById('myCanvas');
+  var context = canvas.getContext('2d');
+
+  function subjectClick(title, comment) {
+    alert(title + ": " + comment);
+  }
+
+  function drawLine() {
+    context.beginPath();
+
+    context.moveTo(100, 150);
+    context.lineTo(450, 50);
+
+    context.stroke();
   }
