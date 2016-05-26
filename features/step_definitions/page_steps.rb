@@ -1,6 +1,7 @@
 Given(/^I have subjects$/) do
-  Subject.find_or_create_by!(title: 'Code', top: 100, left: 50, comments: 'Comments about Code')
-  Subject.find_or_create_by!(title: 'Fragile', top: 120, left: 50, comments: 'Comments about Fragile')
+  Subject.find_or_create_by!(title: 'MVP',      x:   10, y:   250, comments: 'Comment about MVP')
+  Subject.find_or_create_by!(title: 'Code',     y:   50, x:   100, comments: 'Comment about code')
+  Subject.find_or_create_by!(title: 'Fragile',  y:   50, x:  1000, comments: 'Comment about code')
 end
 
 Given(/^I am on the home page$/) do

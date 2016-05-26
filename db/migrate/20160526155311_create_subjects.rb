@@ -2,8 +2,9 @@ class CreateSubjects < ActiveRecord::Migration
   def change
     create_table :subjects do |t|
       t.string :title
-      t.integer :top
-      t.integer :left
+
+      t.integer :y
+      t.integer :x
 
       t.text :comments
 

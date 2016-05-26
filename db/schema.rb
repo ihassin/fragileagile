@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(version: 20160526155311) do
 
   create_table "subjects", force: :cascade do |t|
     t.string   "title"
-    t.integer  "top"
-    t.integer  "left"
+    t.integer  "y"
+    t.integer  "x"
     t.text     "comments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

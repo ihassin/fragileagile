@@ -1,31 +1,28 @@
-%legend
-  Welcome to "From fragile to agile and everything in between!"
-
--if flash[:error]
-  .alert.alert-danger
-    =raw flash[:error]
+%canvas(id="myCanvas" width="1578" height="2000")
 
 -@subjects.each do |subject|
   =button_tag "#{subject.title}",
     id: "#{subject.title}",
     onclick: "subjectClick('#{subject.title}', '#{subject.comments}');",
-    style: "position: absolute; left: #{subject.left}px; top: #{subject.top}px"
+    style: "position: absolute; left: #{subject.x}px; top: #{subject.y}px; width: 100px; height: 30px;"
 
-%canvas(id="myCanvas" width="578" height="200")
 
 :javascript
   var canvas = document.getElementById('myCanvas');
   var context = canvas.getContext('2d');
 
+  drawLine(#{@mvp.x} + 50,  #{@mvp.y}-8,  #{@code.x} + 50, #{@code.y})
+  drawLine(#{@code.x} + 50, #{@code.y}+7, #{@fragile.x} + 50, #{@fragile.y}+7)
+
   function subjectClick(title, comment) {
     alert(title + ": " + comment);
   }
 
-  function drawLine() {
+  function drawLine(fromX, fromY, toX, toY) {
     context.beginPath();
 
-    context.moveTo(100, 150);
-    context.lineTo(450, 50);
+    context.moveTo(fromX, fromY);
+    context.lineTo(toX, toY);
 
     context.stroke();
   }
