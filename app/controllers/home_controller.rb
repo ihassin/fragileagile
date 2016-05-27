@@ -9,6 +9,8 @@ class HomeController < ApplicationController
     @automation = Subject.where(title: "Automation").first
     @ci       = Subject.where(title: "CI").first
     @stable   = Subject.where(title: "Stable").first
+    @emergent = Subject.where(title: "Emergent Arch.").first
+    @batches  = Subject.where(title: "Small batches").first
 
   end
 
