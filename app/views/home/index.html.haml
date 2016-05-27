@@ -5,29 +5,280 @@
     =button_tag "#{subject.title}",
       id: "#{subject.title}",
       onclick: "subjectClick('#{subject.title}', '#{subject.comments}');",
-      style: "position: absolute; left: #{subject.x}px; top: #{subject.y}px; width: 100px; height: 40px; font-size: 14px;"
+      style: "position: absolute; left: #{subject.x}px; top: #{subject.y}px; width: 110px; height: 45px; font-size: 18px; border: 2px solid #4CAF50;"
   -else
     =button_tag "#{subject.title}",
       id: "#{subject.title}",
       onclick: "subjectClick('#{subject.title}', '#{subject.comments}');",
-      style: "position: absolute; left: #{subject.x}px; top: #{subject.y}px; width: 100px; height: 40px; font-size: 14px;"
+      style: "position: absolute; left: #{subject.x}px; top: #{subject.y}px; width: 110px; height: 45px; font-size: 18px;"
 
 
 :javascript
   var canvas = document.getElementById('myCanvas');
   var context = canvas.getContext('2d');
+  var allButtons = ['MVP', 'Code', 'Fragile', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Emergent Arch.', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilise WIP', 'Performant', 'Feature Teams', 'You build it, you run it' , 'agile'];
+  var fragileButtons = ['SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Emergent Arch.', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilise WIP', 'Performant', 'Feature Teams', 'You build it, you run it' , 'agile'];
+  var stableButtons = ['Fragile', 'TDD', 'Emergent Arch.', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilise WIP', 'Performant', 'Feature Teams', 'You build it, you run it' , 'agile'];
+
+  canvas.onmousedown = function() {
+    context.clearRect(0, 0, 1578, 2000);
+    show(allButtons);
+  }
 
   function subjectClick(title, comment) {
+    show(allButtons);
+    performant(1);
     context.clearRect(0, 0, 1578, 2000);
+
     switch(title) {
+      case 'MVP':
+        drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@code.x} + 50, #{@code.y}+7)
+        drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@teams.x} + 50, #{@teams.y}+7)
+        drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@tdd.x} + 50, #{@tdd.y}+7)
+        drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@bdd.x} + 50, #{@bdd.y}+7)
+        drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
+        break;
+
+      case 'Lean PMO':
+        connectPMO();
+        break;
+
       case 'Code':
+        connectCode();
+        break;
+
+      case 'SCM':
+        connectSCM();
+        break;
+
+      case 'TBD':
+        connectTBD();
+        break;
+
+      case 'CI':
+        connectCI();
+        break;
+
+      case 'Automation':
+        connectAutomation();
+        break;
+
+      case 'TDD':
+        connectTDD();
+        break;
+
+      case 'BDD':
+        connectBDD();
+        break;
+
+      case 'Regression':
+        connectRegression();
+        break;
+
+      case 'Emergent Arch.':
+        connectEmergent();
+        break;
+
+      case 'Small batches':
+        drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@batches.x} + 50, #{@batches.y}+7)
+        drawLine(#{@emergent.x} + 50, #{@emergent.y}+7, #{@batches.x} + 50, #{@batches.y}+7)
+        drawLine(#{@batches.x} + 50, #{@batches.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
+        break;
+
+      case 'CD':
+        drawLine(#{@batches.x} + 50, #{@batches.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
+        drawLine(#{@regression.x} + 50, #{@regression.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
+        drawLine(#{@ci.x} + 50, #{@ci.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
+        drawLine(#{@cd.x} + 50, #{@cd.y}+7, #{@economical.x} + 50, #{@economical.y}+7)
+        drawLine(#{@cd.x} + 50, #{@cd.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
+        break;
+
+      case 'Semantic Monitoring':
+        drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
+        drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
+        drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
+        drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@wip.x} + 50, #{@wip.y}+7)
+        break;
+
+      case 'CL':
+        drawLine(#{@cd.x} + 50, #{@cd.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
+        drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
+        drawLine(#{@cl.x} + 50, #{@cl.y}+7, #{@performant.x} + 50, #{@performant.y}+7)
+        drawLine(#{@cl.x} + 50, #{@cl.y}+7, #{@agile.x} + 50, #{@agile.y}+7)
+        break;
+
+      case 'Stabilise WIP':
+        drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@wip.x} + 50, #{@wip.y}+7)
+        drawLine(#{@pmo.x} + 50, #{@pmo.y}+7, #{@wip.x} + 50, #{@wip.y}+7)
+        drawLine(#{@wip.x} + 50, #{@wip.y}+7, #{@performant.x} + 50, #{@performant.y}+7)
+        drawLine(#{@wip.x} + 50, #{@wip.y}+7, #{@agile.x} + 50, #{@agile.y}+7)
+        break;
+
+      case 'Feature Teams':
+        drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@teams.x} + 50, #{@teams.y}+7)
+        drawLine(#{@teams.x} + 50, #{@teams.y}+7, #{@performant.x} + 50, #{@performant.y}+7)
+        drawLine(#{@teams.x} + 50, #{@teams.y}+7, #{@devops.x} + 50, #{@devops.y}+7)
+        break;
+
+      case 'You build it, you run it':
+        drawLine(#{@teams.x} + 50, #{@teams.y}+7, #{@devops.x} + 50, #{@devops.y}+7)
+        drawLine(#{@devops.x} + 50, #{@devops.y}+7, #{@agile.x} + 50, #{@agile.y}+7)
+        break;
+
+      case 'Fragile':
         drawLine(#{@code.x} + 50, #{@code.y}+7, #{@fragile.x} + 50, #{@fragile.y}+7)
         drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@code.x} + 50, #{@code.y}+7)
-        drawLine(#{@code.x} + 50, #{@code.y}+7, #{@scm.x} + 50, #{@scm.y}+7)
-        drawLine(#{@code.x} + 50, #{@code.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
-        drawLine(#{@code.x} + 50, #{@code.y}+7, #{@batches.x} + 50, #{@batches.y}+7)
+        hide(fragileButtons);
+        break;
+
+      case 'Stable':
+        drawLine(#{@ci.x} + 50, #{@ci.y}+7, #{@stable.x} + 50, #{@stable.y}+7)
+        connectStable();
+        hide(stableButtons);
+        break;
+
+      case 'Economical':
+        drawLine(#{@ci.x} + 50, #{@ci.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
+        drawLine(#{@cd.x} + 50, #{@cd.y}+7, #{@economical.x} + 50, #{@economical.y}+7)
+        drawLine(#{@batches.x} + 50, #{@batches.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
+        connectStable();
+        connectEmergent();
+        connectTDD();
+        connectRegression();
+        drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@bdd.x} + 50, #{@bdd.y}+7)
+        break;
+
+      case 'Performant':
+        drawLine(#{@cd.x} + 50, #{@cd.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
+        drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
+        drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
+        drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
+        drawLine(#{@cl.x} + 50, #{@cl.y}+7, #{@performant.x} + 50, #{@performant.y}+7)
+        drawLine(#{@batches.x} + 50, #{@batches.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
+        connectStable();
+        connectEmergent();
+        connectTDD();
+        connectRegression();
+        drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@bdd.x} + 50, #{@bdd.y}+7)
+        drawLine(#{@wip.x} + 50, #{@wip.y}+7, #{@performant.x} + 50, #{@performant.y}+7)
+        drawLine(#{@teams.x} + 50, #{@teams.y}+7, #{@performant.x} + 50, #{@performant.y}+7)
+        drawLine(#{@pmo.x} + 50, #{@pmo.y}+7, #{@wip.x} + 50, #{@wip.y}+7)
+        break;
+
+      case 'agile':
+        drawLine(#{@cl.x} + 50, #{@cl.y}+7, #{@agile.x} + 50, #{@agile.y}+7)
+        drawLine(#{@cd.x} + 50, #{@cd.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
+        drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
+        drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
+        drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
+        drawLine(#{@batches.x} + 50, #{@batches.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
+        connectStable();
+        connectEmergent();
+        connectTDD();
+        connectRegression();
+        drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@bdd.x} + 50, #{@bdd.y}+7)
+        drawLine(#{@pmo.x} + 50, #{@pmo.y}+7, #{@wip.x} + 50, #{@wip.y}+7)
+        drawLine(#{@wip.x} + 50, #{@wip.y}+7, #{@agile.x} + 50, #{@agile.y}+7)
+        drawLine(#{@teams.x} + 50, #{@teams.y}+7, #{@devops.x} + 50, #{@devops.y}+7)
+        drawLine(#{@devops.x} + 50, #{@devops.y}+7, #{@agile.x} + 50, #{@agile.y}+7)
+        drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@teams.x} + 50, #{@teams.y}+7)
+        performant(0);
         break;
     }
+  }
+
+  function show(buttons) {
+    for(button in buttons) {
+      document.getElementById(buttons[button]).style.visibility = 'visible';
+    }
+  }
+
+  function hide(buttons) {
+    for(button in buttons) {
+      document.getElementById(buttons[button]).style.visibility = 'hidden';
+    }
+  }
+
+  function performant(flag) {
+    if(flag) {
+      document.getElementById('Performant').style.visibility = 'visible';
+    } else {
+      document.getElementById('Performant').style.visibility = 'hidden';
+    }
+  }
+
+  function connectEmergent() {
+    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
+    drawLine(#{@tdd.x} + 50, #{@tdd.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
+    drawLine(#{@emergent.x} + 50, #{@emergent.y}+7, #{@batches.x} + 50, #{@batches.y}+7)
+  }
+
+  function connectStable() {
+    drawLine(#{@tbd.x} + 50, #{@tbd.y}+7, #{@ci.x} + 50, #{@ci.y}+7)
+    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@tbd.x} + 50, #{@tbd.y}+7)
+    drawLine(#{@code.x} + 50, #{@code.y}+7, #{@scm.x} + 50, #{@scm.y}+7)
+    drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@code.x} + 50, #{@code.y}+7)
+    drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@ci.x} + 50, #{@ci.y}+7)
+    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@automation.x} + 50, #{@automation.y}+7)
+  }
+
+  function connectRegression() {
+    drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@regression.x} + 50, #{@regression.y}+7)
+    drawLine(#{@tdd.x} + 50, #{@tdd.y}+7, #{@regression.x} + 50, #{@regression.y}+7)
+    drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@regression.x} + 50, #{@regression.y}+7)
+    drawLine(#{@regression.x} + 50, #{@regression.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
+  }
+
+  function connectBDD() {
+    drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@bdd.x} + 50, #{@bdd.y}+7)
+    drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@regression.x} + 50, #{@regression.y}+7)
+    drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
+    drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
+    drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@tdd.x} + 50, #{@tdd.y}+7)
+  }
+
+  function connectTDD() {
+    drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@tdd.x} + 50, #{@tdd.y}+7)
+    drawLine(#{@tdd.x} + 50, #{@tdd.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
+    drawLine(#{@tdd.x} + 50, #{@tdd.y}+7, #{@regression.x} + 50, #{@regression.y}+7)
+  }
+
+  function connectAutomation() {
+    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@automation.x} + 50, #{@automation.y}+7)
+    drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@tdd.x} + 50, #{@tdd.y}+7)
+    drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@bdd.x} + 50, #{@bdd.y}+7)
+    drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@regression.x} + 50, #{@regression.y}+7)
+    drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@ci.x} + 50, #{@ci.y}+7)
+  }
+
+  function connectCode() {
+    drawLine(#{@code.x} + 50, #{@code.y}+7, #{@fragile.x} + 50, #{@fragile.y}+7)
+    drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@code.x} + 50, #{@code.y}+7)
+    drawLine(#{@code.x} + 50, #{@code.y}+7, #{@scm.x} + 50, #{@scm.y}+7)
+  }
+
+  function connectSCM() {
+    drawLine(#{@code.x} + 50, #{@code.y}+7, #{@scm.x} + 50, #{@scm.y}+7)
+    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@tbd.x} + 50, #{@tbd.y}+7)
+    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@automation.x} + 50, #{@automation.y}+7)
+    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
+    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@batches.x} + 50, #{@batches.y}+7)
+  }
+
+  function connectTBD() {
+    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@tbd.x} + 50, #{@tbd.y}+7)
+    drawLine(#{@tbd.x} + 50, #{@tbd.y}+7, #{@ci.x} + 50, #{@ci.y}+7)
+  }
+
+  function connectCI() {
+    drawLine(#{@tbd.x} + 50, #{@tbd.y}+7, #{@ci.x} + 50, #{@ci.y}+7)
+    drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@ci.x} + 50, #{@ci.y}+7)
+    drawLine(#{@ci.x} + 50, #{@ci.y}+7, #{@stable.x} + 50, #{@stable.y}+7)
+    drawLine(#{@ci.x} + 50, #{@ci.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
+  }
+
+  function connectPMO() {
+    drawLine(#{@pmo.x} + 50, #{@pmo.y}+7, #{@wip.x} + 50, #{@wip.y}+7)
   }
 
   function drawLine(fromX, fromY, toX, toY) {

@@ -5,35 +5,35 @@ class Subject < ActiveRecord::Base
   GREEN = '#4CAF50'
 
   def self.make_subjects
-    Subject.find_or_create_by!(title: 'MVP',      x:   10, y:  350, comments: 'Comment about MVP')
+    Subject.find_or_create_by!(title: 'MVP',      x:   10, y:  390, comments: 'Comment about MVP')
     Subject.find_or_create_by!(title: 'Code',     x:  100, y:   50, comments: 'Comment about Code')
-    Subject.find_or_create_by!(title: 'Fragile',  x: 1000, y:   50, comments: 'Comment about Fragile', terminal: 1)
+    Subject.find_or_create_by!(title: 'Fragile',  x:  900, y:   50, comments: 'Comment about Fragile', terminal: 1)
 
     Subject.find_or_create_by!(title: 'SCM',      x:  150, y:  120, comments: 'Comment about SCM')
     Subject.find_or_create_by!(title: 'TBD',      x:  750, y:  120, comments: 'Comment about TBD')
 
-    Subject.find_or_create_by!(title: 'Automation', x:  200, y:  180, comments: 'Comment about Automation')
-    Subject.find_or_create_by!(title: 'CI',         x:  850, y:  180, comments: 'Comment about CI')
-    Subject.find_or_create_by!(title: 'Stable',     x: 1100, y:  180, comments: 'Comment about Stable', terminal: 1)
+    Subject.find_or_create_by!(title: 'Automation', x:  200, y:  190, comments: 'Comment about Automation')
+    Subject.find_or_create_by!(title: 'CI',         x:  850, y:  190, comments: 'Comment about CI')
+    Subject.find_or_create_by!(title: 'Stable',     x: 1000, y:  190, comments: 'Comment about Stable', terminal: 1)
 
-    Subject.find_or_create_by!(title: 'TDD',        x:  250, y:  240, comments: 'Comment about TDD')
-    Subject.find_or_create_by!(title: 'Emergent Arch.', x:  450, y:  240, comments: 'Comment about Emergent')
-    Subject.find_or_create_by!(title: 'Small batches',  x:  650, y:  240, comments: 'Comment about batches')
+    Subject.find_or_create_by!(title: 'TDD',            x:  450, y:  260, comments: 'Comment about TDD')
+    Subject.find_or_create_by!(title: 'Emergent Arch.', x:  650, y:  260, comments: 'Comment about Emergent')
+    Subject.find_or_create_by!(title: 'Small batches',  x:  850, y:  260, comments: 'Comment about batches')
 
-    Subject.find_or_create_by!(title: 'BDD',        x:  250, y:  300, comments: 'Comment about BDD')
-    Subject.find_or_create_by!(title: 'Regression', x:  450, y:  300, comments: 'Comment about Regression')
-    Subject.find_or_create_by!(title: 'CD',         x:  950, y:  300, comments: 'Comment about CD')
-    Subject.find_or_create_by!(title: 'Economical', x: 1200, y:  300, comments: 'Comment about economical', terminal: 1)
+    Subject.find_or_create_by!(title: 'BDD',        x:  250, y:  330, comments: 'Comment about BDD')
+    Subject.find_or_create_by!(title: 'Regression', x:  450, y:  330, comments: 'Comment about Regression')
+    Subject.find_or_create_by!(title: 'CD',         x:  950, y:  330, comments: 'Comment about CD')
+    Subject.find_or_create_by!(title: 'Economical', x: 1100, y:  330, comments: 'Comment about economical', terminal: 1)
 
-    Subject.find_or_create_by!(title: 'Semantic Monitoring', x:  250, y:  360, comments: 'Comment about Semantic')
-    Subject.find_or_create_by!(title: 'CL',                  x: 1050, y:  360, comments: 'Comment about CL')
+    Subject.find_or_create_by!(title: 'Semantic Monitoring', x:  250, y:  400, comments: 'Comment about Semantic')
+    Subject.find_or_create_by!(title: 'CL',                  x: 1050, y:  400, comments: 'Comment about CL')
 
-    Subject.find_or_create_by!(title: 'Lean PMO',      x:  250, y:  420, comments: 'Comment about Lean PMO')
-    Subject.find_or_create_by!(title: 'Stabilise WIP', x:  450, y:  420, comments: 'Comment about WIP')
-    Subject.find_or_create_by!(title: 'Performant',    x: 1270, y:  420, comments: 'Comment about Performant', terminal: 1)
+    Subject.find_or_create_by!(title: 'Lean PMO',      x:  250, y:  470, comments: 'Comment about Lean PMO')
+    Subject.find_or_create_by!(title: 'Stabilise WIP', x:  450, y:  470, comments: 'Comment about WIP')
+    Subject.find_or_create_by!(title: 'Performant',    x: 1200, y:  470, comments: 'Comment about Performant', terminal: 1)
 
-    Subject.find_or_create_by!(title: 'Feature Teams',            x:  100, y:  480, comments: 'Comment about teams')
-    Subject.find_or_create_by!(title: 'You build it, you run it', x:  450, y:  480, comments: 'Comment about you build it')
-    Subject.find_or_create_by!(title: 'agile',                    x: 1320, y:  480, comments: 'Comment about agile', terminal: 1)
+    Subject.find_or_create_by!(title: 'Feature Teams',            x:  100, y:  540, comments: 'Comment about teams')
+    Subject.find_or_create_by!(title: 'You build it, you run it', x:  450, y:  540, comments: 'Comment about you build it')
+    Subject.find_or_create_by!(title: 'agile',                    x: 1300, y:  540, comments: 'Comment about agile', terminal: 1)
   end
 end
