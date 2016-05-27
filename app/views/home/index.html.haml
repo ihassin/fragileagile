@@ -17,9 +17,14 @@
   var canvas = document.getElementById('myCanvas');
   var context = canvas.getContext('2d');
   var allButtons = ['MVP', 'Code', 'Fragile', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Emergent Arch.', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilise WIP', 'Performant', 'Feature Teams', 'You build it, you run it' , 'agile'];
+  var mvpButtons = ['Code', 'Fragile', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Emergent Arch.', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilise WIP', 'Performant', 'Feature Teams', 'You build it, you run it' , 'agile'];
   var fragileButtons = ['SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Emergent Arch.', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilise WIP', 'Performant', 'Feature Teams', 'You build it, you run it' , 'agile'];
   var stableButtons = ['Fragile', 'TDD', 'Emergent Arch.', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilise WIP', 'Performant', 'Feature Teams', 'You build it, you run it' , 'agile'];
+  var economicalButtons = ['Stable', 'Fragile', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilise WIP', 'Performant', 'Feature Teams', 'You build it, you run it' , 'agile'];
+  var performantButtons = ['Stable', 'Fragile', 'Economical', 'You build it, you run it' , 'agile'];
+  var agileButtons = ['Stable', 'Fragile', 'Economical', 'Performant'];
 
+  hide(mvpButtons);
   canvas.onmousedown = function() {
     context.clearRect(0, 0, 1578, 2000);
     show(allButtons);
@@ -34,9 +39,6 @@
       case 'MVP':
         drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@code.x} + 50, #{@code.y}+7)
         drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@teams.x} + 50, #{@teams.y}+7)
-        drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@tdd.x} + 50, #{@tdd.y}+7)
-        drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@bdd.x} + 50, #{@bdd.y}+7)
-        drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
         break;
 
       case 'Lean PMO':
@@ -146,15 +148,18 @@
         connectTDD();
         connectRegression();
         drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@bdd.x} + 50, #{@bdd.y}+7)
+        hide(economicalButtons);
         break;
 
       case 'Performant':
+        drawLine(#{@ci.x} + 50, #{@ci.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
         drawLine(#{@cd.x} + 50, #{@cd.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
         drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
         drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
         drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
         drawLine(#{@cl.x} + 50, #{@cl.y}+7, #{@performant.x} + 50, #{@performant.y}+7)
         drawLine(#{@batches.x} + 50, #{@batches.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
+        drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@wip.x} + 50, #{@wip.y}+7)
         connectStable();
         connectEmergent();
         connectTDD();
@@ -163,9 +168,11 @@
         drawLine(#{@wip.x} + 50, #{@wip.y}+7, #{@performant.x} + 50, #{@performant.y}+7)
         drawLine(#{@teams.x} + 50, #{@teams.y}+7, #{@performant.x} + 50, #{@performant.y}+7)
         drawLine(#{@pmo.x} + 50, #{@pmo.y}+7, #{@wip.x} + 50, #{@wip.y}+7)
+        hide(performantButtons);
         break;
 
       case 'agile':
+        drawLine(#{@ci.x} + 50, #{@ci.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
         drawLine(#{@cl.x} + 50, #{@cl.y}+7, #{@agile.x} + 50, #{@agile.y}+7)
         drawLine(#{@cd.x} + 50, #{@cd.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
         drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
@@ -182,7 +189,7 @@
         drawLine(#{@teams.x} + 50, #{@teams.y}+7, #{@devops.x} + 50, #{@devops.y}+7)
         drawLine(#{@devops.x} + 50, #{@devops.y}+7, #{@agile.x} + 50, #{@agile.y}+7)
         drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@teams.x} + 50, #{@teams.y}+7)
-        performant(0);
+        hide(agileButtons);
         break;
     }
   }
