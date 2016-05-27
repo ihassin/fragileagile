@@ -1,4 +1,4 @@
-%canvas(id="myCanvas" width="1578" height="2000")
+%canvas(id="myCanvas" width="1400" height="800")
 
 -@subjects.each do |subject|
   -if subject.terminal==1
@@ -20,7 +20,7 @@
   var mvpButtons = ['Code', 'Fragile', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Emergent Arch.', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilise WIP', 'Performant', 'Feature Teams', 'You build it, you run it' , 'agile'];
   var fragileButtons = ['SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Emergent Arch.', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilise WIP', 'Performant', 'Feature Teams', 'You build it, you run it' , 'agile'];
   var stableButtons = ['Fragile', 'TDD', 'Emergent Arch.', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilise WIP', 'Performant', 'Feature Teams', 'You build it, you run it' , 'agile'];
-  var economicalButtons = ['Stable', 'Fragile', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilise WIP', 'Performant', 'Feature Teams', 'You build it, you run it' , 'agile'];
+  var economicalButtons = ['Stable', 'Fragile', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilise WIP', 'Performant', 'You build it, you run it' , 'agile'];
   var performantButtons = ['Stable', 'Fragile', 'Economical', 'You build it, you run it' , 'agile'];
   var agileButtons = ['Stable', 'Fragile', 'Economical', 'Performant'];
 
@@ -140,6 +140,7 @@
         break;
 
       case 'Economical':
+        drawLine(#{@teams.x} + 50, #{@teams.y}+7, #{@economical.x} + 50, #{@economical.y}+7)
         drawLine(#{@ci.x} + 50, #{@ci.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
         drawLine(#{@cd.x} + 50, #{@cd.y}+7, #{@economical.x} + 50, #{@economical.y}+7)
         drawLine(#{@batches.x} + 50, #{@batches.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
