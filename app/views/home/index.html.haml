@@ -1,22 +1,30 @@
 %canvas(id="myCanvas" width="1578" height="2000")
 
 -@subjects.each do |subject|
-  =button_tag "#{subject.title}",
-    id: "#{subject.title}",
-    onclick: "subjectClick('#{subject.title}', '#{subject.comments}');",
-    style: "position: absolute; left: #{subject.x}px; top: #{subject.y}px; width: 100px; height: 30px;"
+  -if subject.terminal==1
+    =button_tag "#{subject.title}",
+      id: "#{subject.title}",
+      onclick: "subjectClick('#{subject.title}', '#{subject.comments}');",
+      style: "position: absolute; left: #{subject.x}px; top: #{subject.y}px; width: 100px; height: 40px; font-size: 14px;"
+  -else
+    =button_tag "#{subject.title}",
+      id: "#{subject.title}",
+      onclick: "subjectClick('#{subject.title}', '#{subject.comments}');",
+      style: "position: absolute; left: #{subject.x}px; top: #{subject.y}px; width: 100px; height: 40px; font-size: 14px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); border-radius: 12px;"
 
 
 :javascript
   var canvas = document.getElementById('myCanvas');
   var context = canvas.getContext('2d');
 
-  drawLine(#{@mvp.x} + 50,  #{@mvp.y}-8,  #{@code.x} + 50, #{@code.y})
-  drawLine(#{@code.x} + 50, #{@code.y}+7, #{@fragile.x} + 50, #{@fragile.y}+7)
-  drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@tbd.x} + 50, #{@tbd.y}+7)
-
   function subjectClick(title, comment) {
-    alert(title + ": " + comment);
+    context.clearRect(0, 0, 1578, 2000);
+    switch(title) {
+      case 'Code':
+        drawLine(#{@code.x} + 50, #{@code.y}+7, #{@fragile.x} + 50, #{@fragile.y}+7)
+        drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@code.x} + 50, #{@code.y}+7)
+        break;
+    }
   }
 
   function drawLine(fromX, fromY, toX, toY) {

@@ -18,8 +18,9 @@ ActiveRecord::Schema.define(version: 20160526155311) do
     t.integer  "y"
     t.integer  "x"
     t.text     "comments"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "terminal",   default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
 end

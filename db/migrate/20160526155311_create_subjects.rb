@@ -8,6 +8,7 @@ class CreateSubjects < ActiveRecord::Migration
 
       t.text :comments
 
+      t.integer :terminal, default: 0
       t.timestamps null: false
     end
   end
