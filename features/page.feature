@@ -8,7 +8,7 @@ Feature:
     When I navigate to the home page
 
   Scenario: Having a web page with a graphic for a subject
-    Then I see an object labelled "Code"
+    Then I see an object labelled "MVP"
 
   Scenario: Having a web page with all subjects displayed
     Then I see all my presentation's subjects
@@ -17,4 +17,3 @@ Feature:
   Scenario: Clicking on an object
     When I select "MVP"
     Then I see its connections
-
