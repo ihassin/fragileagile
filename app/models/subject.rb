@@ -2,6 +2,8 @@ class Subject < ActiveRecord::Base
   validates_presence_of :y, :x, :comments, :title
   validates_uniqueness_of :title
 
+  SUBJ_EMERGENT = 'Emergent Arch'
+
   def self.make_subjects
     Subject.find_or_create_by!(title: 'Code',                     x:  100, y:   50, comments: 'Comment about Code')
     Subject.find_or_create_by!(title: 'Fragile',                  x: 1300, y:   50, comments: 'Comment about Fragile', terminal: 1)
@@ -14,7 +16,7 @@ class Subject < ActiveRecord::Base
     Subject.find_or_create_by!(title: 'Stable',                   x: 1300, y:  250, comments: 'Comment about Stable', terminal: 1)
 
     Subject.find_or_create_by!(title: 'TDD',                      x:  450, y:  350, comments: 'Comment about TDD')
-    Subject.find_or_create_by!(title: 'Emergent Arch.',           x:  650, y:  350, comments: 'Comment about Emergent')
+    Subject.find_or_create_by!(title: SUBJ_EMERGENT,              x:  650, y:  350, comments: 'Comment about Emergent')
     Subject.find_or_create_by!(title: 'Small batches',            x:  850, y:  350, comments: 'Comment about batches')
 
     Subject.find_or_create_by!(title: 'MVP',                      x:   10, y:  450, comments: 'Comment about MVP')

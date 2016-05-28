@@ -3,12 +3,12 @@
 -@subjects.each do |subject|
   -if subject.terminal==1
     =button_tag "#{subject.title}",
-      id: "#{subject.title}",
+      id: "#{subject.title.gsub(' ', '_').gsub(',', '_').gsub('.', '_')}",
       onclick: "subjectClick('#{subject.title}', '#{subject.comments}');",
       style: "position: absolute; left: #{subject.x}px; top: #{subject.y}px; width: 110px; height: 45px; font-size: 18px; border: 2px solid #4CAF50;"
   -else
     =button_tag "#{subject.title}",
-      id: "#{subject.title}",
+      id: "#{subject.title.gsub(' ', '_').gsub(',', '_').gsub('.', '_')}",
       onclick: "subjectClick('#{subject.title}', '#{subject.comments}');",
       style: "position: absolute; left: #{subject.x}px; top: #{subject.y}px; width: 110px; height: 45px; font-size: 18px;"
 
@@ -16,12 +16,12 @@
 :javascript
   var canvas = document.getElementById('myCanvas');
   var context = canvas.getContext('2d');
-  var allButtons = ['MVP', 'Code', 'Fragile', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Emergent Arch.', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilise WIP', 'Performant', 'Feature Teams', 'You build it, you run it' , 'agile'];
-  var mvpButtons = ['Code', 'Fragile', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Emergent Arch.', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilise WIP', 'Performant', 'Feature Teams', 'You build it, you run it' , 'agile'];
-  var fragileButtons = ['SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Emergent Arch.', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilise WIP', 'Performant', 'Feature Teams', 'You build it, you run it' , 'agile'];
-  var stableButtons = ['Fragile', 'TDD', 'Emergent Arch.', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilise WIP', 'Performant', 'Feature Teams', 'You build it, you run it' , 'agile'];
-  var economicalButtons = ['Stable', 'Fragile', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilise WIP', 'Performant', 'You build it, you run it' , 'agile'];
-  var performantButtons = ['Stable', 'Fragile', 'Economical', 'You build it, you run it' , 'agile'];
+  var allButtons = ['MVP', 'Code', 'Fragile', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Small_batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Performant', 'Feature_Teams', 'You_build_it__you_run_it' , 'agile', 'Emergent_Arch'];
+  var mvpButtons = ['Code', 'Fragile', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Small_batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Performant', 'Feature_Teams', 'You_build_it__you_run_it' , 'agile', 'Emergent_Arch'];
+  var fragileButtons = ['SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Small_batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Performant', 'Feature_Teams', 'You_build_it__you_run_it' , 'agile', 'Emergent_Arch'];
+  var stableButtons = ['Fragile', 'TDD', 'Small_batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Performant', 'Feature_Teams', 'You_build_it__you_run_it' , 'agile', 'Emergent_Arch'];
+  var economicalButtons = ['Stable', 'Fragile', 'Semantic_Monitoring', 'CL', 'Lean PMO', 'Stabilise_WIP', 'Performant', 'You build it, you run it' , 'agile'];
+  var performantButtons = ['Stable', 'Fragile', 'Economical', 'You_build_it__you_run_it' , 'agile'];
   var agileButtons = ['Stable', 'Fragile', 'Economical', 'Performant'];
 
   hide(mvpButtons);
@@ -31,7 +31,7 @@
   }
 
   function subjectClick(title, comment) {
-    show(allButtons);
+
     context.clearRect(0, 0, 1400, 800);
 
     switch(title) {
@@ -76,7 +76,7 @@
         connectRegression();
         break;
 
-      case 'Emergent Arch.':
+      case 'Emergent Arch':
         connectEmergent();
         break;
 
@@ -196,13 +196,15 @@
 
   function show(buttons) {
     for(button in buttons) {
-      document.getElementById(buttons[button]).style.visibility = 'visible';
+      elem = "#" + buttons[button]
+      $(elem).fadeIn("slow");
     }
   }
 
   function hide(buttons) {
     for(button in buttons) {
-      document.getElementById(buttons[button]).style.visibility = 'hidden';
+      elem = "#" + buttons[button]
+      $(elem).fadeOut("slow");
     }
   }
 
