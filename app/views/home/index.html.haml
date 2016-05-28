@@ -26,14 +26,13 @@
 
   hide(mvpButtons);
   canvas.onmousedown = function() {
-    context.clearRect(0, 0, 1578, 2000);
+    context.clearRect(0, 0, 1400, 800);
     show(allButtons);
   }
 
   function subjectClick(title, comment) {
     show(allButtons);
-    performant(1);
-    context.clearRect(0, 0, 1578, 2000);
+    context.clearRect(0, 0, 1400, 800);
 
     switch(title) {
       case 'MVP':
@@ -204,14 +203,6 @@
   function hide(buttons) {
     for(button in buttons) {
       document.getElementById(buttons[button]).style.visibility = 'hidden';
-    }
-  }
-
-  function performant(flag) {
-    if(flag) {
-      document.getElementById('Performant').style.visibility = 'visible';
-    } else {
-      document.getElementById('Performant').style.visibility = 'hidden';
     }
   }
 
