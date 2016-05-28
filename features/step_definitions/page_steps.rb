@@ -19,13 +19,8 @@ When(/^I select "([^"]*)"$/) do |subject|
   click_button subject
 end
 
-Then(/^I see its comments$/) do
-  alert = page.driver.browser.switch_to.alert
-  alert_text = alert.text
-
-  subject = Subject.find_by_title(@subject_title)
-  expect(alert_text).to match subject.comments
-  alert.accept
+Then(/^I see its connections$/) do
+  expect(page).to have_content('Code')
 end
 
 Then(/^I see all my presentation's subjects$/) do

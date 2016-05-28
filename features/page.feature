@@ -15,5 +15,6 @@ Feature:
 
   @selenium
   Scenario: Clicking on an object
-    When I select "Code"
-    Then I see its comments
+    When I select "MVP"
+    Then I see its connections
+
