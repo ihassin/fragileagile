@@ -29,7 +29,7 @@ class Subject < ActiveRecord::Base
     Subject.find_or_create_by!(title: 'CL',                       x: 1150, y:  550, comments: 'Comment about CL')
 
     Subject.find_or_create_by!(title: 'Lean PMO',                 x:  250, y:  650, comments: 'Comment about Lean PMO')
-    Subject.find_or_create_by!(title: 'Stabilise WIP',            x:  450, y:  650, comments: 'Comment about WIP')
+    Subject.find_or_create_by!(title: 'Stabilise WIP',            x:  650, y:  650, comments: 'Comment about WIP')
     Subject.find_or_create_by!(title: 'Performant',               x: 1300, y:  650, comments: 'Comment about Performant', terminal: 1)
 
     Subject.find_or_create_by!(title: 'Feature Teams',            x:  100, y:  750, comments: 'Comment about teams')
