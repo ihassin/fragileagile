@@ -144,8 +144,8 @@
         break;
 
       case 'A/B Testing':
-        show(['SCM', 'Code', 'CL', 'A_B_Testing', 'agile', 'Fragile', 'Semantic_Monitoring', 'Performant', 'Automation', 'BDD'])
-        hide(['Economical', 'Small_batches', 'TDD', 'Emergent_Arch', 'CI', 'TBD', 'Regression', 'CD', 'Stable', 'Stabilise_WIP', 'Lean_PMO', 'Feature_Teams', 'You_build_it__you_run_it'])
+        show(['SCM', 'Code', 'CL', 'A_B_Testing', 'Fragile', 'Semantic_Monitoring', 'Automation', 'BDD'])
+        hide(['Performant', 'agile', 'Economical', 'Small_batches', 'TDD', 'Emergent_Arch', 'CI', 'TBD', 'Regression', 'CD', 'Stable', 'Stabilise_WIP', 'Lean_PMO', 'Feature_Teams', 'You_build_it__you_run_it'])
         connectAB();
         break;
 
@@ -179,10 +179,6 @@
         connectAgile();
         break;
     }
-  }
-
-  function drawObject(fromObj, toObj) {
-    drawLine(fromObj.x + 50, fromObj.y + 7, toObj.x + 50, toObj.y + 7)
   }
 
   function MVPCode() {
@@ -420,8 +416,6 @@
     drawObject(gon.semantic, gon.ab);
     drawObject(gon.ab, gon.cl);
     drawObject(gon.bdd, gon.semantic);
-    drawObject(gon.cl, gon.performant);
-    drawObject(gon.cl, gon.agile);
   }
 
   function connectCL() {
@@ -627,6 +621,10 @@
 
       document.getElementById(buttons[button]).style.opacity = 0.1;
     }
+  }
+
+  function drawObject(fromObj, toObj) {
+    drawLine(fromObj.x + (110/2), fromObj.y + (25/2), toObj.x + (110/2), toObj.y + (25/2))
   }
 
   function drawLine(fromX, fromY, toX, toY) {
