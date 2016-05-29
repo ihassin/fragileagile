@@ -1,3 +1,6 @@
+%include_gon
+
+
 %canvas(id="myCanvas" width="1400" height="800")
 
 -@subjects.each do |subject|
@@ -132,44 +135,49 @@
     }
   }
 
+  function drawObject(fromObj, toObj) {
+    drawLine(fromObj.x + 50, fromObj.y + 7, toObj.x + 50, toObj.y + 7)
+  }
+
   function MVPCode() {
-    drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@code.x} + 50, #{@code.y}+7)
+    drawObject(gon.mvp, gon.code);
   }
 
   function MVPTeams() {
-    drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@teams.x} + 50, #{@teams.y}+7)
+    drawObject(gon.mvp, gon.teams);
   }
 
   function CodeSCM() {
-    drawLine(#{@code.x} + 50, #{@code.y}+7, #{@scm.x} + 50, #{@scm.y}+7)
+    drawObject(gon.code, gon.scm);
   }
 
   function SCMAuto() {
-    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@automation.x} + 50, #{@automation.y}+7)
+    drawObject(gon.scm, gon.automation);
   }
 
   function SCMTBD() {
-    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@tbd.x} + 50, #{@tbd.y}+7)
+    drawObject(gon.scm, gon.tbd);
   }
 
   function TBDCI() {
-    drawLine(#{@tbd.x} + 50, #{@tbd.y}+7, #{@ci.x} + 50, #{@ci.y}+7)
+    drawObject(gon.tbd, gon.ci);
   }
 
   function AutoOut() {
-    drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@bdd.x} + 50, #{@bdd.y}+7)
-    drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@tdd.x} + 50, #{@tdd.y}+7)
-    drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@ci.x} + 50, #{@ci.y}+7)
-    drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@regression.x} + 50, #{@regression.y}+7)
+    drawObject(gon.automation, gon.tdd);
+    drawObject(gon.automation, gon.bdd);
+    drawObject(gon.automation, gon.ci);
+    drawObject(gon.automation, gon.regression);
   }
 
   function connectCode() {
     show(['SCM', 'Fragile'])
     hide(['A_B_Testing', 'agile', 'Stable', 'Economical', 'Performant', 'TBD', 'Automation', 'CI', 'TDD', 'Emergent_Arch', 'Small_batches', 'BDD', 'Regression', 'CD', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
 
-    drawLine(#{@code.x} + 50, #{@code.y}+7, #{@fragile.x} + 50, #{@fragile.y}+7)
+    drawObject(gon.code, gon.fragile);
     MVPCode();
     CodeSCM();
+
   }
 
   function connectCI() {
@@ -182,10 +190,9 @@
     TBDCI();
     SCMAuto();
 
-    drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@ci.x} + 50, #{@ci.y}+7)
-
-    drawLine(#{@ci.x} + 50, #{@ci.y}+7, #{@stable.x} + 50, #{@stable.y}+7)
-    drawLine(#{@ci.x} + 50, #{@ci.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
+    drawObject(gon.automation, gon.ci);
+    drawObject(gon.ci, gon.stable);
+    drawObject(gon.ci, gon.cd);
   }
 
   function connectSCM() {
@@ -196,15 +203,15 @@
     CodeSCM();
     SCMTBD();
     SCMAuto();
-    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
-    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@batches.x} + 50, #{@batches.y}+7)
+    drawObject(gon.scm, gon.emergent);
+    drawObject(gon.scm, gon.batches);
   }
 
   function connectFragile() {
     show(['Code', 'Fragile'])
     hide(fragileButtons);
 
-    drawLine(#{@code.x} + 50, #{@code.y}+7, #{@fragile.x} + 50, #{@fragile.y}+7)
+    drawObject(gon.code, gon.fragile);
     MVPCode();
   }
 
@@ -219,7 +226,7 @@
     SCMTBD();
 
     TBDCI();
-    drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@ci.x} + 50, #{@ci.y}+7)
+    drawObject(gon.automation, gon.ci);
   }
 
   function connectEconomical() {
@@ -231,28 +238,28 @@
 
     SCMTBD();
     SCMAuto();
-    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
-    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@batches.x} + 50, #{@batches.y}+7)
+    drawObject(gon.scm, gon.emergent);
+    drawObject(gon.scm, gon.batches);
 
-    drawLine(#{@batches.x} + 50, #{@batches.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
-    drawLine(#{@regression.x} + 50, #{@regression.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
+    drawObject(gon.batches, gon.cd);
+    drawObject(gon.regression, gon.cd);
 
-    drawLine(#{@ci.x} + 50, #{@ci.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
+    drawObject(gon.ci, gon.cd);
 
-    drawLine(#{@cd.x} + 50, #{@cd.y}+7, #{@economical.x} + 50, #{@economical.y}+7)
-    drawLine(#{@cd.x} + 50, #{@cd.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
+    drawObject(gon.cd, gon.economical);
+    drawObject(gon.cd, gon.cl);
     TBDCI();
 
     AutoOut();
 
-    drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@regression.x} + 50, #{@regression.y}+7)
-    drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
+    drawObject(gon.tdd, gon.emergent);
+    drawObject(gon.tdd, gon.regression);
 
-    drawLine(#{@tdd.x} + 50, #{@tdd.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
-    drawLine(#{@tdd.x} + 50, #{@tdd.y}+7, #{@regression.x} + 50, #{@regression.y}+7)
+    drawObject(gon.bdd, gon.regression);
+    drawObject(gon.bdd, gon.emergent);
 
-    drawLine(#{@emergent.x} + 50, #{@emergent.y}+7, #{@batches.x} + 50, #{@batches.y}+7)
-    drawLine(#{@cd.x} + 50, #{@cd.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
+    drawObject(gon.emergent, gon.batches);
+    drawObject(gon.cd, gon.cl);
   }
 
   function connectPerformant() {
@@ -261,44 +268,44 @@
 
     MVPCode();
     CodeSCM();
+    MVPTeams();
 
     SCMTBD();
     SCMAuto();
 
-    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
-    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@batches.x} + 50, #{@batches.y}+7)
+    drawObject(gon.scm, gon.emergent);
+    drawObject(gon.scm, gon.batches);
 
-    drawLine(#{@batches.x} + 50, #{@batches.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
-    drawLine(#{@regression.x} + 50, #{@regression.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
-    drawLine(#{@ci.x} + 50, #{@ci.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
-    drawLine(#{@cd.x} + 50, #{@cd.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
+    drawObject(gon.batches, gon.cd);
+    drawObject(gon.regression, gon.cd);
+    drawObject(gon.ci, gon.cd);
+    drawObject(gon.cd, gon.cl);
     TBDCI();
 
     AutoOut();
 
-    drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@regression.x} + 50, #{@regression.y}+7)
-    drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
-    drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
+    drawObject(gon.tdd, gon.emergent);
+    drawObject(gon.tdd, gon.regression);
 
-    drawLine(#{@tdd.x} + 50, #{@tdd.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
-    drawLine(#{@tdd.x} + 50, #{@tdd.y}+7, #{@regression.x} + 50, #{@regression.y}+7)
+    drawObject(gon.bdd, gon.regression);
+    drawObject(gon.bdd, gon.emergent);
+    drawObject(gon.bdd, gon.semantic);
 
-    drawLine(#{@emergent.x} + 50, #{@emergent.y}+7, #{@batches.x} + 50, #{@batches.y}+7)
-    drawLine(#{@cd.x} + 50, #{@cd.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
-    drawLine(#{@cl.x} + 50, #{@cl.y}+7, #{@performant.x} + 50, #{@performant.y}+7)
-    drawLine(#{@wip.x} + 50, #{@wip.y}+7, #{@performant.x} + 50, #{@performant.y}+7)
-    drawLine(#{@pmo.x} + 50, #{@pmo.y}+7, #{@wip.x} + 50, #{@wip.y}+7)
+    drawObject(gon.emergent, gon.batches);
 
-    drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@ab.x} + 50, #{@ab.y}+7)
-    drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@wip.x} + 50, #{@wip.y}+7)
+    drawObject(gon.cl, gon.performant);
+    drawObject(gon.wip, gon.performant);
+    drawObject(gon.pmo, gon.wip);
 
-    drawLine(#{@ab.x} + 50, #{@ab.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
+    drawObject(gon.semantic, gon.ab);
+    drawObject(gon.semantic, gon.wip);
 
+    drawObject(gon.ab, gon.cl);
 
-    drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
-    MVPTeams();
+    drawObject(gon.mvp, gon.semantic);
 
-    drawLine(#{@teams.x} + 50, #{@teams.y}+7, #{@performant.x} + 50, #{@performant.y}+7)
+    drawObject(gon.teams, gon.performant);
+
   }
 
   function connectAgile() {
@@ -312,39 +319,41 @@
     SCMTBD();
     SCMAuto();
 
-    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
-    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@batches.x} + 50, #{@batches.y}+7)
+    drawObject(gon.scm, gon.emergent);
+    drawObject(gon.scm, gon.batches);
 
-    drawLine(#{@batches.x} + 50, #{@batches.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
-    drawLine(#{@regression.x} + 50, #{@regression.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
-    drawLine(#{@ci.x} + 50, #{@ci.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
-    drawLine(#{@cd.x} + 50, #{@cd.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
-    drawLine(#{@cl.x} + 50, #{@cl.y}+7, #{@agile.x} + 50, #{@agile.y}+7)
+    drawObject(gon.batches, gon.cd);
+    drawObject(gon.regression, gon.cd);
+    drawObject(gon.ci, gon.cd);
+    drawObject(gon.cd, gon.cl);
+
+    drawObject(gon.cl, gon.agile);
     TBDCI();
 
     AutoOut();
 
-    drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@regression.x} + 50, #{@regression.y}+7)
-    drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
+    drawObject(gon.tdd, gon.emergent);
+    drawObject(gon.tdd, gon.regression);
 
-    drawLine(#{@tdd.x} + 50, #{@tdd.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
-    drawLine(#{@tdd.x} + 50, #{@tdd.y}+7, #{@regression.x} + 50, #{@regression.y}+7)
+    drawObject(gon.bdd, gon.regression);
+    drawObject(gon.bdd, gon.emergent);
+    drawObject(gon.bdd, gon.semantic);
 
-    drawLine(#{@emergent.x} + 50, #{@emergent.y}+7, #{@batches.x} + 50, #{@batches.y}+7)
+    drawObject(gon.emergent, gon.batches);
 
-    drawLine(#{@cd.x} + 50, #{@cd.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
+    drawObject(gon.pmo, gon.wip);
 
-    drawLine(#{@wip.x} + 50, #{@wip.y}+7, #{@agile.x} + 50, #{@agile.y}+7)
-    drawLine(#{@pmo.x} + 50, #{@pmo.y}+7, #{@wip.x} + 50, #{@wip.y}+7)
+    drawObject(gon.semantic, gon.ab);
+    drawObject(gon.semantic, gon.wip);
 
-    drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@ab.x} + 50, #{@ab.y}+7)
-    drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@wip.x} + 50, #{@wip.y}+7)
+    drawObject(gon.ab, gon.cl);
 
-    drawLine(#{@ab.x} + 50, #{@ab.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
+    drawObject(gon.mvp, gon.semantic);
 
-    drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
-    drawLine(#{@teams.x} + 50, #{@teams.y}+7, #{@devops.x} + 50, #{@devops.y}+7)
-    drawLine(#{@devops.x} + 50, #{@devops.y}+7, #{@agile.x} + 50, #{@agile.y}+7)
+    drawObject(gon.teams, gon.devops);
+
+    drawObject(gon.wip, gon.agile);
+    drawObject(gon.devops, gon.agile);
   }
 
   function connectCD() {
@@ -357,24 +366,28 @@
     SCMTBD();
     SCMAuto();
 
-    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
-    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@batches.x} + 50, #{@batches.y}+7)
+    drawObject(gon.scm, gon.emergent);
+    drawObject(gon.scm, gon.batches);
 
-    drawLine(#{@batches.x} + 50, #{@batches.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
-    drawLine(#{@regression.x} + 50, #{@regression.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
-    drawLine(#{@ci.x} + 50, #{@ci.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
-    drawLine(#{@cd.x} + 50, #{@cd.y}+7, #{@economical.x} + 50, #{@economical.y}+7)
-    drawLine(#{@cd.x} + 50, #{@cd.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
+    drawObject(gon.batches, gon.cd);
+    drawObject(gon.regression, gon.cd);
+
+    drawObject(gon.ci, gon.cd);
+
+    drawObject(gon.cd, gon.economical);
+    drawObject(gon.cd, gon.cl);
+
     TBDCI();
 
     AutoOut();
 
-    drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@regression.x} + 50, #{@regression.y}+7)
-    drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
-    drawLine(#{@tdd.x} + 50, #{@tdd.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
-    drawLine(#{@tdd.x} + 50, #{@tdd.y}+7, #{@regression.x} + 50, #{@regression.y}+7)
-    drawLine(#{@emergent.x} + 50, #{@emergent.y}+7, #{@batches.x} + 50, #{@batches.y}+7)
-    drawLine(#{@cd.x} + 50, #{@cd.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
+    drawObject(gon.tdd, gon.regression);
+    drawObject(gon.tdd, gon.emergent);
+
+    drawObject(gon.bdd, gon.regression);
+    drawObject(gon.bdd, gon.emergent);
+
+    drawObject(gon.emergent, gon.batches);
   }
 
   function connectAB() {
@@ -384,18 +397,17 @@
     MVPCode();
     CodeSCM();
 
-    drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
+    drawObject(gon.mvp, gon.semantic);
 
     SCMAuto();
 
-    drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@bdd.x} + 50, #{@bdd.y}+7)
+    drawObject(gon.automation, gon.bdd);
 
-    drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@ab.x} + 50, #{@ab.y}+7)
-    drawLine(#{@ab.x} + 50, #{@ab.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
-    drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
-
-    drawLine(#{@cl.x} + 50, #{@cl.y}+7, #{@performant.x} + 50, #{@performant.y}+7)
-    drawLine(#{@cl.x} + 50, #{@cl.y}+7, #{@agile.x} + 50, #{@agile.y}+7)
+    drawObject(gon.semantic, gon.ab);
+    drawObject(gon.ab, gon.cl);
+    drawObject(gon.bdd, gon.semantic);
+    drawObject(gon.cl, gon.performant);
+    drawObject(gon.cl, gon.agile);
   }
 
   function connectCL() {
@@ -405,40 +417,39 @@
     MVPCode();
     CodeSCM();
 
-    drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
+    drawObject(gon.mvp, gon.semantic);
 
     SCMTBD();
     SCMAuto();
 
-    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
-    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@batches.x} + 50, #{@batches.y}+7)
+    drawObject(gon.scm, gon.emergent);
+    drawObject(gon.scm, gon.batches);
+    drawObject(gon.scm, gon.tbd);
 
-    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@tbd.x} + 50, #{@tbd.y}+7)
     TBDCI();
 
     AutoOut();
 
-    drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@regression.x} + 50, #{@regression.y}+7)
-    drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
-    drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
+    drawObject(gon.bdd, gon.semantic);
+    drawObject(gon.bdd, gon.emergent);
+    drawObject(gon.bdd, gon.regression);
 
-    drawLine(#{@tdd.x} + 50, #{@tdd.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
-    drawLine(#{@tdd.x} + 50, #{@tdd.y}+7, #{@regression.x} + 50, #{@regression.y}+7)
+    drawObject(gon.tdd, gon.emergent);
+    drawObject(gon.tdd, gon.regression);
 
-    drawLine(#{@emergent.x} + 50, #{@emergent.y}+7, #{@batches.x} + 50, #{@batches.y}+7)
+    drawObject(gon.emergent, gon.batches);
+    drawObject(gon.batches, gon.cd);
 
-    drawLine(#{@batches.x} + 50, #{@batches.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
+    drawObject(gon.regression, gon.cd);
+    drawObject(gon.ci, gon.cd);
 
-    drawLine(#{@regression.x} + 50, #{@regression.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
+    drawObject(gon.semantic, gon.ab);
 
-    drawLine(#{@ci.x} + 50, #{@ci.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
+    drawObject(gon.ab, gon.cl);
+    drawObject(gon.cd, gon.cl);
 
-    drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@ab.x} + 50, #{@ab.y}+7)
-    drawLine(#{@ab.x} + 50, #{@ab.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
-    drawLine(#{@cd.x} + 50, #{@cd.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
-
-    drawLine(#{@cl.x} + 50, #{@cl.y}+7, #{@performant.x} + 50, #{@performant.y}+7)
-    drawLine(#{@cl.x} + 50, #{@cl.y}+7, #{@agile.x} + 50, #{@agile.y}+7)
+    drawObject(gon.cl, gon.performant);
+    drawObject(gon.cl, gon.agile);
   }
 
   function connectTDD() {
@@ -450,10 +461,9 @@
 
     SCMAuto();
 
-    drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@tdd.x} + 50, #{@tdd.y}+7)
-
-    drawLine(#{@tdd.x} + 50, #{@tdd.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
-    drawLine(#{@tdd.x} + 50, #{@tdd.y}+7, #{@regression.x} + 50, #{@regression.y}+7)
+    drawObject(gon.automation, gon.tdd);
+    drawObject(gon.tdd, gon.emergent);
+    drawObject(gon.tdd, gon.regression);
   }
 
   function connectBDD() {
@@ -465,11 +475,11 @@
 
     SCMAuto();
 
-    drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@bdd.x} + 50, #{@bdd.y}+7)
+    drawObject(gon.automation, gon.bdd);
 
-    drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
-    drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
-    drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@regression.x} + 50, #{@regression.y}+7)
+    drawObject(gon.bdd, gon.semantic);
+    drawObject(gon.bdd, gon.emergent);
+    drawObject(gon.bdd, gon.regression);
   }
 
   function connectRegression() {
@@ -481,15 +491,14 @@
 
     SCMAuto();
 
-    drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@regression.x} + 50, #{@regression.y}+7)
+    drawObject(gon.automation, gon.bdd);
+    drawObject(gon.automation, gon.tdd);
+    drawObject(gon.automation, gon.regression);
 
-    drawLine(#{@tdd.x} + 50, #{@tdd.y}+7, #{@regression.x} + 50, #{@regression.y}+7)
+    drawObject(gon.bdd, gon.regression);
+    drawObject(gon.tdd, gon.regression);
 
-    drawLine(#{@regression.x} + 50, #{@regression.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
-
-    drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@bdd.x} + 50, #{@bdd.y}+7)
-    drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@tdd.x} + 50, #{@tdd.y}+7)
-    drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@regression.x} + 50, #{@regression.y}+7)
+    drawObject(gon.automation, gon.cd);
   }
 
   function connectEmergent() {
@@ -500,36 +509,36 @@
     CodeSCM();
 
     SCMAuto();
-    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
+    drawObject(gon.scm, gon.emergent);
 
-    drawLine(#{@tdd.x} + 50, #{@tdd.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
-    drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
+    drawObject(gon.automation, gon.tdd);
+    drawObject(gon.automation, gon.bdd);
 
-    drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@tdd.x} + 50, #{@tdd.y}+7)
-    drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@bdd.x} + 50, #{@bdd.y}+7)
+    drawObject(gon.tdd, gon.emergent);
+    drawObject(gon.bdd, gon.emergent);
 
-    drawLine(#{@emergent.x} + 50, #{@emergent.y}+7, #{@batches.x} + 50, #{@batches.y}+7)
+    drawObject(gon.emergent, gon.batches);
   }
 
   function connectBatches()
   {
-    show(['Automation', 'TDD', 'CD', 'Fragile'])
-    hide(['A_B_Testing', 'Regression', 'TBD', 'CI', 'agile', 'Stable', 'Economical', 'Performant', 'BDD', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
+    show(['Automation', 'TDD', 'BDD', 'CD', 'Fragile'])
+    hide(['A_B_Testing', 'Regression', 'TBD', 'CI', 'agile', 'Stable', 'Economical', 'Performant', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
 
     MVPCode();
     CodeSCM();
 
-    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@batches.x} + 50, #{@batches.y}+7)
     SCMAuto();
-    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
+    drawObject(gon.scm, gon.batches);
+    drawObject(gon.scm, gon.emergent);
 
-    drawLine(#{@emergent.x} + 50, #{@emergent.y}+7, #{@batches.x} + 50, #{@batches.y}+7)
+    drawObject(gon.emergent, gon.batches);
+    drawObject(gon.batches, gon.cd);
 
-    drawLine(#{@batches.x} + 50, #{@batches.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
-
-    drawLine(#{@tdd.x} + 50, #{@tdd.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
-
-    drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@tdd.x} + 50, #{@tdd.y}+7)
+    drawObject(gon.tdd, gon.emergent);
+    drawObject(gon.automation, gon.tdd);
+    drawObject(gon.automation, gon.bdd);
+    drawObject(gon.bdd, gon.emergent);
   }
 
   function connectSemantic() {
@@ -540,13 +549,12 @@
     CodeSCM();
     SCMAuto();
 
-    drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@bdd.x} + 50, #{@bdd.y}+7)
-    drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
+    drawObject(gon.automation, gon.bdd);
+    drawObject(gon.bdd, gon.semantic);
+    drawObject(gon.mvp, gon.semantic);
+    drawObject(gon.semantic, gon.wip);
 
-    drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
-
-    drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@ab.x} + 50, #{@ab.y}+7)
-    drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@wip.x} + 50, #{@wip.y}+7)
+    drawObject(gon.semantic, gon.ab);
   }
 
   function connectWIP() {
@@ -557,18 +565,14 @@
     CodeSCM();
     SCMAuto();
 
-    drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@bdd.x} + 50, #{@bdd.y}+7)
+    drawObject(gon.automation, gon.bdd);
+    drawObject(gon.bdd, gon.semantic);
+    drawObject(gon.mvp, gon.semantic);
+    drawObject(gon.semantic, gon.wip);
+    drawObject(gon.pmo, gon.wip);
 
-    drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
-
-    drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
-
-    drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@wip.x} + 50, #{@wip.y}+7)
-
-    drawLine(#{@pmo.x} + 50, #{@pmo.y}+7, #{@wip.x} + 50, #{@wip.y}+7)
-
-    drawLine(#{@wip.x} + 50, #{@wip.y}+7, #{@performant.x} + 50, #{@performant.y}+7)
-    drawLine(#{@wip.x} + 50, #{@wip.y}+7, #{@agile.x} + 50, #{@agile.y}+7)
+    drawObject(gon.wip, gon.performant);
+    drawObject(gon.wip, gon.agile);
   }
 
   function connectPMO() {
@@ -579,15 +583,11 @@
     CodeSCM();
     SCMAuto();
 
-    drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@bdd.x} + 50, #{@bdd.y}+7)
-
-    drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
-
-    drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
-
-    drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@wip.x} + 50, #{@wip.y}+7)
-
-    drawLine(#{@pmo.x} + 50, #{@pmo.y}+7, #{@wip.x} + 50, #{@wip.y}+7)
+    drawObject(gon.automation, gon.bdd);
+    drawObject(gon.bdd, gon.semantic);
+    drawObject(gon.mvp, gon.semantic);
+    drawObject(gon.semantic, gon.wip);
+    drawObject(gon.pmo, gon.wip);
   }
 
   function connectAutomation() {
@@ -625,8 +625,8 @@
     hide(['A_B_Testing', 'Performant', 'CI', 'CD', 'Stable', 'Code', 'SCM', 'Automation', 'TBD', 'Economical', 'TDD', 'Emergent_Arch', 'Regression', 'Small_batches', 'BDD', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP'])
 
     MVPTeams();
-    drawLine(#{@teams.x} + 50, #{@teams.y}+7, #{@devops.x} + 50, #{@devops.y}+7)
-    drawLine(#{@teams.x} + 50, #{@teams.y}+7, #{@agile.x} + 50, #{@agile.y}+7)
+    drawObject(gon.teams, gon.devops);
+    drawObject(gon.teams, gon.agile);
   }
 
   function connectTeams() {
@@ -634,8 +634,8 @@
     hide(['A_B_Testing', 'agile', 'CI', 'CD', 'Stable', 'Code', 'SCM', 'agile', 'Automation', 'TBD', 'Economical', 'TDD', 'Emergent_Arch', 'Regression', 'Small_batches', 'BDD', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP'])
 
     MVPTeams();
-    drawLine(#{@teams.x} + 50, #{@teams.y}+7, #{@performant.x} + 50, #{@performant.y}+7)
-    drawLine(#{@teams.x} + 50, #{@teams.y}+7, #{@devops.x} + 50, #{@devops.y}+7)
+    drawObject(gon.teams, gon.performant);
+    drawObject(gon.teams, gon.devops);
   }
 
   function show(buttons) {
