@@ -3,12 +3,12 @@
 -@subjects.each do |subject|
   -if subject.terminal==1
     =button_tag "#{subject.title}",
-      id: "#{subject.title.gsub(' ', '_').gsub(',', '_').gsub('.', '_')}",
+      id: "#{subject.title.gsub(' ', '_').gsub(',', '_').gsub('.', '_').gsub('/','_')}",
       onclick: "subjectClick('#{subject.title}', '#{subject.comments}');",
       style: "position: absolute; left: #{subject.x}px; top: #{subject.y}px; width: 110px; height: 45px; font-size: 18px; border: 2px solid #4CAF50;"
   -else
     =button_tag "#{subject.title}",
-      id: "#{subject.title.gsub(' ', '_').gsub(',', '_').gsub('.', '_')}",
+      id: "#{subject.title.gsub(' ', '_').gsub(',', '_').gsub('.', '_').gsub('/','_')}",
       onclick: "subjectClick('#{subject.title}', '#{subject.comments}');",
       style: "position: absolute; left: #{subject.x}px; top: #{subject.y}px; width: 110px; height: 45px; font-size: 18px;"
 
@@ -16,13 +16,14 @@
 :javascript
   var canvas = document.getElementById('myCanvas');
   var context = canvas.getContext('2d');
-  var allButtons = ['MVP', 'Code', 'Fragile', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Small_batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Performant', 'Feature_Teams', 'You_build_it__you_run_it' , 'agile', 'Emergent_Arch'];
-  var mvpButtons = ['Code', 'SCM', 'TBD', 'Automation', 'CI', 'TDD', 'Small_batches', 'BDD', 'Regression', 'CD', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it', 'Emergent_Arch'];
-  var fragileButtons = ['SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Small_batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Performant', 'Feature_Teams', 'You_build_it__you_run_it' , 'agile', 'Emergent_Arch'];
+  var allButtons = ['A_B_Testing', 'MVP', 'Code', 'Fragile', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Small_batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Performant', 'Feature_Teams', 'You_build_it__you_run_it' , 'agile', 'Emergent_Arch'];
+  var mvpButtons = ['A_B_Testing', 'Code', 'SCM', 'TBD', 'Automation', 'CI', 'TDD', 'Small_batches', 'BDD', 'Regression', 'CD', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it', 'Emergent_Arch'];
+  var fragileButtons = ['A_B_Testing', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Small_batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Performant', 'Feature_Teams', 'You_build_it__you_run_it' , 'agile', 'Emergent_Arch'];
   var stableButtons = ['Fragile', 'TDD', 'Small_batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Performant', 'Feature_Teams', 'You_build_it__you_run_it' , 'agile', 'Emergent_Arch'];
   var agileButtons = ['Stable', 'Fragile', 'Economical', 'Performant'];
 
   hide(mvpButtons);
+
   canvas.onmousedown = function() {
     context.clearRect(0, 0, 1400, 800);
     show(allButtons);
@@ -34,7 +35,7 @@
 
     switch(title) {
       case 'MVP':
-        hide(['SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Small_batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Performant', 'You_build_it__you_run_it' , 'agile', 'Emergent_Arch']);
+        hide(['A_B_Testing', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Small_batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Performant', 'You_build_it__you_run_it' , 'agile', 'Emergent_Arch']);
         show(['Code', 'Feature_Teams', 'MVP'])
         drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@code.x} + 50, #{@code.y}+7)
         drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@teams.x} + 50, #{@teams.y}+7)
@@ -108,6 +109,10 @@
         connectBuildIt();
         break;
 
+      case 'A/B Testing':
+        connectAB();
+        break;
+
       case 'Fragile':
         connectFragile();
         break;
@@ -134,7 +139,7 @@
 
   function connectBuildIt() {
     show(['agile', 'Fragile', 'Feature_Teams', 'You_build_it__you_run_it'])
-    hide(['Performant', 'CI', 'CD', 'Stable', 'Code', 'SCM', 'Automation', 'TBD', 'Economical', 'TDD', 'Emergent_Arch', 'Regression', 'Small_batches', 'BDD', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP'])
+    hide(['A_B_Testing', 'Performant', 'CI', 'CD', 'Stable', 'Code', 'SCM', 'Automation', 'TBD', 'Economical', 'TDD', 'Emergent_Arch', 'Regression', 'Small_batches', 'BDD', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP'])
 
     drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@teams.x} + 50, #{@teams.y}+7)
     drawLine(#{@teams.x} + 50, #{@teams.y}+7, #{@devops.x} + 50, #{@devops.y}+7)
@@ -143,7 +148,7 @@
 
   function connectTeams() {
     show(['Performant', 'Fragile', 'Feature_Teams', 'Performant', 'You_build_it__you_run_it'])
-    hide(['agile', 'CI', 'CD', 'Stable', 'Code', 'SCM', 'agile', 'Automation', 'TBD', 'Economical', 'TDD', 'Emergent_Arch', 'Regression', 'Small_batches', 'BDD', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP'])
+    hide(['A_B_Testing', 'agile', 'CI', 'CD', 'Stable', 'Code', 'SCM', 'agile', 'Automation', 'TBD', 'Economical', 'TDD', 'Emergent_Arch', 'Regression', 'Small_batches', 'BDD', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP'])
 
     drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@teams.x} + 50, #{@teams.y}+7)
     drawLine(#{@teams.x} + 50, #{@teams.y}+7, #{@performant.x} + 50, #{@performant.y}+7)
@@ -152,7 +157,7 @@
 
   function connectCode() {
     show(['SCM', 'Fragile'])
-    hide(['agile', 'Stable', 'Economical', 'Performant', 'TBD', 'Automation', 'CI', 'TDD', 'Emergent_Arch', 'Small_batches', 'BDD', 'Regression', 'CD', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
+    hide(['A_B_Testing', 'agile', 'Stable', 'Economical', 'Performant', 'TBD', 'Automation', 'CI', 'TDD', 'Emergent_Arch', 'Small_batches', 'BDD', 'Regression', 'CD', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
 
     drawLine(#{@code.x} + 50, #{@code.y}+7, #{@fragile.x} + 50, #{@fragile.y}+7)
     drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@code.x} + 50, #{@code.y}+7)
@@ -161,7 +166,7 @@
 
   function connectCI() {
     show(['Fragile', 'CD', 'Stable', 'Automation', 'TBD'])
-    hide(['agile', 'Economical', 'Performant', 'TDD', 'Emergent_Arch', 'Regression', 'Small_batches', 'BDD', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
+    hide(['A_B_Testing', 'agile', 'Economical', 'Performant', 'TDD', 'Emergent_Arch', 'Regression', 'Small_batches', 'BDD', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
 
     drawLine(#{@code.x} + 50, #{@code.y}+7, #{@scm.x} + 50, #{@scm.y}+7)
     drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@code.x} + 50, #{@code.y}+7)
@@ -175,7 +180,7 @@
 
   function connectSCM() {
     show(['TBD', 'Automation', 'Emergent_Arch', 'Small_batches', 'Fragile'])
-    hide(['Economical', 'Performant', 'Stable', 'agile', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it', 'CI', 'TDD', 'BDD', 'Regression', 'CD'])
+    hide(['A_B_Testing', 'Economical', 'Performant', 'Stable', 'agile', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it', 'CI', 'TDD', 'BDD', 'Regression', 'CD'])
 
     drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@code.x} + 50, #{@code.y}+7)
     drawLine(#{@code.x} + 50, #{@code.y}+7, #{@scm.x} + 50, #{@scm.y}+7)
@@ -195,7 +200,7 @@
 
   function connectStable() {
     show(['Stable', 'Code', 'SCM', 'TBD', 'Automation', 'CI'])
-    hide(['TDD', 'BDD', 'CL', , 'Small_batches', 'Regression', 'Economical', 'Fragile', 'Performant', 'agile', 'Semantic_Monitoring', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
+    hide(['A_B_Testing', 'TDD', 'BDD', 'CL', , 'Small_batches', 'Regression', 'Economical', 'Fragile', 'Performant', 'agile', 'Semantic_Monitoring', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
 
     drawLine(#{@tbd.x} + 50, #{@tbd.y}+7, #{@ci.x} + 50, #{@ci.y}+7)
     drawLine(#{@code.x} + 50, #{@code.y}+7, #{@scm.x} + 50, #{@scm.y}+7)
@@ -207,7 +212,7 @@
 
   function connectEconomical() {
     show(['Code', 'SCM', 'CL', 'CI', 'Small_batches', 'Regression', 'Economical', 'TBD', 'Automation', 'BDD', 'CL', 'TDD', 'Emergent_Arch', 'CD'])
-    hide(['Fragile', 'Performant', 'agile', 'Semantic_Monitoring', 'Stable', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
+    hide(['A_B_Testing', 'Fragile', 'Performant', 'agile', 'Semantic_Monitoring', 'Stable', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
 
     drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@code.x} + 50, #{@code.y}+7)
     drawLine(#{@code.x} + 50, #{@code.y}+7, #{@scm.x} + 50, #{@scm.y}+7)
@@ -234,7 +239,7 @@
   }
 
   function connectPerformant() {
-    show(['Feature_Teams', 'Semantic_Monitoring', 'MVP', 'Lean_PMO', 'Stabilise_WIP', 'Performant', 'Code', 'SCM', 'CL', 'CI', 'Small_batches', 'Regression', 'TBD', 'Automation', 'BDD', 'CL', 'TDD', 'Emergent_Arch', 'CD'])
+    show(['A_B_Testing', 'Feature_Teams', 'Semantic_Monitoring', 'MVP', 'Lean_PMO', 'Stabilise_WIP', 'Performant', 'Code', 'SCM', 'CL', 'CI', 'Small_batches', 'Regression', 'TBD', 'Automation', 'BDD', 'CL', 'TDD', 'Emergent_Arch', 'CD'])
     hide(['Economical', 'agile', 'Stable', 'You_build_it__you_run_it'])
 
     drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@code.x} + 50, #{@code.y}+7)
@@ -260,7 +265,10 @@
     drawLine(#{@cl.x} + 50, #{@cl.y}+7, #{@performant.x} + 50, #{@performant.y}+7)
     drawLine(#{@wip.x} + 50, #{@wip.y}+7, #{@performant.x} + 50, #{@performant.y}+7)
     drawLine(#{@pmo.x} + 50, #{@pmo.y}+7, #{@wip.x} + 50, #{@wip.y}+7)
-    drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
+
+    drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@ab.x} + 50, #{@ab.y}+7)
+    drawLine(#{@ab.x} + 50, #{@ab.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
+
     drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
     drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
     drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
@@ -269,7 +277,7 @@
   }
 
   function connectAgile() {
-    show(['You_build_it__you_run_it', 'agile', 'Feature_Teams', 'Semantic_Monitoring', 'MVP', 'Lean_PMO', 'Stabilise_WIP', 'Code', 'SCM', 'CL', 'CI', 'Small_batches', 'Regression', 'TBD', 'Automation', 'BDD', 'CL', 'TDD', 'Emergent_Arch', 'CD'])
+    show(['A_B_Testing', 'You_build_it__you_run_it', 'agile', 'Feature_Teams', 'Semantic_Monitoring', 'MVP', 'Lean_PMO', 'Stabilise_WIP', 'Code', 'SCM', 'CL', 'CI', 'Small_batches', 'Regression', 'TBD', 'Automation', 'BDD', 'CL', 'TDD', 'Emergent_Arch', 'CD'])
     hide(['Economical', 'Stable', 'Performant', 'Fragile'])
 
     drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@code.x} + 50, #{@code.y}+7)
@@ -297,7 +305,10 @@
     drawLine(#{@cd.x} + 50, #{@cd.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
     drawLine(#{@wip.x} + 50, #{@wip.y}+7, #{@agile.x} + 50, #{@agile.y}+7)
     drawLine(#{@pmo.x} + 50, #{@pmo.y}+7, #{@wip.x} + 50, #{@wip.y}+7)
-    drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
+
+    drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@ab.x} + 50, #{@ab.y}+7)
+    drawLine(#{@ab.x} + 50, #{@ab.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
+
     drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
     drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
     drawLine(#{@teams.x} + 50, #{@teams.y}+7, #{@devops.x} + 50, #{@devops.y}+7)
@@ -306,7 +317,7 @@
 
   function connectCD() {
     show(['CL', 'CI', 'Small_batches', 'Regression', 'Economical', 'Stable', 'TBD', 'Automation', 'BDD', 'CL', 'TDD', 'Emergent_Arch'])
-    hide(['Fragile', 'Performant', 'agile', 'Semantic_Monitoring', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
+    hide(['A_B_Testing', 'Fragile', 'Performant', 'agile', 'Semantic_Monitoring', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
 
     drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@code.x} + 50, #{@code.y}+7)
     drawLine(#{@code.x} + 50, #{@code.y}+7, #{@scm.x} + 50, #{@scm.y}+7)
@@ -332,8 +343,28 @@
     drawLine(#{@cd.x} + 50, #{@cd.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
   }
 
+  function connectAB() {
+    show(['CL', 'A_B_Testing', 'agile', 'Fragile', 'Semantic_Monitoring', 'Performant', 'Automation', 'BDD'])
+    hide(['Economical', 'Small_batches', 'TDD', 'Emergent_Arch', 'CI', 'TBD', 'Regression', 'CD', 'Stable', 'Stabilise_WIP', 'Lean_PMO', 'Feature_Teams', 'You_build_it__you_run_it'])
+
+    drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@code.x} + 50, #{@code.y}+7)
+    drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
+
+    drawLine(#{@code.x} + 50, #{@code.y}+7, #{@scm.x} + 50, #{@scm.y}+7)
+    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@automation.x} + 50, #{@automation.y}+7)
+
+    drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@bdd.x} + 50, #{@bdd.y}+7)
+
+    drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@ab.x} + 50, #{@ab.y}+7)
+    drawLine(#{@ab.x} + 50, #{@ab.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
+    drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
+
+    drawLine(#{@cl.x} + 50, #{@cl.y}+7, #{@performant.x} + 50, #{@performant.y}+7)
+    drawLine(#{@cl.x} + 50, #{@cl.y}+7, #{@agile.x} + 50, #{@agile.y}+7)
+  }
+
   function connectCL() {
-    show(['agile', 'Economical', 'Semantic_Monitoring', 'Performant', 'TBD', 'CI', 'CD', 'Small_batches', 'Automation', 'TDD', 'Emergent_Arch', 'BDD', 'Regression'])
+    show(['A_B_Testing', 'agile', 'Economical', 'Semantic_Monitoring', 'Performant', 'TBD', 'CI', 'CD', 'Small_batches', 'Automation', 'TDD', 'Emergent_Arch', 'BDD', 'Regression'])
     hide(['Stable', 'Fragile', 'Stabilise_WIP', 'Lean_PMO', 'Feature_Teams', 'You_build_it__you_run_it'])
 
     drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@code.x} + 50, #{@code.y}+7)
@@ -368,7 +399,8 @@
 
     drawLine(#{@ci.x} + 50, #{@ci.y}+7, #{@cd.x} + 50, #{@cd.y}+7)
 
-    drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
+    drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@ab.x} + 50, #{@ab.y}+7)
+    drawLine(#{@ab.x} + 50, #{@ab.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
     drawLine(#{@cd.x} + 50, #{@cd.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
 
     drawLine(#{@cl.x} + 50, #{@cl.y}+7, #{@performant.x} + 50, #{@performant.y}+7)
@@ -377,7 +409,8 @@
 
   function connectTDD() {
     show(['Fragile', 'Automation', 'Emergent_Arch', 'Regression'])
-    hide(['TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Small_batches', 'BDD', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
+    hide(['A_B_Testing', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Small_batches', 'BDD', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
+
     drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@code.x} + 50, #{@code.y}+7)
     drawLine(#{@code.x} + 50, #{@code.y}+7, #{@scm.x} + 50, #{@scm.y}+7)
     drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@automation.x} + 50, #{@automation.y}+7)
@@ -389,7 +422,8 @@
 
   function connectBDD() {
     show(['Regression', 'Emergent_Arch', 'Fragile', 'Semantic_Monitoring'])
-    hide(['TDD', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Small_batches', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
+    hide(['A_B_Testing', 'TDD', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Small_batches', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
+
     drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@code.x} + 50, #{@code.y}+7)
     drawLine(#{@code.x} + 50, #{@code.y}+7, #{@scm.x} + 50, #{@scm.y}+7)
     drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@automation.x} + 50, #{@automation.y}+7)
@@ -401,7 +435,8 @@
 
   function connectRegression() {
     show(['Automation', 'CD', 'TDD', 'Fragile', 'BDD'])
-    hide(['TBD', 'CI', 'agile', 'Stable', 'Economical', 'Performant', 'Small_batches', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it', 'Emergent_Arch', 'Semantic_Monitoring'])
+    hide(['A_B_Testing', 'TBD', 'CI', 'agile', 'Stable', 'Economical', 'Performant', 'Small_batches', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it', 'Emergent_Arch', 'Semantic_Monitoring'])
+
     drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@code.x} + 50, #{@code.y}+7)
     drawLine(#{@code.x} + 50, #{@code.y}+7, #{@scm.x} + 50, #{@scm.y}+7)
     drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@automation.x} + 50, #{@automation.y}+7)
@@ -414,8 +449,9 @@
   }
 
   function connectEmergent() {
-    hide(['Regression', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
     show(['BDD', 'Automation', 'Small_batches', 'TDD', 'SCM', 'Fragile'])
+    hide(['A_B_Testing', 'Regression', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
+
     drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@code.x} + 50, #{@code.y}+7)
     drawLine(#{@code.x} + 50, #{@code.y}+7, #{@scm.x} + 50, #{@scm.y}+7)
     drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@automation.x} + 50, #{@automation.y}+7)
@@ -430,8 +466,9 @@
 
   function connectBatches()
   {
-    hide(['Regression', 'TBD', 'CI', 'agile', 'Stable', 'Economical', 'Performant', 'BDD', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
     show(['Automation', 'TDD', 'CD', 'Fragile'])
+    hide(['A_B_Testing', 'Regression', 'TBD', 'CI', 'agile', 'Stable', 'Economical', 'Performant', 'BDD', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
+
     drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@code.x} + 50, #{@code.y}+7)
     drawLine(#{@code.x} + 50, #{@code.y}+7, #{@scm.x} + 50, #{@scm.y}+7)
     drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@batches.x} + 50, #{@batches.y}+7)
@@ -444,8 +481,9 @@
   }
 
   function connectSemantic() {
-    hide(['CD', 'Small_batches', 'Emergent_Arch', 'TDD', 'Regression', 'TBD', 'CI', 'agile', 'Stable', 'Economical', 'Performant', 'Lean_PMO', 'Feature_Teams', 'You_build_it__you_run_it'])
-    show(['Fragile', 'BDD', 'CL', 'Stabilise_WIP'])
+    hide(['CL', 'CD', 'Small_batches', 'Emergent_Arch', 'TDD', 'Regression', 'TBD', 'CI', 'agile', 'Stable', 'Economical', 'Performant', 'Lean_PMO', 'Feature_Teams', 'You_build_it__you_run_it'])
+    show(['Fragile', 'BDD', 'Stabilise_WIP', 'A_B_Testing'])
+
     drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@code.x} + 50, #{@code.y}+7)
     drawLine(#{@code.x} + 50, #{@code.y}+7, #{@scm.x} + 50, #{@scm.y}+7)
     drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@automation.x} + 50, #{@automation.y}+7)
@@ -453,13 +491,14 @@
     drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
 
     drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
-    drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
+    drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@ab.x} + 50, #{@ab.y}+7)
     drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@wip.x} + 50, #{@wip.y}+7)
   }
 
   function connectWIP() {
-    hide(['CL', 'CD', 'Small_batches', 'Emergent_Arch', 'TDD', 'Regression', 'TBD', 'CI', 'Stable', 'Economical', 'Feature_Teams', 'You_build_it__you_run_it'])
+    hide(['A_B_Testing', 'CL', 'CD', 'Small_batches', 'Emergent_Arch', 'TDD', 'Regression', 'TBD', 'CI', 'Stable', 'Economical', 'Feature_Teams', 'You_build_it__you_run_it'])
     show(['Lean_PMO', 'BDD', 'Stabilise_WIP', 'Performant', 'agile'])
+
     drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@code.x} + 50, #{@code.y}+7)
     drawLine(#{@code.x} + 50, #{@code.y}+7, #{@scm.x} + 50, #{@scm.y}+7)
     drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@automation.x} + 50, #{@automation.y}+7)
@@ -474,8 +513,9 @@
   }
 
   function connectPMO() {
-    hide(['CD', 'Small_batches', 'Emergent_Arch', 'TDD', 'Regression', 'TBD', 'CI', 'agile', 'Stable', 'Economical', 'Performant', 'Feature_Teams', 'You_build_it__you_run_it'])
-    show(['Lean_PMO', 'BDD', 'CL', 'Stabilise_WIP'])
+    hide(['A_B_Testing', 'CL', 'CD', 'Small_batches', 'Emergent_Arch', 'TDD', 'Regression', 'TBD', 'CI', 'agile', 'Stable', 'Economical', 'Performant', 'Feature_Teams', 'You_build_it__you_run_it'])
+    show(['Lean_PMO', 'BDD', 'Stabilise_WIP'])
+
     drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@code.x} + 50, #{@code.y}+7)
     drawLine(#{@code.x} + 50, #{@code.y}+7, #{@scm.x} + 50, #{@scm.y}+7)
     drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@automation.x} + 50, #{@automation.y}+7)
@@ -483,7 +523,6 @@
     drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
 
     drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
-    drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
     drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@wip.x} + 50, #{@wip.y}+7)
     drawLine(#{@pmo.x} + 50, #{@pmo.y}+7, #{@wip.x} + 50, #{@wip.y}+7)
   }
@@ -504,7 +543,8 @@
 
   function connectAutomation() {
     show(['TDD', 'BDD', 'Regression', 'CI', 'Fragile', 'Stable'])
-    hide(['TBD', 'CD', 'CL', 'Emergent_Arch', 'Small_batches', 'agile', 'Economical', 'Performant', 'Semantic_Monitoring', 'Stabilise_WIP', 'Lean_PMO', 'Feature_Teams', 'You_build_it__you_run_it'])
+    hide(['A_B_Testing', 'TBD', 'CD', 'CL', 'Emergent_Arch', 'Small_batches', 'agile', 'Economical', 'Performant', 'Semantic_Monitoring', 'Stabilise_WIP', 'Lean_PMO', 'Feature_Teams', 'You_build_it__you_run_it'])
+
     drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@code.x} + 50, #{@code.y}+7)
     drawLine(#{@code.x} + 50, #{@code.y}+7, #{@scm.x} + 50, #{@scm.y}+7)
     drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@automation.x} + 50, #{@automation.y}+7)
@@ -517,7 +557,7 @@
 
   function connectTBD() {
     show(['CI', 'SCM', 'Fragile'])
-    hide(['agile', 'Stable', 'Economical', 'Performant', 'Automation', 'TDD', 'Emergent_Arch', 'Small_batches', 'BDD', 'Regression', 'CD', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
+    hide(['A_B_Testing', 'agile', 'Stable', 'Economical', 'Performant', 'Automation', 'TDD', 'Emergent_Arch', 'Small_batches', 'BDD', 'Regression', 'CD', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
     drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@code.x} + 50, #{@code.y}+7)
     drawLine(#{@code.x} + 50, #{@code.y}+7, #{@scm.x} + 50, #{@scm.y}+7)
     drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@tbd.x} + 50, #{@tbd.y}+7)

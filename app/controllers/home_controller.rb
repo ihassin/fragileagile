@@ -21,6 +21,7 @@ class HomeController < ApplicationController
     @teams      = Subject.where(title: "Feature Teams").first
     @economical = Subject.where(title: "Economical").first
     @semantic   = Subject.where(title: "Semantic Monitoring").first
+    @ab         = Subject.where(title: "A/B Testing").first
     @performant = Subject.where(title: "Performant").first
     @wip        = Subject.where(title: "Stabilise WIP").first
     @pmo        = Subject.where(title: "Lean PMO").first

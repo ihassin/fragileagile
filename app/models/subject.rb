@@ -18,6 +18,7 @@ class Subject < ActiveRecord::Base
     Subject.find_or_create_by!(title: 'TDD',                      x:  450, y:  350, comments: 'Comment about TDD')
     Subject.find_or_create_by!(title: SUBJ_EMERGENT,              x:  650, y:  350, comments: 'Comment about Emergent')
     Subject.find_or_create_by!(title: 'Small batches',            x:  850, y:  350, comments: 'Comment about batches')
+    Subject.find_or_create_by!(title: 'A/B Testing',              x:  650, y:  550, comments: 'Comment about AB')
 
     Subject.find_or_create_by!(title: 'MVP',                      x:   10, y:  450, comments: 'Comment about MVP')
     Subject.find_or_create_by!(title: 'BDD',                      x:  250, y:  450, comments: 'Comment about BDD')
