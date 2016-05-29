@@ -267,12 +267,16 @@
     drawLine(#{@pmo.x} + 50, #{@pmo.y}+7, #{@wip.x} + 50, #{@wip.y}+7)
 
     drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@ab.x} + 50, #{@ab.y}+7)
+    drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@wip.x} + 50, #{@wip.y}+7)
+
     drawLine(#{@ab.x} + 50, #{@ab.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
 
     drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
     drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
+
     drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
     drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@teams.x} + 50, #{@teams.y}+7)
+
     drawLine(#{@teams.x} + 50, #{@teams.y}+7, #{@performant.x} + 50, #{@performant.y}+7)
   }
 
@@ -307,6 +311,8 @@
     drawLine(#{@pmo.x} + 50, #{@pmo.y}+7, #{@wip.x} + 50, #{@wip.y}+7)
 
     drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@ab.x} + 50, #{@ab.y}+7)
+    drawLine(#{@semantic.x} + 50, #{@semantic.y}+7, #{@wip.x} + 50, #{@wip.y}+7)
+
     drawLine(#{@ab.x} + 50, #{@ab.y}+7, #{@cl.x} + 50, #{@cl.y}+7)
 
     drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@semantic.x} + 50, #{@semantic.y}+7)
@@ -414,7 +420,6 @@
     drawLine(#{@mvp.x} + 50, #{@mvp.y}+7, #{@code.x} + 50, #{@code.y}+7)
     drawLine(#{@code.x} + 50, #{@code.y}+7, #{@scm.x} + 50, #{@scm.y}+7)
     drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@automation.x} + 50, #{@automation.y}+7)
-    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
     drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@tdd.x} + 50, #{@tdd.y}+7)
     drawLine(#{@tdd.x} + 50, #{@tdd.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
     drawLine(#{@tdd.x} + 50, #{@tdd.y}+7, #{@regression.x} + 50, #{@regression.y}+7)
@@ -456,7 +461,7 @@
     drawLine(#{@code.x} + 50, #{@code.y}+7, #{@scm.x} + 50, #{@scm.y}+7)
     drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@automation.x} + 50, #{@automation.y}+7)
     drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
-    drawLine(#{@scm.x} + 50, #{@scm.y}+7, #{@batches.x} + 50, #{@batches.y}+7)
+
     drawLine(#{@tdd.x} + 50, #{@tdd.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
     drawLine(#{@bdd.x} + 50, #{@bdd.y}+7, #{@emergent.x} + 50, #{@emergent.y}+7)
     drawLine(#{@automation.x} + 50, #{@automation.y}+7, #{@tdd.x} + 50, #{@tdd.y}+7)
