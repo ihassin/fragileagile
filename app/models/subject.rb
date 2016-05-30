@@ -27,7 +27,7 @@ class Subject < ActiveRecord::Base
     Subject.find_or_create_by!(title: 'Economical',               x: 1300, y:  450, comments: 'Economical', terminal: 1)
 
     Subject.find_or_create_by!(title: 'Semantic Monitoring',      x:  450, y:  550, comments: 'Business monitors like server monitors')
-    Subject.find_or_create_by!(title: 'CL',                       x: 1150, y:  550, comments: 'CL')
+    Subject.find_or_create_by!(title: 'CL',                       x: 1100, y:  550, comments: 'CL')
 
     Subject.find_or_create_by!(title: 'Lean PMO',                 x:  250, y:  650, comments: 'Autonomous project teams, MVP, reduce waste')
     Subject.find_or_create_by!(title: 'Stabilise WIP',            x:  650, y:  650, comments: 'Remove unscheduled work, work to finish')

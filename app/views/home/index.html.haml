@@ -20,6 +20,8 @@
 :javascript
   var canvas = document.getElementById('myCanvas');
   var context = canvas.getContext('2d');
+  context.strokeStyle="#FF0000";
+
   var allButtons = ['A_B_Testing', 'MVP', 'Code', 'Fragile', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Small_batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Performant', 'Feature_Teams', 'You_build_it__you_run_it' , 'agile', 'Emergent_Arch'];
   var mvpButtons = ['A_B_Testing', 'Code', 'SCM', 'TBD', 'Automation', 'CI', 'TDD', 'Small_batches', 'BDD', 'Regression', 'CD', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it', 'Emergent_Arch'];
   var fragileButtons = ['A_B_Testing', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Small_batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Performant', 'Feature_Teams', 'You_build_it__you_run_it' , 'agile', 'Emergent_Arch'];
@@ -66,14 +68,14 @@
         break;
 
       case 'TBD':
-        show(['TBD', 'Code', 'CI', 'SCM', 'Fragile'])
-        hide(['A_B_Testing', 'agile', 'Stable', 'Economical', 'Performant', 'Automation', 'TDD', 'Emergent_Arch', 'Small_batches', 'BDD', 'Regression', 'CD', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
+        show(['TBD', 'Code', 'CI', 'SCM', 'Fragile', 'Stable'])
+        hide(['A_B_Testing', 'agile', 'Economical', 'Performant', 'Automation', 'TDD', 'Emergent_Arch', 'Small_batches', 'BDD', 'Regression', 'CD', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
         connectTBD();
         break;
 
       case 'CI':
-        show(['CI', 'SCM', 'Code', 'Fragile', 'CD', 'Stable', 'Automation', 'TBD'])
-        hide(['A_B_Testing', 'agile', 'Economical', 'Performant', 'TDD', 'Emergent_Arch', 'Regression', 'Small_batches', 'BDD', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
+        show(['CI', 'SCM', 'Code', 'Fragile', 'CD', 'Economical', 'Stable', 'Automation', 'TBD'])
+        hide(['A_B_Testing', 'agile', 'Performant', 'TDD', 'Emergent_Arch', 'Regression', 'Small_batches', 'BDD', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
         connectCI();
         break;
 
@@ -96,8 +98,8 @@
         break;
 
       case 'Regression':
-        show(['Code', 'SCM', 'Regression', 'Automation', 'CD', 'TDD', 'Fragile', 'BDD'])
-        hide(['A_B_Testing', 'TBD', 'CI', 'agile', 'Stable', 'Economical', 'Performant', 'Small_batches', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it', 'Emergent_Arch', 'Semantic_Monitoring'])
+        show(['Economical', 'Code', 'SCM', 'Regression', 'Automation', 'CD', 'TDD', 'Fragile', 'BDD'])
+        hide(['A_B_Testing', 'TBD', 'CI', 'agile', 'Stable', 'Performant', 'Small_batches', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it', 'Emergent_Arch', 'Semantic_Monitoring'])
         connectRegression();
         break;
 
@@ -108,8 +110,8 @@
         break;
 
       case 'Small batches':
-        show(['Small_batches', 'Emergent_Arch', 'Code', 'SCM', 'Automation', 'TDD', 'BDD', 'CD', 'Fragile'])
-        hide(['A_B_Testing', 'Regression', 'TBD', 'CI', 'agile', 'Stable', 'Economical', 'Performant', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
+        show(['Economical', 'Small_batches', 'Emergent_Arch', 'Code', 'SCM', 'Automation', 'TDD', 'BDD', 'CD', 'Fragile'])
+        hide(['A_B_Testing', 'Regression', 'TBD', 'CI', 'agile', 'Stable', 'Performant', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
         connectBatches();
         break;
 
@@ -132,20 +134,20 @@
         break;
 
       case 'Stabilise WIP':
-        show(['Semantic_Monitoring', 'Automation', 'SCM', 'Code', 'Lean_PMO', 'BDD', 'Stabilise_WIP', 'Performant', 'agile'])
-        hide(['A_B_Testing', 'CL', 'CD', 'Small_batches', 'Emergent_Arch', 'TDD', 'Regression', 'TBD', 'CI', 'Stable', 'Economical', 'Feature_Teams', 'You_build_it__you_run_it'])
+        show(['CL', 'Semantic_Monitoring', 'Automation', 'SCM', 'Code', 'Lean_PMO', 'BDD', 'Stabilise_WIP', 'Performant', 'agile'])
+        hide(['A_B_Testing', 'CD', 'Small_batches', 'Emergent_Arch', 'TDD', 'Regression', 'TBD', 'CI', 'Stable', 'Economical', 'Feature_Teams', 'You_build_it__you_run_it'])
         connectWIP();
         break;
 
       case 'Feature Teams':
-        show(['Performant', 'Fragile', 'Feature_Teams', 'Performant', 'You_build_it__you_run_it'])
-        hide(['A_B_Testing', 'agile', 'CI', 'CD', 'Stable', 'Code', 'SCM', 'agile', 'Automation', 'TBD', 'Economical', 'TDD', 'Emergent_Arch', 'Regression', 'Small_batches', 'BDD', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP'])
+        show(['CL', 'Performant', 'Fragile', 'Feature_Teams', 'Performant', 'You_build_it__you_run_it'])
+        hide(['A_B_Testing', 'agile', 'CI', 'CD', 'Stable', 'Code', 'SCM', 'agile', 'Automation', 'TBD', 'Economical', 'TDD', 'Emergent_Arch', 'Regression', 'Small_batches', 'BDD', 'Semantic_Monitoring', 'Lean_PMO', 'Stabilise_WIP'])
         connectTeams();
         break;
 
       case 'You build it, you run it':
-        show(['agile', 'Fragile', 'Feature_Teams', 'You_build_it__you_run_it'])
-        hide(['A_B_Testing', 'Performant', 'CI', 'CD', 'Stable', 'Code', 'SCM', 'Automation', 'TBD', 'Economical', 'TDD', 'Emergent_Arch', 'Regression', 'Small_batches', 'BDD', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP'])
+        show(['Stabilise_WIP', 'CL', 'agile', 'Fragile', 'Feature_Teams', 'You_build_it__you_run_it'])
+        hide(['A_B_Testing', 'Performant', 'CI', 'CD', 'Stable', 'Code', 'SCM', 'Automation', 'TBD', 'Economical', 'TDD', 'Emergent_Arch', 'Regression', 'Small_batches', 'BDD', 'Semantic_Monitoring', 'Lean_PMO'])
         connectBuildIt();
         break;
 
@@ -234,6 +236,7 @@
     drawObject(gon.automation, gon.ci);
     drawObject(gon.ci, gon.stable);
     drawObject(gon.ci, gon.cd);
+    drawObject(gon.cd, gon.economical);
   }
 
   function connectSCM() {
@@ -259,6 +262,7 @@
 
     TBDCI();
     drawObject(gon.automation, gon.ci);
+    drawObject(gon.ci, gon.stable);
   }
 
   function connectEconomical() {
@@ -502,6 +506,7 @@
 
     drawObject(gon.automation, gon.cd);
     drawObject(gon.regression, gon.cd);
+    drawObject(gon.cd, gon.economical);
   }
 
   function connectEmergent() {
@@ -536,6 +541,7 @@
     drawObject(gon.automation, gon.tdd);
     drawObject(gon.automation, gon.bdd);
     drawObject(gon.bdd, gon.emergent);
+    drawObject(gon.cd, gon.economical);
   }
 
   function connectSemantic() {
@@ -564,6 +570,7 @@
 
     drawObject(gon.wip, gon.performant);
     drawObject(gon.wip, gon.agile);
+    drawObject(gon.cl, gon.performant);
   }
 
   function connectPMO() {
@@ -584,6 +591,7 @@
     SCMAuto();
 
     AutoOut();
+    drawObject(gon.ci, gon.stable);
   }
 
   function connectTBD() {
@@ -592,6 +600,7 @@
     SCMTBD();
 
     TBDCI();
+    drawObject(gon.ci, gon.stable);
   }
 
   function connectMVP() {
@@ -603,12 +612,15 @@
     MVPTeams();
     drawObject(gon.teams, gon.devops);
     drawObject(gon.teams, gon.agile);
+    drawObject(gon.wip, gon.agile);
+    drawObject(gon.cl, gon.agile);
   }
 
   function connectTeams() {
     MVPTeams();
     drawObject(gon.teams, gon.performant);
     drawObject(gon.teams, gon.devops);
+    drawObject(gon.cl, gon.performant);
   }
 
   function show(buttons) {
