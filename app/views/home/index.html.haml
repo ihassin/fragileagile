@@ -7,11 +7,13 @@
     =button_tag "#{subject.title}",
       id: "#{subject.title.gsub(' ', '_').gsub(',', '_').gsub('.', '_').gsub('/','_')}",
       onclick: "subjectClick('#{subject.title}', '#{subject.comments}');",
+      ondblclick: "subjectDoubleClick('#{subject.title}', '#{subject.comments}');",
       style: "position: absolute; left: #{subject.x}px; top: #{subject.y}px; width: 110px; height: 45px; font-size: 18px; border: 2px solid #4CAF50;"
   -else
     =button_tag "#{subject.title}",
       id: "#{subject.title.gsub(' ', '_').gsub(',', '_').gsub('.', '_').gsub('/','_')}",
       onclick: "subjectClick('#{subject.title}', '#{subject.comments}');",
+      ondblclick: "subjectDoubleClick('#{subject.title}', '#{subject.comments}');",
       style: "position: absolute; left: #{subject.x}px; top: #{subject.y}px; width: 110px; height: 45px; font-size: 18px;"
 
 
@@ -29,6 +31,10 @@
   canvas.onmousedown = function() {
     context.clearRect(0, 0, 1400, 800);
     show(allButtons);
+  }
+
+  function subjectDoubleClick(title, comment) {
+    alert(title + ": " + comment)
   }
 
   function subjectClick(title, comment) {
