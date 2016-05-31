@@ -134,26 +134,26 @@
         break;
 
       case 'Stabilise WIP':
-        show(['CL', 'Semantic_Monitoring', 'Automation', 'SCM', 'Code', 'Lean_PMO', 'BDD', 'Stabilise_WIP', 'Performant', 'agile'])
-        hide(['A_B_Testing', 'CD', 'Small_batches', 'Emergent_Arch', 'TDD', 'Regression', 'TBD', 'CI', 'Stable', 'Economical', 'Feature_Teams', 'You_build_it__you_run_it'])
+        show(['Semantic_Monitoring', 'Automation', 'SCM', 'Code', 'Lean_PMO', 'BDD', 'Stabilise_WIP', 'Performant', 'agile'])
+        hide(['CL', 'A_B_Testing', 'CD', 'Small_batches', 'Emergent_Arch', 'TDD', 'Regression', 'TBD', 'CI', 'Stable', 'Economical', 'Feature_Teams', 'You_build_it__you_run_it'])
         connectWIP();
         break;
 
       case 'Feature Teams':
-        show(['CL', 'Performant', 'Fragile', 'Feature_Teams', 'Performant', 'You_build_it__you_run_it'])
-        hide(['A_B_Testing', 'agile', 'CI', 'CD', 'Stable', 'Code', 'SCM', 'agile', 'Automation', 'TBD', 'Economical', 'TDD', 'Emergent_Arch', 'Regression', 'Small_batches', 'BDD', 'Semantic_Monitoring', 'Lean_PMO', 'Stabilise_WIP'])
+        show(['Performant', 'Fragile', 'Feature_Teams', 'Performant', 'You_build_it__you_run_it'])
+        hide(['CL', 'A_B_Testing', 'agile', 'CI', 'CD', 'Stable', 'Code', 'SCM', 'agile', 'Automation', 'TBD', 'Economical', 'TDD', 'Emergent_Arch', 'Regression', 'Small_batches', 'BDD', 'Semantic_Monitoring', 'Lean_PMO', 'Stabilise_WIP'])
         connectTeams();
         break;
 
       case 'You build it, you run it':
-        show(['Stabilise_WIP', 'CL', 'agile', 'Fragile', 'Feature_Teams', 'You_build_it__you_run_it'])
-        hide(['A_B_Testing', 'Performant', 'CI', 'CD', 'Stable', 'Code', 'SCM', 'Automation', 'TBD', 'Economical', 'TDD', 'Emergent_Arch', 'Regression', 'Small_batches', 'BDD', 'Semantic_Monitoring', 'Lean_PMO'])
+        show(['agile', 'Fragile', 'Feature_Teams', 'You_build_it__you_run_it'])
+        hide(['Stabilise_WIP', 'CL', 'A_B_Testing', 'Performant', 'CI', 'CD', 'Stable', 'Code', 'SCM', 'Automation', 'TBD', 'Economical', 'TDD', 'Emergent_Arch', 'Regression', 'Small_batches', 'BDD', 'Semantic_Monitoring', 'Lean_PMO'])
         connectBuildIt();
         break;
 
       case 'A/B Testing':
-        show(['SCM', 'Code', 'CL', 'A_B_Testing', 'Fragile', 'Semantic_Monitoring', 'Automation', 'BDD'])
-        hide(['Performant', 'agile', 'Economical', 'Small_batches', 'TDD', 'Emergent_Arch', 'CI', 'TBD', 'Regression', 'CD', 'Stable', 'Stabilise_WIP', 'Lean_PMO', 'Feature_Teams', 'You_build_it__you_run_it'])
+        show(['Performant', 'agile', 'SCM', 'Code', 'CL', 'A_B_Testing', 'Fragile', 'Semantic_Monitoring', 'Automation', 'BDD'])
+        hide(['Economical', 'Small_batches', 'TDD', 'Emergent_Arch', 'CI', 'TBD', 'Regression', 'CD', 'Stable', 'Stabilise_WIP', 'Lean_PMO', 'Feature_Teams', 'You_build_it__you_run_it'])
         connectAB();
         break;
 
@@ -164,8 +164,8 @@
         break;
 
       case 'Stable':
-        show(['Stable', 'Code', 'SCM', 'TBD', 'Automation', 'CI'])
-        hide(['CD', 'Emergent_Arch', 'A_B_Testing', 'TDD', 'BDD', 'CL', , 'Small_batches', 'Regression', 'Economical', 'Fragile', 'Performant', 'agile', 'Semantic_Monitoring', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
+        show(['Stable', 'Code', 'SCM', 'TBD', 'Automation', 'CI', 'CL'])
+        hide(['CD', 'Emergent_Arch', 'A_B_Testing', 'TDD', 'BDD', 'Small_batches', 'Regression', 'Economical', 'Fragile', 'Performant', 'agile', 'Semantic_Monitoring', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
         connectStable();
         break;
 
@@ -426,6 +426,9 @@
     drawObject(gon.semantic, gon.ab);
     drawObject(gon.ab, gon.cl);
     drawObject(gon.bdd, gon.semantic);
+
+    drawObject(gon.cl, gon.performant);
+    drawObject(gon.cl, gon.agile);
   }
 
   function connectCL() {
@@ -571,7 +574,6 @@
 
     drawObject(gon.wip, gon.performant);
     drawObject(gon.wip, gon.agile);
-    drawObject(gon.cl, gon.performant);
   }
 
   function connectPMO() {
@@ -613,15 +615,12 @@
     MVPTeams();
     drawObject(gon.teams, gon.devops);
     drawObject(gon.teams, gon.agile);
-    drawObject(gon.wip, gon.agile);
-    drawObject(gon.cl, gon.agile);
   }
 
   function connectTeams() {
     MVPTeams();
     drawObject(gon.teams, gon.performant);
     drawObject(gon.teams, gon.devops);
-    drawObject(gon.cl, gon.performant);
   }
 
   function show(buttons) {
