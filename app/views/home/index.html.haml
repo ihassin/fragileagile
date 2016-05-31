@@ -110,8 +110,8 @@
         break;
 
       case 'Small batches':
-        show(['CI', 'Economical', 'Small_batches', 'Emergent_Arch', 'Code', 'SCM', 'Automation', 'TDD', 'BDD', 'CD', 'Fragile'])
-        hide(['A_B_Testing', 'Regression', 'TBD', 'agile', 'Stable', 'Performant', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
+        show(['CI', 'Economical', 'Small_batches', 'Emergent_Arch', 'Code', 'SCM', 'CD', 'Fragile'])
+        hide(['Automation', 'TDD', 'BDD', 'A_B_Testing', 'Regression', 'TBD', 'agile', 'Stable', 'Performant', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
         connectBatches();
         break;
 
@@ -500,8 +500,6 @@
 
     SCMAuto();
 
-    drawObject(gon.automation, gon.bdd);
-    drawObject(gon.automation, gon.tdd);
     drawObject(gon.automation, gon.regression);
 
     drawObject(gon.bdd, gon.regression);
@@ -520,7 +518,6 @@
     drawObject(gon.scm, gon.emergent);
 
     drawObject(gon.automation, gon.tdd);
-    drawObject(gon.automation, gon.bdd);
 
     drawObject(gon.tdd, gon.emergent);
     drawObject(gon.bdd, gon.emergent);
@@ -533,17 +530,12 @@
     MVPCode();
     CodeSCM();
 
-    SCMAuto();
     drawObject(gon.scm, gon.batches);
     drawObject(gon.scm, gon.emergent);
 
     drawObject(gon.emergent, gon.batches);
     drawObject(gon.batches, gon.cd);
 
-    drawObject(gon.tdd, gon.emergent);
-    drawObject(gon.automation, gon.tdd);
-    drawObject(gon.automation, gon.bdd);
-    drawObject(gon.bdd, gon.emergent);
     drawObject(gon.cd, gon.economical);
     drawObject(gon.ci, gon.batches);
   }
