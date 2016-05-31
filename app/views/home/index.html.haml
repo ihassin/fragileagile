@@ -110,8 +110,8 @@
         break;
 
       case 'Small batches':
-        show(['Economical', 'Small_batches', 'Emergent_Arch', 'Code', 'SCM', 'Automation', 'TDD', 'BDD', 'CD', 'Fragile'])
-        hide(['A_B_Testing', 'Regression', 'TBD', 'CI', 'agile', 'Stable', 'Performant', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
+        show(['CI', 'Economical', 'Small_batches', 'Emergent_Arch', 'Code', 'SCM', 'Automation', 'TDD', 'BDD', 'CD', 'Fragile'])
+        hide(['A_B_Testing', 'Regression', 'TBD', 'agile', 'Stable', 'Performant', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
         connectBatches();
         break;
 
@@ -542,6 +542,7 @@
     drawObject(gon.automation, gon.bdd);
     drawObject(gon.bdd, gon.emergent);
     drawObject(gon.cd, gon.economical);
+    drawObject(gon.ci, gon.batches);
   }
 
   function connectSemantic() {
