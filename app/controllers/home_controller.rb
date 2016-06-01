@@ -2,6 +2,8 @@ class HomeController < ApplicationController
   def index
     @subjects   = Subject.all
 
+    @s = Hash[@subjects.map{|s| [s.title, s]}].to_json
+
     gon.mvp         = Subject.where(title: "MVP").first
     gon.code        = Subject.where(title: "Code").first
     gon.fragile     = Subject.where(title: "Fragile").first
