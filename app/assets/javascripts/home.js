@@ -107,8 +107,8 @@ function subjectClick(title, comment) {
             break;
 
         case 'CD':
-            show(['Code', 'SCM', 'CD', 'CL', 'CI', 'Small batches', 'Regression', 'Economical', 'Stable', 'TBD', 'Automation', 'BDD', 'CL', 'TDD', 'Emergent Arch'])
-            hide(['AB Testing', 'Fragile', 'Performant', 'agile', 'Semantic Monitoring', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
+            show(['Feature Teams', 'Code', 'SCM', 'CD', 'CL', 'CI', 'Small batches', 'Regression', 'Economical', 'Stable', 'TBD', 'Automation', 'BDD', 'CL', 'TDD', 'Emergent Arch'])
+            hide(['AB Testing', 'Fragile', 'Performant', 'agile', 'Semantic Monitoring', 'Lean PMO', 'Stabilize WIP', 'You build it, you run it'])
             connectCD();
             break;
 
@@ -131,8 +131,8 @@ function subjectClick(title, comment) {
             break;
 
         case 'Feature Teams':
-            show(['Fragile', 'Feature Teams', 'You build it, you run it'])
-            hide(['Performant', 'CL','AB Testing', 'agile', 'CI', 'CD', 'Stable', 'Code', 'SCM', 'agile', 'Automation', 'TBD', 'Economical', 'TDD', 'Emergent Arch', 'Regression', 'Small batches', 'BDD', 'Semantic Monitoring', 'Lean PMO', 'Stabilize WIP'])
+            show(['CD', 'Fragile', 'Feature Teams', 'You build it, you run it'])
+            hide(['Performant', 'CL','AB Testing', 'agile', 'CI', 'Stable', 'Code', 'SCM', 'agile', 'Automation', 'TBD', 'Economical', 'TDD', 'Emergent Arch', 'Regression', 'Small batches', 'BDD', 'Semantic Monitoring', 'Lean PMO', 'Stabilize WIP'])
             connectTeams();
             break;
 
@@ -280,7 +280,7 @@ function connectEconomical() {
     drawObject(gon["BDD"], gon["Regression"]);
     drawObject(gon["BDD"], gon["Emergent Arch"]);
 
-    drawObject(gon["Emergent Arch"], gon["Small batches"]);
+    drawObject(gon["Emergent Arch"], gon["Small batches"], true);
 }
 
 function connectPerformant() {
@@ -310,7 +310,7 @@ function connectPerformant() {
     drawObject(gon["BDD"], gon["Emergent Arch"]);
     drawObject(gon["BDD"], gon["Semantic Monitoring"]);
 
-    drawObject(gon["Emergent Arch"], gon["Small batches"]);
+    drawObject(gon["Emergent Arch"], gon["Small batches"], true);
 
     drawObject(gon["CL"], gon["Performant"]);
     drawObject(gon["Stabilize WIP"], gon["Performant"]);
@@ -355,7 +355,7 @@ function connectAgile() {
     drawObject(gon["BDD"], gon["Emergent Arch"]);
     drawObject(gon["BDD"], gon["Semantic Monitoring"]);
 
-    drawObject(gon["Emergent Arch"], gon["Small batches"]);
+    drawObject(gon["Emergent Arch"], gon["Small batches"], true);
 
     drawObject(gon["Lean PMO"], gon["Stabilize WIP"]);
 
@@ -401,7 +401,8 @@ function connectCD() {
     drawObject(gon["BDD"], gon["Regression"]);
     drawObject(gon["BDD"], gon["Emergent Arch"]);
 
-    drawObject(gon["Emergent Arch"], gon["Small batches"]);
+    drawObject(gon["Emergent Arch"], gon["Small batches"], true);
+    drawObject(gon["Feature Teams"], gon["CD"]);
 }
 
 function connectAB() {
@@ -446,7 +447,7 @@ function connectCL() {
     drawObject(gon["TDD"], gon["Emergent Arch"]);
     drawObject(gon["TDD"], gon["Regression"]);
 
-    drawObject(gon["Emergent Arch"], gon["Small batches"]);
+    drawObject(gon["Emergent Arch"], gon["Small batches"], true);
     drawObject(gon["Small batches"], gon["CD"]);
 
     drawObject(gon["Regression"], gon["CD"]);
@@ -516,7 +517,7 @@ function connectEmergent() {
     drawObject(gon["TDD"], gon["Emergent Arch"]);
     drawObject(gon["BDD"], gon["Emergent Arch"]);
 
-    drawObject(gon["Emergent Arch"], gon["Small batches"]);
+    drawObject(gon["Emergent Arch"], gon["Small batches"], true);
 }
 
 function connectBatches()
@@ -531,7 +532,7 @@ function connectBatches()
     drawObject(gon["Automation"], gon["TDD"]);
     drawObject(gon["TDD"], gon["Emergent Arch"]);
 
-    drawObject(gon["Emergent Arch"], gon["Small batches"]);
+    drawObject(gon["Emergent Arch"], gon["Small batches"], true);
     drawObject(gon["CI"], gon["CD"]);
     drawObject(gon["Small batches"], gon["CD"]);
     drawObject(gon["Regression"], gon["CD"]);
@@ -616,6 +617,7 @@ function connectBuildIt() {
 
 function connectTeams() {
     MVPTeams();
+    drawObject(gon["Feature Teams"], gon["CD"]);
     drawObject(gon["Feature Teams"], gon["You build it, you run it"]);
 }
 
