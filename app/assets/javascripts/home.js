@@ -101,8 +101,8 @@ function subjectClick(title, comment) {
             break;
 
         case 'Small batches':
-            show(['CI', 'Automation', 'TDD', 'Small_batches', 'Emergent_Arch', 'Code', 'SCM', 'CD', 'Fragile'])
-            hide(['Economical', 'BDD', 'A_B_Testing', 'Regression', 'TBD', 'agile', 'Stable', 'Performant', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
+            show(['Regression', 'CI', 'Automation', 'TDD', 'Small_batches', 'Emergent_Arch', 'Code', 'SCM', 'CD', 'Fragile'])
+            hide(['Economical', 'BDD', 'A_B_Testing', 'TBD', 'agile', 'Stable', 'Performant', 'Semantic_Monitoring', 'CL', 'Lean_PMO', 'Stabilise_WIP', 'Feature_Teams', 'You_build_it__you_run_it'])
             connectBatches();
             break;
 
@@ -530,6 +530,7 @@ function connectBatches()
     drawObject(gon.emergent, gon.batches);
     drawObject(gon.ci, gon.cd);
     drawObject(gon.batches, gon.cd);
+    drawObject(gon.regression, gon.cd);
 }
 
 function connectSemantic() {
