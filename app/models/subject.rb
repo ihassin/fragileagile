@@ -2,8 +2,6 @@ class Subject < ActiveRecord::Base
   validates_presence_of :y, :x, :comments, :title
   validates_uniqueness_of :title
 
-  SUBJ_EMERGENT = 'Emergent Arch'
-
   def self.make_subjects
     Subject.find_or_create_by!(title: 'Code',                     x:  100, y:   50, comments: 'Any code, including POC, business, infra as code, tech debt')
     Subject.find_or_create_by!(title: 'Fragile',                  x: 1300, y:   50, comments: 'No methodology, no tests, no feedback', terminal: 1)
@@ -16,9 +14,9 @@ class Subject < ActiveRecord::Base
     Subject.find_or_create_by!(title: 'Stable',                   x: 1300, y:  250, comments: 'Meh.', terminal: 1)
 
     Subject.find_or_create_by!(title: 'TDD',                      x:  450, y:  350, comments: 'TDD Unit, integration, functional, performance, security')
-    Subject.find_or_create_by!(title: SUBJ_EMERGENT,              x:  650, y:  350, comments: 'Last possible responsible moment.')
+    Subject.find_or_create_by!(title: 'Emergent Arch',            x:  650, y:  350, comments: 'Last possible responsible moment.')
     Subject.find_or_create_by!(title: 'Small batches',            x:  850, y:  350, comments: 'Reduce change sets to a minimum')
-    Subject.find_or_create_by!(title: 'A/B Testing',              x:  650, y:  550, comments: 'Only if we have a feedback cycle.')
+    Subject.find_or_create_by!(title: 'AB Testing',               x:  650, y:  550, comments: 'Only if we have a feedback cycle.')
 
     Subject.find_or_create_by!(title: 'MVP',                      x:   10, y:  450, comments: 'Zappos')
     Subject.find_or_create_by!(title: 'BDD',                      x:  250, y:  450, comments: 'Common business language, DDD')
@@ -30,7 +28,7 @@ class Subject < ActiveRecord::Base
     Subject.find_or_create_by!(title: 'CL',                       x: 1100, y:  550, comments: 'CL')
 
     Subject.find_or_create_by!(title: 'Lean PMO',                 x:  250, y:  650, comments: 'Autonomous project teams, MVP, reduce waste')
-    Subject.find_or_create_by!(title: 'Stabilise WIP',            x:  650, y:  650, comments: 'Remove unscheduled work, work to finish')
+    Subject.find_or_create_by!(title: 'Stabilize WIP',            x:  650, y:  650, comments: 'Remove unscheduled work, work to finish')
     Subject.find_or_create_by!(title: 'Performant',               x: 1300, y:  650, comments: 'Performant', terminal: 1)
 
     Subject.find_or_create_by!(title: 'Feature Teams',            x:  100, y:  750, comments: 'Break silos, end-to-end, co-located')

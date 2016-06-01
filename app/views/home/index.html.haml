@@ -5,13 +5,13 @@
 -@subjects.each do |subject|
   -if subject.terminal==1
     =button_tag "#{subject.title}",
-      id: "#{subject.title.gsub(' ', '_').gsub(',', '_').gsub('.', '_').gsub('/','_')}",
+      id: "#{subject.title}",
       onclick: "subjectClick('#{subject.title}', '#{subject.comments}');",
       ondblclick: "subjectDoubleClick('#{subject.title}', '#{subject.comments}');",
       style: "position: absolute; left: #{subject.x}px; top: #{subject.y}px; width: 110px; height: 45px; font-size: 18px; border: 2px solid #4CAF50;"
   -else
     =button_tag "#{subject.title}",
-      id: "#{subject.title.gsub(' ', '_').gsub(',', '_').gsub('.', '_').gsub('/','_')}",
+      id: "#{subject.title}",
       onclick: "subjectClick('#{subject.title}', '#{subject.comments}');",
       ondblclick: "subjectDoubleClick('#{subject.title}', '#{subject.comments}');",
       style: "position: absolute; left: #{subject.x}px; top: #{subject.y}px; width: 110px; height: 45px; font-size: 18px;"
