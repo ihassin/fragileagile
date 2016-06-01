@@ -107,7 +107,7 @@ function subjectClick(title, comment) {
             break;
 
         case 'CD':
-            show(['Feature Teams', 'Code', 'SCM', 'CD', 'CL', 'CI', 'Small batches', 'Regression', 'Economical', 'Stable', 'TBD', 'Automation', 'BDD', 'CL', 'TDD', 'Emergent Arch'])
+            show(['Feature Teams', 'Code', 'SCM', 'CD', 'CL', 'CI', 'Small batches', 'Regression', 'Economical', 'Stable', 'TBD', 'Automation', 'BDD', 'TDD', 'Emergent Arch'])
             hide(['AB Testing', 'Fragile', 'Performant', 'agile', 'Semantic Monitoring', 'Lean PMO', 'Stabilize WIP', 'You build it, you run it'])
             connectCD();
             break;
@@ -161,8 +161,8 @@ function subjectClick(title, comment) {
             break;
 
         case 'Economical':
-            show(['Code', 'SCM', 'CI', 'Small batches', 'Regression', 'Economical', 'TBD', 'Automation', 'BDD', 'TDD', 'Emergent Arch', 'CD'])
-            hide(['CL','AB Testing', 'Fragile', 'Performant', 'agile', 'Semantic Monitoring', 'Stable', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
+            show(['Feature Teams', 'Code', 'SCM', 'CI', 'Small batches', 'Regression', 'Economical', 'TBD', 'Automation', 'BDD', 'TDD', 'Emergent Arch', 'CD'])
+            hide(['CL','AB Testing', 'Fragile', 'Performant', 'agile', 'Semantic Monitoring', 'Stable', 'Lean PMO', 'Stabilize WIP', 'You build it, you run it'])
             connectEconomical();
             break;
 
@@ -239,6 +239,8 @@ function connectSCM() {
 
 function connectFragile() {
     drawObject(gon["Code"], gon["Fragile"]);
+    setOpacity("Stable", 0.3);
+
     MVPCode();
 }
 
@@ -252,6 +254,7 @@ function connectStable() {
     TBDCI();
     drawObject(gon["Automation"], gon["CI"]);
     drawObject(gon["CI"], gon["Stable"]);
+    setOpacity("Economical", 0.3);
 }
 
 function connectEconomical() {
@@ -269,6 +272,7 @@ function connectEconomical() {
     drawObject(gon["CI"], gon["CD"]);
 
     drawObject(gon["CD"], gon["Economical"]);
+    drawObject(gon["Feature Teams"], gon["CD"]);
     TBDCI();
 
     AutoOut();
@@ -281,6 +285,7 @@ function connectEconomical() {
     drawObject(gon["BDD"], gon["Emergent Arch"]);
 
     drawObject(gon["Emergent Arch"], gon["Small batches"], true);
+    setOpacity("Performant", 0.3);
 }
 
 function connectPerformant() {
@@ -370,6 +375,11 @@ function connectAgile() {
 
     drawObject(gon["Stabilize WIP"], gon["agile"]);
     drawObject(gon["Feature Teams"], gon["agile"]);
+
+    setOpacity("Fragile", 0.25);
+    setOpacity("Stable", 0.45);
+    setOpacity("Economical", 0.65);
+    setOpacity("Performant", 0.75);
 }
 
 function connectCD() {
@@ -462,6 +472,7 @@ function connectCL() {
     drawObject(gon["Stabilize WIP"], gon["Performant"]);
     drawObject(gon["CL"], gon["agile"]);
     drawObject(gon["You build it, you run it"], gon["agile"]);
+
 }
 
 function connectTDD() {
@@ -621,13 +632,17 @@ function connectTeams() {
     drawObject(gon["Feature Teams"], gon["You build it, you run it"]);
 }
 
+function setOpacity(button, value) {
+    document.getElementById(button).style.opacity = value;
+}
+
 function show(buttons) {
     buttons.map(function (button) {
-        if(document.getElementById(button).style.opacity == 0.1) {
+        if(document.getElementById(button).style.opacity < 1) {
             elem = "#" + button
 
             $(elem).hide();
-            document.getElementById(button).style.opacity = 1;
+            setOpacity(button, 1)
             $(elem).fadeIn(1000);
         }
 
@@ -636,8 +651,7 @@ function show(buttons) {
 
 function hide(buttons) {
     buttons.map(function (button) {
-        console.log (button.text);
-        document.getElementById(button).style.opacity = 0.1;
+        setOpacity(button, 0.1)
     } )
 }
 
