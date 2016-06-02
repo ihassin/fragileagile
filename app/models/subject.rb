@@ -18,7 +18,7 @@ class Subject < ActiveRecord::Base
     Subject.find_or_create_by!(title: 'Small batches',            x:  850, y:  350, comments: 'Reduce change sets to a minimum')
     Subject.find_or_create_by!(title: 'AB Testing',               x:  650, y:  550, comments: 'Only if we have a feedback cycle.')
 
-    Subject.find_or_create_by!(title: 'MVP',                      x:   10, y:  450, comments: 'Zappos')
+    Subject.find_or_create_by!(title: 'MVP',                      x:   10, y:  450, comments: 'Purpose, 5-whys, Zappos')
     Subject.find_or_create_by!(title: 'BDD',                      x:  250, y:  450, comments: 'Common business language, DDD')
     Subject.find_or_create_by!(title: 'Regression',               x:  520, y:  450, comments: 'Safety-net')
     Subject.find_or_create_by!(title: 'CD',                       x: 1000, y:  450, comments: 'end-to-end, economics')
@@ -32,7 +32,7 @@ class Subject < ActiveRecord::Base
     Subject.find_or_create_by!(title: 'Performant',               x: 1300, y:  650, comments: 'Performant', terminal: 1)
 
     Subject.find_or_create_by!(title: 'Feature Teams',            x:  100, y:  750, comments: 'Break silos, end-to-end, co-located')
-    Subject.find_or_create_by!(title: 'You build it, you run it', x:  450, y:  750, comments: 'Comment about you build it')
+    Subject.find_or_create_by!(title: 'You build it, you run it', x:  450, y:  750, comments: 'Mindset, culture')
     Subject.find_or_create_by!(title: 'agile',                    x: 1300, y:  750, comments: 'Small a, innovate!', terminal: 1)
   end
 end
