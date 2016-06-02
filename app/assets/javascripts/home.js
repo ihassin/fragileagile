@@ -3,6 +3,8 @@ var mvpButtons = ['SCM','AB Testing', 'Code', 'TBD', 'Automation', 'CI', 'TDD', 
 var fragileButtons = ['AB Testing', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Performant', 'Feature Teams', 'You build it, you run it' , 'agile', 'Emergent Arch'];
 var stableButtons = ['Fragile', 'TDD', 'Small batches', 'BDD', 'Regression', 'Economical', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Performant', 'Feature Teams', 'You build it, you run it' , 'agile'];
 var agileButtons = ['Stable', 'Fragile', 'Economical', 'Performant'];
+var cdDimButtons = ['Code', 'MVP', 'SCM', 'TBD', 'Automation', 'CI'];
+var clDimButtons = ['BDD', 'Regression', 'CD', 'TDD', 'Emergent Arch', 'Small batches'];
 
 var canvas;
 var context;
@@ -15,24 +17,32 @@ $(document).ready(function() {
     hide(mvpButtons);
 
     canvas.onmousedown = function() {
+        current = null;
         context.clearRect(0, 0, 1400, 800);
         show(allButtons);
     }
 
 } )
 
+var current = null;
 var gon;
 function homeInit(s) {
     gon=s
 }
 
-function subjectDoubleClick(title, comment) {
-    alert(title + ": " + comment)
-}
-
 function subjectClick(title, comment) {
 
+    if(current == gon[title]) {
+        return;
+    }
+    current = gon[title];
+
     context.clearRect(0, 0, 1400, 800);
+    undim(cdDimButtons);
+    undim(clDimButtons);
+
+    comments(gon[title]);
+
     switch(title) {
         case 'MVP':
             show(['Code', 'Feature Teams', 'MVP', 'Semantic Monitoring'])
@@ -109,6 +119,7 @@ function subjectClick(title, comment) {
         case 'CD':
             show(['Feature Teams', 'Code', 'SCM', 'CD', 'CL', 'CI', 'Small batches', 'Regression', 'Economical', 'Stable', 'TBD', 'Automation', 'BDD', 'TDD', 'Emergent Arch'])
             hide(['AB Testing', 'Fragile', 'Performant', 'agile', 'Semantic Monitoring', 'Lean PMO', 'Stabilize WIP', 'You build it, you run it'])
+            dim(cdDimButtons);
             connectCD();
             break;
 
@@ -121,6 +132,8 @@ function subjectClick(title, comment) {
         case 'CL':
             show(['You build it, you run it', 'Stabilize WIP', 'Code', 'SCM', 'CL','AB Testing', 'agile', 'Economical', 'Semantic Monitoring', 'Performant', 'TBD', 'CI', 'CD', 'Small batches', 'Automation', 'TDD', 'Emergent Arch', 'BDD', 'Regression'])
             hide(['Stable', 'Fragile', 'Lean PMO', 'Feature Teams'])
+            dim(cdDimButtons);
+            dim(clDimButtons);
             connectCL();
             break;
 
@@ -632,6 +645,22 @@ function connectTeams() {
     drawObject(gon["Feature Teams"], gon["You build it, you run it"]);
 }
 
+function dim(buttons) {
+    buttons.map(function (button) {
+        setOpacity(button, 0.4)
+    } )
+}
+
+function comments(obj) {
+    document.getElementById('comments').value = obj.title + ': ' + obj.comments;
+}
+
+function undim(buttons) {
+    buttons.map(function (button) {
+        setOpacity(button, 1)
+    } )
+}
+
 function setOpacity(button, value) {
     document.getElementById(button).style.opacity = value;
 }
@@ -656,7 +685,7 @@ function hide(buttons) {
 }
 
 function drawObject(fromObj, toObj, faint) {
-    drawLine(fromObj.x + (110/2), fromObj.y + (25/2), toObj.x + (110/2), toObj.y + (25/2), faint)
+    drawLine(fromObj.x, fromObj.y, toObj.x, toObj.y, faint)
 }
 
 function drawLine(fromX, fromY, toX, toY, faint) {
@@ -667,8 +696,8 @@ function drawLine(fromX, fromY, toX, toY, faint) {
     }
     context.beginPath();
 
-    context.moveTo(fromX, fromY);
-    context.lineTo(toX, toY);
+    context.moveTo(fromX + (110/2), fromY + 12);
+    context.lineTo(toX   + (110/2), toY + 12);
 
     context.stroke();
 }
