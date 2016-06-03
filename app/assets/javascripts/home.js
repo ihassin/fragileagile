@@ -9,6 +9,9 @@ var clDimButtons = ['BDD', 'Regression', 'CD', 'TDD', 'Emergent Arch', 'Small ba
 var canvas;
 var context;
 
+const CANVAS_WIDTH = 1400;
+const CANVAS_HEIGHT = 800;
+
 $(document).ready(function() {
     canvas = document.getElementById('myCanvas');
     context = canvas.getContext('2d');
@@ -18,7 +21,7 @@ $(document).ready(function() {
 
     canvas.onmousedown = function() {
         current = null;
-        context.clearRect(0, 0, 1400, 800);
+        context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
         show(allButtons);
     }
 
@@ -37,7 +40,7 @@ function subjectClick(title, comment) {
     }
     current = gon[title];
 
-    context.clearRect(0, 0, 1400, 800);
+    context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     undim(cdDimButtons);
     undim(clDimButtons);
 
