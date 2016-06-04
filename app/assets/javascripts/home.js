@@ -68,7 +68,7 @@ function subjectClick(title, comment) {
 
         case 'SCM':
             show(['SCM', 'Code', 'TBD', 'Automation', 'Fragile'])
-            hide(['Emergent Arch', 'Small batches','AB Testing', 'Economical', 'Performant', 'Stable', 'agile', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it', 'CI', 'TDD', 'BDD', 'Regression', 'CD'])
+            hide(['Emergent Arch', 'Small batches', 'AB Testing', 'Economical', 'Performant', 'Stable', 'agile', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it', 'CI', 'TDD', 'BDD', 'Regression', 'CD'])
             connectSCM();
             break;
 
@@ -92,7 +92,7 @@ function subjectClick(title, comment) {
 
         case 'TDD':
             show(['Code', 'SCM', 'TDD', 'Fragile', 'Automation', 'Emergent Arch', 'Regression'])
-            hide(['BDD','AB Testing', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Small batches', 'BDD', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
+            hide(['AB Testing', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Small batches', 'BDD', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
             connectTDD();
             break;
 
@@ -149,7 +149,7 @@ function subjectClick(title, comment) {
 
         case 'Feature Teams':
             show(['CD', 'Fragile', 'Feature Teams', 'You build it, you run it'])
-            hide(['Performant', 'CL','AB Testing', 'agile', 'CI', 'Stable', 'Code', 'SCM', 'agile', 'Automation', 'TBD', 'Economical', 'TDD', 'Emergent Arch', 'Regression', 'Small batches', 'BDD', 'Semantic Monitoring', 'Lean PMO', 'Stabilize WIP'])
+            hide(['Performant', 'CL', 'AB Testing', 'agile', 'CI', 'Stable', 'Code', 'SCM', 'agile', 'Automation', 'TBD', 'Economical', 'TDD', 'Emergent Arch', 'Regression', 'Small batches', 'BDD', 'Semantic Monitoring', 'Lean PMO', 'Stabilize WIP'])
             connectTeams();
             break;
 
@@ -160,7 +160,7 @@ function subjectClick(title, comment) {
             break;
 
         case'AB Testing':
-            show(['CD', 'SCM', 'Code', 'CL','AB Testing', 'Fragile', 'Semantic Monitoring', 'Automation', 'BDD'])
+            show(['CD', 'SCM', 'Code', 'CL', 'AB Testing', 'Fragile', 'Semantic Monitoring', 'Automation', 'BDD'])
             hide(['Performant', 'agile', 'Economical', 'Small batches', 'TDD', 'Emergent Arch', 'CI', 'TBD', 'Regression', 'Stable', 'Stabilize WIP', 'Lean PMO', 'Feature Teams', 'You build it, you run it'])
             connectAB();
             break;
@@ -179,7 +179,7 @@ function subjectClick(title, comment) {
 
         case 'Economical':
             show(['Feature Teams', 'Code', 'SCM', 'CI', 'Small batches', 'Regression', 'Economical', 'TBD', 'Automation', 'BDD', 'TDD', 'Emergent Arch', 'CD'])
-            hide(['CL','AB Testing', 'Fragile', 'Performant', 'agile', 'Semantic Monitoring', 'Stable', 'Lean PMO', 'Stabilize WIP', 'You build it, you run it'])
+            hide(['CL', 'AB Testing', 'Fragile', 'Performant', 'agile', 'Semantic Monitoring', 'Stable', 'Lean PMO', 'Stabilize WIP', 'You build it, you run it'])
             connectEconomical();
             break;
 
@@ -684,7 +684,7 @@ function show(buttons) {
 
 function hide(buttons) {
     buttons.map(function (button) {
-        setOpacity(button, 0.1)
+        setOpacity(button, 0.125)
     } )
 }
 
@@ -712,7 +712,7 @@ function drawLine(fromX, fromY, toX, toY, dotted) {
 
     a = 1 - (Math.sqrt(d) / 40);
 
-    a = Math.max(a, 0.15)
+    a = Math.max(a, 0.125)
     context.strokeStyle = "rgba(0,0,255,"+a+")";
     context.stroke();
 }
