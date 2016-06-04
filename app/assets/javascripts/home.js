@@ -41,6 +41,7 @@ function subjectClick(title, comment) {
     current = gon[title];
 
     context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
     undim(cdDimButtons);
     undim(clDimButtons);
 
@@ -687,12 +688,12 @@ function hide(buttons) {
     } )
 }
 
-function drawObject(fromObj, toObj, faint) {
-    drawLine(fromObj.x, fromObj.y, toObj.x, toObj.y, faint)
+function drawObject(fromObj, toObj, dotted) {
+    drawLine(fromObj.x, fromObj.y, toObj.x, toObj.y, dotted)
 }
 
-function drawLine(fromX, fromY, toX, toY, faint) {
-    if (faint) {
+function drawLine(fromX, fromY, toX, toY, dotted) {
+    if (dotted) {
         context.setLineDash([2,10]);
     } else {
         context.setLineDash([]);
@@ -702,5 +703,16 @@ function drawLine(fromX, fromY, toX, toY, faint) {
     context.moveTo(fromX + (110/2), fromY + 12);
     context.lineTo(toX   + (110/2), toY + 12);
 
+    midX = (fromX + toX)/2;
+    midY = (fromY + toY)/2;
+    d = Math.sqrt(Math.pow((midX - current.x), 2) + Math.pow((midY - current.y),2));
+
+    // debugger
+    // console.log(d);
+
+    a = 1 - (Math.sqrt(d) / 40);
+
+    a = Math.max(a, 0.15)
+    context.strokeStyle = "rgba(0,0,255,"+a+")";
     context.stroke();
 }
