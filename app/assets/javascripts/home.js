@@ -29,8 +29,9 @@ $(document).ready(function() {
 
 var current = null;
 var gon;
+
 function homeInit(s) {
-    gon=s
+    gon = s
 }
 
 function subjectClick(title, comment) {

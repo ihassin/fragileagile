@@ -15,12 +15,15 @@ Then(/^I see an object labelled "([^"]*)"$/) do |subject|
 end
 
 When(/^I select "([^"]*)"$/) do |subject|
-  @subject_title = subject
   click_button subject
 end
 
 Then(/^I see its connections$/) do
-  expect(page).to have_content('Code')
+  expect(get_style("Code")).to match(/opacity: 1;/)
+end
+
+Then(/^I see its far connections as dimmed$/) do
+  expect(get_style("SCM")).to match(/opacity: 0.4;/)
 end
 
 Then(/^I see all my presentation's subjects$/) do
@@ -32,4 +35,8 @@ end
 def go_home
 #  visit 'http://localhost:3000'
   visit '/'
+end
+
+def get_style(node)
+  page.evaluate_script('document.getElementById("' + node + '");').attribute("style").to_json
 end

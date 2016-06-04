@@ -14,6 +14,11 @@ Feature:
     Then I see all my presentation's subjects
 
   @selenium
-  Scenario: Clicking on an object
+  Scenario: Clicking on an object shows its connections
     When I select "MVP"
     Then I see its connections
+
+  @selenium
+  Scenario: Clicking on an object shows far connections as dimmed
+    When I select "CL"
+    Then I see its far connections as dimmed
