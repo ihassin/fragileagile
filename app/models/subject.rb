@@ -4,7 +4,7 @@ class Subject < ActiveRecord::Base
 
   def self.make_subjects
     Subject.find_or_create_by!(title: 'Code',                     x:  100, y:   50, comments: 'Any code, including POC, business, infra as code, tech debt')
-    Subject.find_or_create_by!(title: 'Resilience',               x: 1000, y:   50, comments: 'Fault-tolerant, resilient')
+    Subject.find_or_create_by!(title: 'Resilience',               x: 1000, y:   50, comments: 'Failsafe: a system fails in a safe way. Resilient systems: recover their original operational state')
     Subject.find_or_create_by!(title: 'Fragile',                  x: 1300, y:   50, comments: 'No methodology, no tests, no feedback', terminal: 1)
 
     Subject.find_or_create_by!(title: 'SCM',                      x:  150, y:  150, comments: 'Distributed shared repos')

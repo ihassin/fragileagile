@@ -55,7 +55,7 @@ function subjectClick(title, comment) {
 
         case 'Resilience':
             show(['MVP', 'Resilience', 'Code', 'Performant', 'agile'])
-            hide(['Semantic Monitoring', 'AB Testing', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'CL', 'Lean PMO', 'Stabilize WIP', 'Performant', 'You build it, you run it' , 'Emergent Arch']);
+            hide(['Feature Teams', 'Semantic Monitoring', 'AB Testing', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'CL', 'Lean PMO', 'Stabilize WIP', 'Performant', 'You build it, you run it' , 'Emergent Arch']);
             connectResilience();
             break;
 
