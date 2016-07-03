@@ -1,8 +1,6 @@
 var allButtons = ['AB Testing', 'MVP', 'Code', 'Fragile', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Performant', 'Feature Teams', 'You build it, you run it' , 'agile', 'Emergent Arch'];
 var mvpButtons = ['SCM','AB Testing', 'Code', 'TBD', 'Automation', 'CI', 'TDD', 'Small batches', 'BDD', 'Regression', 'CD', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it', 'Emergent Arch'];
 var fragileButtons = ['AB Testing', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Performant', 'Feature Teams', 'You build it, you run it' , 'agile', 'Emergent Arch'];
-var stableButtons = ['Fragile', 'TDD', 'Small batches', 'BDD', 'Regression', 'Economical', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Performant', 'Feature Teams', 'You build it, you run it' , 'agile'];
-var agileButtons = ['Stable', 'Fragile', 'Economical', 'Performant'];
 var cdDimButtons = ['Code', 'MVP', 'SCM', 'TBD', 'Automation', 'CI'];
 var clDimButtons = ['BDD', 'Regression', 'CD', 'TDD', 'Emergent Arch', 'Small batches'];
 
@@ -314,8 +312,8 @@ function connectPerformant() {
     SCMTBD();
     SCMAuto();
 
-    drawObject(gon["SCM"], gon["Emergent Arch"], true);
-    drawObject(gon["SCM"], gon["Small batches"], true);
+    drawObject(gon["Code"], gon["Emergent Arch"], true);
+    drawObject(gon["Code"], gon["Small batches"], true);
 
     drawObject(gon["Small batches"], gon["CD"]);
     drawObject(gon["Regression"], gon["CD"]);
