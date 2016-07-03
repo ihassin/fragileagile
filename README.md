@@ -1,5 +1,7 @@
 # fragileagile
 
+[![Build Status](https://travis-ci.org/ihassin/fragileagile.svg?branch=master)](https://travis-ci.org/ihassin/fragileagile)
+
 Doodling with Javascript
 
 # tests
