@@ -10,7 +10,6 @@ coverage.data
 .DS_Store
 report.html
 results.xml
-config/database.yml
 .vagrant
 /**/newsalert_db*
 *.box
