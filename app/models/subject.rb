@@ -8,6 +8,7 @@ class Subject < ActiveRecord::Base
     Subject.find_or_create_by!(title: 'Fragile',                  x: 1300, y:   50, comments: 'No methodology, no tests, no feedback', terminal: 1)
 
     Subject.find_or_create_by!(title: 'SCM',                      x:  150, y:  150, comments: 'Distributed shared repos')
+    Subject.find_or_create_by!(title: 'Feature Toggles',          x:  450, y:  100, comments: 'Dark launching')
     Subject.find_or_create_by!(title: 'TBD',                      x:  650, y:  150, comments: 'Not doing CI unless TBD')
 
     Subject.find_or_create_by!(title: 'Automation',               x:  200, y:  250, comments: 'Any automation, including Unit, Integration, Functional, UI, Infra')
