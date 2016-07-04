@@ -60,8 +60,8 @@ function subjectClick(title, comment) {
             break;
 
         case 'Lean PMO':
-            show(['Fragile', 'Code', 'SCM', 'Automation', 'Semantic Monitoring', 'Lean PMO', 'BDD', 'Stabilize WIP'])
-            hide(['Feature Toggles', 'Stories', 'Resilience', 'AB Testing', 'CL', 'CD', 'Small batches', 'Emergent Arch', 'TDD', 'Regression', 'TBD', 'CI', 'agile', 'Stable', 'Economical', 'Performant', 'Feature Teams', 'You build it, you run it'])
+            show(['Fragile', 'Semantic Monitoring', 'Lean PMO', 'Stabilize WIP'])
+            hide(['BDD', 'Code', 'SCM', 'Automation', 'Feature Toggles', 'Stories', 'Resilience', 'AB Testing', 'CL', 'CD', 'Small batches', 'Emergent Arch', 'TDD', 'Regression', 'TBD', 'CI', 'agile', 'Stable', 'Economical', 'Performant', 'Feature Teams', 'You build it, you run it'])
             connectPMO();
             break;
 
@@ -84,8 +84,8 @@ function subjectClick(title, comment) {
             break;
 
         case 'TBD':
-            show(['Feature Toggles', 'Automation', 'TBD', 'Code', 'CI', 'SCM', 'Fragile'])
-            hide(['Stories', 'Resilience', 'Stable','AB Testing', 'agile', 'Economical', 'Performant', 'TDD', 'Emergent Arch', 'Small batches', 'BDD', 'Regression', 'CD', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
+            show(['Feature Toggles', 'TBD', 'CI', 'SCM', 'Fragile'])
+            hide(['Automation', 'Code', 'Stories', 'Resilience', 'Stable','AB Testing', 'agile', 'Economical', 'Performant', 'TDD', 'Emergent Arch', 'Small batches', 'BDD', 'Regression', 'CD', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
             connectTBD();
             break;
 
@@ -96,50 +96,50 @@ function subjectClick(title, comment) {
             break;
 
         case 'Automation':
-            show(['TBD', 'Automation', 'SCM', 'Code', 'TDD', 'BDD', 'Regression', 'CI', 'Fragile'])
-            hide(['Feature Toggles', 'Stories', 'Resilience', 'Stable','AB Testing', 'CD', 'CL', 'Emergent Arch', 'Small batches', 'agile', 'Economical', 'Performant', 'Semantic Monitoring', 'Stabilize WIP', 'Lean PMO', 'Feature Teams', 'You build it, you run it'])
+            show(['TBD', 'Automation', 'SCM', 'TDD', 'BDD', 'Regression', 'CI', 'Fragile'])
+            hide(['Code', 'Feature Toggles', 'Stories', 'Resilience', 'Stable','AB Testing', 'CD', 'CL', 'Emergent Arch', 'Small batches', 'agile', 'Economical', 'Performant', 'Semantic Monitoring', 'Stabilize WIP', 'Lean PMO', 'Feature Teams', 'You build it, you run it'])
             connectAutomation();
             break;
 
         case 'TDD':
-            show(['Stories', 'Code', 'SCM', 'TDD', 'Fragile', 'Automation', 'Emergent Arch', 'Regression'])
-            hide(['Feature Toggles', 'Resilience', 'AB Testing', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Small batches', 'BDD', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
+            show(['Stories', 'TDD', 'Fragile', 'Automation', 'Emergent Arch', 'Regression'])
+            hide(['Code', 'SCM', 'Feature Toggles', 'Resilience', 'AB Testing', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Small batches', 'BDD', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
             connectTDD();
             break;
 
         case 'BDD':
-            show(['Stories', 'BDD', 'Code', 'SCM', 'Automation', 'Regression', 'Emergent Arch', 'Fragile', 'Semantic Monitoring'])
-            hide(['Feature Toggles', 'Resilience', 'AB Testing', 'TDD', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Small batches', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
+            show(['Stories', 'BDD', 'Automation', 'Regression', 'Emergent Arch', 'Fragile', 'Semantic Monitoring'])
+            hide(['Code', 'SCM', 'Feature Toggles', 'Resilience', 'AB Testing', 'TDD', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Small batches', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
             connectBDD();
             break;
 
         case 'Stories':
-            show(['MVP', 'Stories', 'BDD', 'Code', 'SCM', 'Automation'])
-            hide(['Feature Toggles', 'Semantic Monitoring', 'Regression', 'Emergent Arch', 'Resilience', 'AB Testing', 'TDD', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Small batches', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
+            show(['MVP', 'Stories', 'BDD', 'Automation'])
+            hide(['Code', 'SCM', 'Feature Toggles', 'Semantic Monitoring', 'Regression', 'Emergent Arch', 'Resilience', 'AB Testing', 'TDD', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Small batches', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
             connectStories();
             break;
 
         case 'Regression':
-            show(['CI', 'Small batches', 'Code', 'SCM', 'Regression', 'Automation', 'CD', 'TDD', 'Fragile', 'BDD'])
-            hide(['Feature Toggles', 'Stories', 'Resilience', 'Economical','AB Testing', 'TBD', 'agile', 'Stable', 'Performant', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it', 'Emergent Arch', 'Semantic Monitoring'])
+            show(['CI', 'Small batches', 'Regression', 'Automation', 'CD', 'TDD', 'Fragile', 'BDD'])
+            hide(['Code', 'SCM', 'Feature Toggles', 'Stories', 'Resilience', 'Economical','AB Testing', 'TBD', 'agile', 'Stable', 'Performant', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it', 'Emergent Arch', 'Semantic Monitoring'])
             connectRegression();
             break;
 
         case 'Emergent Arch':
-            show(['Code', 'Emergent Arch', 'BDD', 'Automation', 'Small batches', 'TDD', 'SCM', 'Fragile'])
-            hide(['Feature Toggles', 'Stories', 'Resilience', 'AB Testing', 'Regression', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
+            show(['Code', 'Emergent Arch', 'BDD', 'Small batches', 'TDD', 'Fragile'])
+            hide(['SCM', 'Automation', 'Feature Toggles', 'Stories', 'Resilience', 'AB Testing', 'Regression', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
             connectEmergent();
             break;
 
         case 'Small batches':
-            show(['Regression', 'CI', 'Automation', 'TDD', 'Small batches', 'Emergent Arch', 'Code', 'SCM', 'CD', 'Fragile'])
-            hide(['Feature Toggles', 'Stories', 'Resilience', 'Economical', 'BDD','AB Testing', 'TBD', 'agile', 'Stable', 'Performant', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
+            show(['Code', 'Regression', 'CI', 'Small batches', 'Emergent Arch', 'CD', 'Fragile'])
+            hide(['SCM', 'Automation', 'TDD', 'Feature Toggles', 'Stories', 'Resilience', 'Economical', 'BDD','AB Testing', 'TBD', 'agile', 'Stable', 'Performant', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
             connectBatches();
             break;
 
         case 'Semantic Monitoring':
-            show(['Stories', 'Code', 'SCM', 'Automation', 'Semantic Monitoring', 'Fragile', 'BDD', 'Stabilize WIP','AB Testing'])
-            hide(['Feature Toggles', 'Resilience', 'CL', 'CD', 'Small batches', 'Emergent Arch', 'TDD', 'Regression', 'TBD', 'CI', 'agile', 'Stable', 'Economical', 'Performant', 'Lean PMO', 'Feature Teams', 'You build it, you run it'])
+            show(['Semantic Monitoring', 'Fragile', 'BDD', 'Stabilize WIP','AB Testing'])
+            hide(['Stories', 'Code', 'SCM', 'Automation', 'Feature Toggles', 'Resilience', 'CL', 'CD', 'Small batches', 'Emergent Arch', 'TDD', 'Regression', 'TBD', 'CI', 'agile', 'Stable', 'Economical', 'Performant', 'Lean PMO', 'Feature Teams', 'You build it, you run it'])
             connectSemantic();
             break;
 
@@ -159,8 +159,8 @@ function subjectClick(title, comment) {
             break;
 
         case 'Stabilize WIP':
-            show(['CL', 'Performant', 'agile', 'Fragile', 'Semantic Monitoring', 'Automation', 'SCM', 'Code', 'Lean PMO', 'BDD', 'Stabilize WIP', 'You build it, you run it'])
-            hide(['Feature Toggles', 'Stories', 'Resilience', 'Feature Teams', 'AB Testing', 'CD', 'Small batches', 'Emergent Arch', 'TDD', 'Regression', 'TBD', 'CI', 'Stable', 'Economical'])
+            show(['CL', 'Performant', 'agile', 'Fragile', 'Semantic Monitoring', 'Lean PMO', 'Stabilize WIP', 'You build it, you run it'])
+            hide(['BDD', 'Automation', 'SCM', 'Code', 'Feature Toggles', 'Stories', 'Resilience', 'Feature Teams', 'AB Testing', 'CD', 'Small batches', 'Emergent Arch', 'TDD', 'Regression', 'TBD', 'CI', 'Stable', 'Economical'])
             connectWIP();
             break;
 
@@ -177,8 +177,8 @@ function subjectClick(title, comment) {
             break;
 
         case'AB Testing':
-            show(['Feature Toggles', 'CD', 'SCM', 'Code', 'CL', 'AB Testing', 'Fragile', 'Semantic Monitoring', 'Automation', 'BDD'])
-            hide(['Stories', 'Resilience', 'Performant', 'agile', 'Economical', 'Small batches', 'TDD', 'Emergent Arch', 'CI', 'TBD', 'Regression', 'Stable', 'Stabilize WIP', 'Lean PMO', 'Feature Teams', 'You build it, you run it'])
+            show(['Feature Toggles', 'CD', 'CL', 'AB Testing', 'Fragile', 'Semantic Monitoring', 'BDD'])
+            hide(['Automation', 'SCM', 'Code', 'Stories', 'Resilience', 'Performant', 'agile', 'Economical', 'Small batches', 'TDD', 'Emergent Arch', 'CI', 'TBD', 'Regression', 'Stable', 'Stabilize WIP', 'Lean PMO', 'Feature Teams', 'You build it, you run it'])
             connectAB();
             break;
 
@@ -428,14 +428,8 @@ function connectAgile() {
 }
 
 function connectAB() {
-    MVPCode();
-    CodeSCM();
 
     drawObject(gon["MVP"], gon["Semantic Monitoring"]);
-
-    SCMAuto();
-
-    drawObject(gon["Automation"], gon["BDD"]);
 
     drawObject(gon["CD"], gon["CL"]);
     drawObject(gon["AB Testing"], gon["CL"]);
@@ -470,13 +464,7 @@ function connectCD() {
     SCMTBD();
     SCMAuto();
 
-    drawObject(gon["SCM"], gon["Emergent Arch"], true);
-    drawObject(gon["SCM"], gon["Small batches"], true);
-
-    drawObject(gon["Small batches"], gon["CD"]);
-    drawObject(gon["Regression"], gon["CD"]);
-
-    drawObject(gon["CI"], gon["CD"]);
+    drawObject(gon["Small batches"], gon["Emergent Arch"]);
 
     drawObject(gon["CD"], gon["Economical"]);
     drawObject(gon["CD"], gon["CL"]);
@@ -484,7 +472,6 @@ function connectCD() {
     TBDCI();
 
     AutoOut();
-    drawObject(gon["Automation"], gon["Regression"], true);
 
     drawObject(gon["TDD"], gon["Regression"]);
     drawObject(gon["TDD"], gon["Emergent Arch"]);
@@ -492,7 +479,9 @@ function connectCD() {
     drawObject(gon["BDD"], gon["Regression"]);
     drawObject(gon["BDD"], gon["Emergent Arch"]);
 
-    drawObject(gon["Emergent Arch"], gon["Small batches"], true);
+    drawObject(gon["Small batches"], gon["CD"]);
+    drawObject(gon["Regression"], gon["CD"]);
+    drawObject(gon["CI"], gon["CD"]);
     drawObject(gon["Feature Teams"], gon["CD"]);
 }
 
@@ -544,11 +533,6 @@ function connectCL() {
 }
 
 function connectTDD() {
-    MVPCode();
-    CodeSCM();
-
-    SCMAuto();
-
     drawObject(gon["Stories"], gon["TDD"]);
     drawObject(gon["Automation"], gon["TDD"]);
     drawObject(gon["TDD"], gon["Emergent Arch"]);
@@ -556,11 +540,6 @@ function connectTDD() {
 }
 
 function connectBDD() {
-    MVPCode();
-    CodeSCM();
-
-    SCMAuto();
-
     drawObject(gon["Automation"], gon["BDD"]);
     drawObject(gon["Stories"], gon["BDD"]);
 
@@ -570,22 +549,13 @@ function connectBDD() {
 }
 
 function connectStories() {
-    MVPCode();
-    CodeSCM();
     MVPStories();
-
-    SCMAuto();
 
     drawObject(gon["Automation"], gon["BDD"]);
     drawObject(gon["Stories"], gon["BDD"]);
 }
 
 function connectRegression() {
-    MVPCode();
-    CodeSCM();
-
-    SCMAuto();
-
     drawObject(gon["Automation"], gon["Regression"]);
 
     drawObject(gon["BDD"], gon["Regression"], true);
@@ -597,14 +567,8 @@ function connectRegression() {
 }
 
 function connectEmergent() {
-    MVPCode();
-    CodeSCM();
-
-    SCMAuto();
     drawObject(gon["Code"], gon["Emergent Arch"], true);
-
-    drawObject(gon["Automation"], gon["TDD"]);
-    drawObject(gon["Automation"], gon["BDD"]);
+    drawObject(gon["Code"], gon["Small batches"], true);
 
     drawObject(gon["TDD"], gon["Emergent Arch"]);
     drawObject(gon["BDD"], gon["Emergent Arch"]);
@@ -614,30 +578,16 @@ function connectEmergent() {
 
 function connectBatches()
 {
-    MVPCode();
-    CodeSCM();
-
     drawObject(gon["Code"], gon["Small batches"], true);
     drawObject(gon["Code"], gon["Emergent Arch"], true);
 
-    drawObject(gon["SCM"], gon["Automation"]);
-    drawObject(gon["Automation"], gon["TDD"]);
-    drawObject(gon["TDD"], gon["Emergent Arch"]);
-
-    drawObject(gon["Emergent Arch"], gon["Small batches"], true);
+    drawObject(gon["Emergent Arch"], gon["Small batches"]);
     drawObject(gon["CI"], gon["CD"]);
     drawObject(gon["Small batches"], gon["CD"]);
     drawObject(gon["Regression"], gon["CD"]);
 }
 
 function connectSemantic() {
-    MVPCode();
-    CodeSCM();
-    SCMAuto();
-    MVPStories();
-    drawObject(gon["Stories"], gon["BDD"]);
-
-    drawObject(gon["Automation"], gon["BDD"]);
     drawObject(gon["BDD"], gon["Semantic Monitoring"]);
     drawObject(gon["MVP"], gon["Semantic Monitoring"]);
     drawObject(gon["Semantic Monitoring"], gon["Stabilize WIP"]);
@@ -646,13 +596,6 @@ function connectSemantic() {
 }
 
 function connectWIP() {
-    MVPCode();
-    CodeSCM();
-    SCMAuto();
-
-    drawObject(gon["Automation"], gon["BDD"]);
-    drawObject(gon["BDD"], gon["Semantic Monitoring"]);
-    drawObject(gon["MVP"], gon["Semantic Monitoring"]);
     drawObject(gon["Semantic Monitoring"], gon["Stabilize WIP"]);
     drawObject(gon["Lean PMO"], gon["Stabilize WIP"]);
 
@@ -664,20 +607,11 @@ function connectWIP() {
 }
 
 function connectPMO() {
-    MVPCode();
-    CodeSCM();
-    SCMAuto();
-
-    drawObject(gon["Automation"], gon["BDD"]);
-    drawObject(gon["BDD"], gon["Semantic Monitoring"]);
-    drawObject(gon["MVP"], gon["Semantic Monitoring"]);
     drawObject(gon["Semantic Monitoring"], gon["Stabilize WIP"]);
     drawObject(gon["Lean PMO"], gon["Stabilize WIP"]);
 }
 
 function connectAutomation() {
-    MVPCode();
-    CodeSCM();
     SCMAuto();
 
     AutoOut();
@@ -687,18 +621,13 @@ function connectAutomation() {
 }
 
 function connectTBD() {
-    MVPCode();
-    CodeSCM();
     SCMTBD();
 
     TBDCI();
-    drawObject(gon["Code"], gon["Feature Toggles"]);
     drawObject(gon["Feature Toggles"], gon["TBD"]);
-    drawObject(gon["Automation"], gon["CI"]);
 }
 
 function connectFeatures() {
-    MVPCode();
     drawObject(gon["Code"], gon["Feature Toggles"]);
     drawObject(gon["Feature Toggles"], gon["TBD"]);
 }
