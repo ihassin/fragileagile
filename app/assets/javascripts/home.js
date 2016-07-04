@@ -165,8 +165,8 @@ function subjectClick(title, comment) {
             break;
 
         case 'Feature Teams':
-            show(['CD', 'Fragile', 'Feature Teams', 'You build it, you run it'])
-            hide(['Feature Toggles', 'Stories', 'Resilience', 'Performant', 'CL', 'AB Testing', 'agile', 'CI', 'Stable', 'Code', 'SCM', 'agile', 'Automation', 'TBD', 'Economical', 'TDD', 'Emergent Arch', 'Regression', 'Small batches', 'BDD', 'Semantic Monitoring', 'Lean PMO', 'Stabilize WIP'])
+            show(['CI', 'Regression', 'Small batches', 'CD', 'Fragile', 'Feature Teams', 'You build it, you run it'])
+            hide(['Feature Toggles', 'Stories', 'Resilience', 'Performant', 'CL', 'AB Testing', 'agile', 'Stable', 'Code', 'SCM', 'agile', 'Automation', 'TBD', 'Economical', 'TDD', 'Emergent Arch', 'BDD', 'Semantic Monitoring', 'Lean PMO', 'Stabilize WIP'])
             connectTeams();
             break;
 
@@ -177,8 +177,8 @@ function subjectClick(title, comment) {
             break;
 
         case'AB Testing':
-            show(['Feature Toggles', 'CD', 'CL', 'AB Testing', 'Fragile', 'Semantic Monitoring', 'BDD'])
-            hide(['Automation', 'SCM', 'Code', 'Stories', 'Resilience', 'Performant', 'agile', 'Economical', 'Small batches', 'TDD', 'Emergent Arch', 'CI', 'TBD', 'Regression', 'Stable', 'Stabilize WIP', 'Lean PMO', 'Feature Teams', 'You build it, you run it'])
+            show(['Feature Toggles', 'CD', 'CL', 'AB Testing', 'Fragile', 'Semantic Monitoring'])
+            hide(['BDD', 'Automation', 'SCM', 'Code', 'Stories', 'Resilience', 'Performant', 'agile', 'Economical', 'Small batches', 'TDD', 'Emergent Arch', 'CI', 'TBD', 'Regression', 'Stable', 'Stabilize WIP', 'Lean PMO', 'Feature Teams', 'You build it, you run it'])
             connectAB();
             break;
 
@@ -428,12 +428,9 @@ function connectAgile() {
 }
 
 function connectAB() {
-
-    drawObject(gon["MVP"], gon["Semantic Monitoring"]);
-
     drawObject(gon["CD"], gon["CL"]);
     drawObject(gon["AB Testing"], gon["CL"]);
-    drawObject(gon["BDD"], gon["Semantic Monitoring"]);
+
     drawObject(gon["Semantic Monitoring"], gon["AB Testing"]);
     drawObject(gon["Feature Toggles"], gon["AB Testing"]);
 
@@ -647,7 +644,6 @@ function connectResilience() {
 }
 
 function connectBuildIt() {
-    MVPTeams();
     drawObject(gon["Feature Teams"], gon["You build it, you run it"]);
     drawObject(gon["Feature Teams"], gon["agile"]);
     drawObject(gon["agile"], gon["Stabilize WIP"]);
@@ -656,7 +652,11 @@ function connectBuildIt() {
 
 function connectTeams() {
     MVPTeams();
+    drawObject(gon["CI"], gon["CD"]);
+    drawObject(gon["Small batches"], gon["CD"]);
+    drawObject(gon["Regression"], gon["CD"]);
     drawObject(gon["Feature Teams"], gon["CD"]);
+
     drawObject(gon["Feature Teams"], gon["You build it, you run it"]);
 }
 
