@@ -19,7 +19,9 @@ When(/^I select "([^"]*)"$/) do |subject|
 end
 
 Then(/^I see its connections$/) do
-  expect(get_style("Code")).to match(/opacity: 1;/)
+  ['Code', 'Stories', 'Semantic Monitoring', 'Feature Teams'].each do |button|
+    expect(get_style(button)).to match(/opacity: 1;/)
+  end
 end
 
 Then(/^I see its far connections as dimmed$/) do
