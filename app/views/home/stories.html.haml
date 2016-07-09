@@ -1,3 +1,5 @@
+=javascript_include_tag 'stories'
+
 =text_field_tag 'comments', "", disabled: true, size: 200, style: "position: absolute; left: 0px; top: 0px; height: 12px; font-size: 12px; text-align: center;"
 
 %canvas(id="myCanvas" width="1400" height="800")
@@ -10,4 +12,4 @@
     style: "left: #{subject.x}px; top: #{subject.y}px;",
     class: ("terminal" if subject.terminal==1)
 
-=javascript_tag "homeInit(#{@s})"
+=javascript_tag "storyInit(#{@s})"

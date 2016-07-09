@@ -52,7 +52,7 @@ class Subject < ActiveRecord::Base
     Subject.find_or_create_by!(title: 'Epics',                    x:  540, y:  150, comments: 'Only if we have a feedback cycle.', stories: 1)
     Subject.find_or_create_by!(title: 'Story map',                x:  540, y:  250, comments: 'Safety-net', stories: 1)
     Subject.find_or_create_by!(title: 'Features',                 x:  540, y:  450, comments: 'Just as agile experiments with MVP, so BDD experiments with behaviour. Common business language, DDD', stories: 1)
-    Subject.find_or_create_by!(title: 'I.N.V.E.S.T.',             x:  540, y:  550, comments: 'end-to-end, economics', stories: 1)
+    Subject.find_or_create_by!(title: 'INVEST',                   x:  540, y:  550, comments: 'end-to-end, economics', stories: 1)
 
     Subject.find_or_create_by!(title: 'End-to-end',               x:  740, y:  350, comments: 'Reduce change sets to a minimum', stories: 1)
 
