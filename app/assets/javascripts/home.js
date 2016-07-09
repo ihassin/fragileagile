@@ -13,9 +13,13 @@ const CANVAS_HEIGHT = 800;
 $(document).ready(function() {
     canvas = document.getElementById('myCanvas');
     context = canvas.getContext('2d');
-    context.strokeStyle="Blue";
+    context.strokeStyle = "Blue";
 
     hide(mvpButtons);
+
+    if(window.location.hash == '#stories') {
+        subjectClick("Stories", "comment")
+    }
 
     canvas.onmousedown = function() {
         current = null;
@@ -30,6 +34,16 @@ var gon;
 
 function homeInit(s) {
     gon = s
+}
+
+function subjectDblClick(title, comment) {
+    window.location = '#stories'
+    switch(title) {
+        case 'Stories':
+            context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+            window.location = '/stories'
+            break;
+    }
 }
 
 function subjectClick(title, comment) {

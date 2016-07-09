@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20160526155311) do
     t.integer  "x"
     t.text     "comments"
     t.integer  "terminal",   default: 0
+    t.integer  "stories",    default: 0
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end

@@ -5,8 +5,8 @@
 -@subjects.each do |subject|
   =button_tag "#{subject.title}",
     id: "#{subject.title}",
-    onclick: "subjectClick('#{subject.title}', '#{subject.comments}');",
-    onDblClick: "subjectDblClick('#{subject.title}', '#{subject.comments}');",
+    onclick: "storyClick('#{subject.title}', '#{subject.comments}');",
+    onDblClick: "storyDblClick('#{subject.title}', '#{subject.comments}');",
     style: "left: #{subject.x}px; top: #{subject.y}px;",
     class: ("terminal" if subject.terminal==1)
 
