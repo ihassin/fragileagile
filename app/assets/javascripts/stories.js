@@ -17,9 +17,10 @@ $(document).ready(function() {
 
     hide(allButtons);
     show(['Clear goals', 'Common language', 'Value proposition']);
+    storyClick("Clear goals")
 
     if(window.location.hash == 'value') {
-        subjectClick("Value proposition", "comment")
+        subjectClick("Value proposition")
     }
 
     canvas.onmousedown = function() {
@@ -35,7 +36,7 @@ function jumpto(title, location) {
     window.open(gon[title].url)
 }
 
-function storyDblClick(title, comment) {
+function storyDblClick(title) {
     switch(title) {
         case 'Value proposition':
             jumpto(title, '#value')
@@ -63,7 +64,7 @@ function storyInit(s) {
     gon = s
 }
 
-function storyClick(title, comment) {
+function storyClick(title) {
 
     if(current == gon[title]) {
         return;
@@ -101,23 +102,26 @@ function storyClick(title, comment) {
             break;
 
         case 'End-to-end':
-            show(['Rapid deployment', 'End-to-end', 'INVEST', 'Value proposition', 'Clear goals', 'Common language', 'Discussion', 'Epics', 'Story map', 'Features'])
-            hide(['Meaningful feedback', 'Monitoring']);
+            show(['Rapid deployment', 'End-to-end', 'INVEST', 'Value proposition', 'Clear goals', 'Common language', 'Discussion'])
+            hide(['Epics', 'Story map', 'Features', 'Meaningful feedback', 'Monitoring']);
             connectEndToEnd();
             break;
 
         case 'Rapid deployment':
-            show(['Meaningful feedback', 'Monitoring', 'Rapid deployment', 'End-to-end', 'INVEST', 'Value proposition', 'Clear goals', 'Common language', 'Discussion', 'Epics', 'Story map', 'Features'])
+            show(['Meaningful feedback', 'Monitoring', 'Rapid deployment', 'End-to-end', 'INVEST', 'Value proposition', 'Clear goals', 'Common language', 'Discussion'])
+            hide(['Epics', 'Story map', 'Features'])
             connectRapid();
             break;
 
         case 'Monitoring':
-            show(['Meaningful feedback', 'Monitoring', 'Rapid deployment', 'End-to-end', 'INVEST', 'Value proposition', 'Clear goals', 'Common language', 'Discussion', 'Epics', 'Story map', 'Features'])
+            show(['Meaningful feedback', 'Monitoring', 'Rapid deployment', 'End-to-end', 'INVEST', 'Value proposition', 'Clear goals', 'Common language', 'Discussion'])
+            hide(['Epics', 'Story map', 'Features'])
             connectSemantic();
             break;
 
         case 'Meaningful feedback':
-            show(['Meaningful feedback', 'Monitoring', 'Rapid deployment', 'End-to-end', 'INVEST', 'Value proposition', 'Clear goals', 'Common language', 'Discussion', 'Epics', 'Story map', 'Features'])
+            show(['Meaningful feedback', 'Monitoring', 'Rapid deployment', 'End-to-end', 'INVEST', 'Value proposition', 'Clear goals', 'Common language', 'Discussion'])
+            hide(['Epics', 'Story map', 'Features'])
             connectSemantic();
             break;
     }
@@ -153,7 +157,7 @@ function connectEndToEnd() {
     drawObject(gon["Common language"], gon["Discussion"]);
 }
 
-function connectRapid() {
+function connectBack() {
     drawObject(gon["Rapid deployment"], gon["End-to-end"]);
     drawObject(gon["Rapid deployment"], gon["Monitoring"]);
     drawObject(gon["Rapid deployment"], gon["Meaningful feedback"]);
@@ -161,18 +165,17 @@ function connectRapid() {
     drawObject(gon["INVEST"], gon["Discussion"]);
     drawObject(gon["Value proposition"], gon["Discussion"]);
     drawObject(gon["Clear goals"], gon["Discussion"]);
+}
+
+function connectRapid() {
+    connectBack();
     drawObject(gon["Common language"], gon["Discussion"]);
     dim(dimButtons);
 }
 
 function connectSemantic() {
-    drawObject(gon["Rapid deployment"], gon["End-to-end"]);
-    drawObject(gon["Rapid deployment"], gon["Monitoring"]);
-    drawObject(gon["INVEST"], gon["End-to-end"]);
-    drawObject(gon["INVEST"], gon["Discussion"]);
-    drawObject(gon["Value proposition"], gon["Discussion"]);
-    drawObject(gon["Clear goals"], gon["Discussion"]);
-    drawObject(gon["Common language"], gon["Discussion"]);
+    connectBack();
+    drawObject(gon["Clear goals"], gon["Monitoring"]);
 
     drawObject(gon["Monitoring"], gon["Meaningful feedback"]);
     drawObject(gon["Rapid deployment"], gon["Meaningful feedback"]);

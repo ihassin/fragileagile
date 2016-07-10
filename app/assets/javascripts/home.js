@@ -19,19 +19,23 @@ $(document).ready(function() {
 
     switch(window.location.hash) {
         case '#stories':
-            subjectClick("Stories", "comment")
+            subjectClick("Stories")
             break;
 
         case '#rapid':
-            subjectClick("CD", "comment")
+            subjectClick("CD")
             break;
 
         case '#semantic':
-            subjectClick("Semantic Monitoring", "comment")
+            subjectClick("Semantic Monitoring")
             break;
 
         case '#cl':
-            subjectClick("CL", "comment")
+            subjectClick("CL")
+            break;
+
+        case '#tdd':
+            subjectClick("TDD")
             break;
     }
 
@@ -53,13 +57,21 @@ function homeInit(s) {
 function subjectDblClick(title, comment) {
     switch(title) {
         case 'Stories':
-            window.location = '#stories'
-            window.open('/stories')
+            window.location = '#stories';
+            window.open('/stories');
+            break;
+
+        case 'SCM':
+        case 'TBD':
+        case 'Feature Toggles':
+        case 'CD':
+        case 'CI':
+            window.open(gon[title].url);
             break;
     }
 }
 
-function subjectClick(title, comment) {
+function subjectClick(title) {
 
     if(current == gon[title]) {
         return;
@@ -88,55 +100,55 @@ function subjectClick(title, comment) {
 
         case 'Lean PMO':
             show(['Fragile', 'Semantic Monitoring', 'Lean PMO', 'Stabilize WIP'])
-            hide(['BDD', 'Code', 'SCM', 'Automation', 'Feature Toggles', 'Stories', 'Resilience', 'AB Testing', 'CL', 'CD', 'Small batches', 'Emergent Arch', 'TDD', 'Regression', 'TBD', 'CI', 'agile', 'Stable', 'Economical', 'Performant', 'Feature Teams', 'You build it, you run it'])
+            hide(['MVP', 'BDD', 'Code', 'SCM', 'Automation', 'Feature Toggles', 'Stories', 'Resilience', 'AB Testing', 'CL', 'CD', 'Small batches', 'Emergent Arch', 'TDD', 'Regression', 'TBD', 'CI', 'agile', 'Stable', 'Economical', 'Performant', 'Feature Teams', 'You build it, you run it'])
             connectPMO();
             break;
 
         case 'Code':
             show(['Feature Toggles', 'Code', 'SCM', 'Fragile', 'Emergent Arch', 'Small batches'])
-            hide(['Stories', 'Resilience', 'AB Testing', 'agile', 'Stable', 'Economical', 'Performant', 'TBD', 'Automation', 'CI', 'TDD', 'BDD', 'Regression', 'CD', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
+            hide(['MVP', 'Stories', 'Resilience', 'AB Testing', 'agile', 'Stable', 'Economical', 'Performant', 'TBD', 'Automation', 'CI', 'TDD', 'BDD', 'Regression', 'CD', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
             connectCode();
             break;
 
         case 'SCM':
             show(['TBD', 'SCM', 'Code', 'Automation', 'Fragile'])
-            hide(['Feature Toggles', 'Stories', 'Resilience', 'Emergent Arch', 'Small batches', 'AB Testing', 'Economical', 'Performant', 'Stable', 'agile', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it', 'CI', 'TDD', 'BDD', 'Regression', 'CD'])
+            hide(['MVP', 'Feature Toggles', 'Stories', 'Resilience', 'Emergent Arch', 'Small batches', 'AB Testing', 'Economical', 'Performant', 'Stable', 'agile', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it', 'CI', 'TDD', 'BDD', 'Regression', 'CD'])
             connectSCM();
             break;
 
         case 'Feature Toggles':
             show(['Feature Toggles', 'TBD', 'Code', 'Fragile'])
-            hide(['SCM', 'CI', 'Automation', 'Stories', 'Resilience', 'Stable','AB Testing', 'agile', 'Economical', 'Performant', 'TDD', 'Emergent Arch', 'Small batches', 'BDD', 'Regression', 'CD', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
+            hide(['MVP', 'SCM', 'CI', 'Automation', 'Stories', 'Resilience', 'Stable','AB Testing', 'agile', 'Economical', 'Performant', 'TDD', 'Emergent Arch', 'Small batches', 'BDD', 'Regression', 'CD', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
             connectFeatures();
             break;
 
         case 'TBD':
             show(['Feature Toggles', 'TBD', 'CI', 'SCM', 'Fragile'])
-            hide(['Automation', 'Code', 'Stories', 'Resilience', 'Stable','AB Testing', 'agile', 'Economical', 'Performant', 'TDD', 'Emergent Arch', 'Small batches', 'BDD', 'Regression', 'CD', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
+            hide(['MVP', 'Automation', 'Code', 'Stories', 'Resilience', 'Stable','AB Testing', 'agile', 'Economical', 'Performant', 'TDD', 'Emergent Arch', 'Small batches', 'BDD', 'Regression', 'CD', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
             connectTBD();
             break;
 
         case 'CI':
-            show(['Feature Toggles', 'CI', 'SCM', 'Code', 'CD', 'Stable', 'Automation', 'TBD'])
+            show(['MVP', 'Feature Toggles', 'CI', 'SCM', 'Code', 'CD', 'Stable', 'Automation', 'TBD'])
             hide(['Stories', 'Resilience', 'Fragile', 'Economical','AB Testing', 'agile', 'Performant', 'TDD', 'Emergent Arch', 'Regression', 'Small batches', 'BDD', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
             connectCI();
             break;
 
         case 'Automation':
             show(['TBD', 'Automation', 'SCM', 'TDD', 'BDD', 'Regression', 'CI', 'Fragile'])
-            hide(['Code', 'Feature Toggles', 'Stories', 'Resilience', 'Stable','AB Testing', 'CD', 'CL', 'Emergent Arch', 'Small batches', 'agile', 'Economical', 'Performant', 'Semantic Monitoring', 'Stabilize WIP', 'Lean PMO', 'Feature Teams', 'You build it, you run it'])
+            hide(['MVP', 'Code', 'Feature Toggles', 'Stories', 'Resilience', 'Stable','AB Testing', 'CD', 'CL', 'Emergent Arch', 'Small batches', 'agile', 'Economical', 'Performant', 'Semantic Monitoring', 'Stabilize WIP', 'Lean PMO', 'Feature Teams', 'You build it, you run it'])
             connectAutomation();
             break;
 
         case 'TDD':
             show(['Stories', 'TDD', 'Fragile', 'Automation', 'Emergent Arch', 'Regression'])
-            hide(['Code', 'SCM', 'Feature Toggles', 'Resilience', 'AB Testing', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Small batches', 'BDD', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
+            hide(['MVP', 'Code', 'SCM', 'Feature Toggles', 'Resilience', 'AB Testing', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Small batches', 'BDD', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
             connectTDD();
             break;
 
         case 'BDD':
             show(['Stories', 'BDD', 'Automation', 'Regression', 'Emergent Arch', 'Fragile', 'Semantic Monitoring'])
-            hide(['Code', 'SCM', 'Feature Toggles', 'Resilience', 'AB Testing', 'TDD', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Small batches', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
+            hide(['MVP', 'Code', 'SCM', 'Feature Toggles', 'Resilience', 'AB Testing', 'TDD', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Small batches', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
             connectBDD();
             break;
 
@@ -148,38 +160,38 @@ function subjectClick(title, comment) {
 
         case 'Regression':
             show(['CI', 'Small batches', 'Regression', 'Automation', 'CD', 'TDD', 'Fragile', 'BDD'])
-            hide(['Code', 'SCM', 'Feature Toggles', 'Stories', 'Resilience', 'Economical','AB Testing', 'TBD', 'agile', 'Stable', 'Performant', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it', 'Emergent Arch', 'Semantic Monitoring'])
+            hide(['MVP', 'Code', 'SCM', 'Feature Toggles', 'Stories', 'Resilience', 'Economical','AB Testing', 'TBD', 'agile', 'Stable', 'Performant', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it', 'Emergent Arch', 'Semantic Monitoring'])
             connectRegression();
             break;
 
         case 'Emergent Arch':
             show(['Code', 'Emergent Arch', 'BDD', 'Small batches', 'TDD', 'Fragile'])
-            hide(['SCM', 'Automation', 'Feature Toggles', 'Stories', 'Resilience', 'AB Testing', 'Regression', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
+            hide(['MVP', 'SCM', 'Automation', 'Feature Toggles', 'Stories', 'Resilience', 'AB Testing', 'Regression', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
             connectEmergent();
             break;
 
         case 'Small batches':
             show(['Code', 'Regression', 'CI', 'Small batches', 'Emergent Arch', 'CD', 'Fragile'])
-            hide(['SCM', 'Automation', 'TDD', 'Feature Toggles', 'Stories', 'Resilience', 'Economical', 'BDD','AB Testing', 'TBD', 'agile', 'Stable', 'Performant', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
+            hide(['MVP', 'SCM', 'Automation', 'TDD', 'Feature Toggles', 'Stories', 'Resilience', 'Economical', 'BDD','AB Testing', 'TBD', 'agile', 'Stable', 'Performant', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
             connectBatches();
             break;
 
         case 'Semantic Monitoring':
-            show(['Semantic Monitoring', 'Fragile', 'BDD', 'Stabilize WIP','AB Testing'])
+            show(['MVP', 'Semantic Monitoring', 'Fragile', 'BDD', 'Stabilize WIP','AB Testing'])
             hide(['Stories', 'Code', 'SCM', 'Automation', 'Feature Toggles', 'Resilience', 'CL', 'CD', 'Small batches', 'Emergent Arch', 'TDD', 'Regression', 'TBD', 'CI', 'agile', 'Stable', 'Economical', 'Performant', 'Lean PMO', 'Feature Teams', 'You build it, you run it'])
             connectSemantic();
             break;
 
         case 'CD':
             show(['Feature Toggles', 'Stories', 'Feature Teams', 'Code', 'SCM', 'CD', 'CL', 'CI', 'Small batches', 'Regression', 'Economical', 'Stable', 'TBD', 'Automation', 'BDD', 'TDD', 'Emergent Arch'])
-            hide(['Resilience', 'AB Testing', 'Fragile', 'Performant', 'agile', 'Semantic Monitoring', 'Lean PMO', 'Stabilize WIP', 'You build it, you run it'])
+            hide(['MVP', 'Resilience', 'AB Testing', 'Fragile', 'Performant', 'agile', 'Semantic Monitoring', 'Lean PMO', 'Stabilize WIP', 'You build it, you run it'])
             dim(cdDimButtons);
             connectCD();
             break;
 
         case 'CL':
             show(['Feature Toggles', 'Stories', 'You build it, you run it', 'Stabilize WIP', 'Code', 'SCM', 'CL','AB Testing', 'agile', 'Economical', 'Semantic Monitoring', 'Performant', 'TBD', 'CI', 'CD', 'Small batches', 'Automation', 'TDD', 'Emergent Arch', 'BDD', 'Regression'])
-            hide(['Resilience', 'Stable', 'Fragile', 'Lean PMO', 'Feature Teams'])
+            hide(['MVP', 'Resilience', 'Stable', 'Fragile', 'Lean PMO', 'Feature Teams'])
             dim(cdDimButtons);
             dim(clDimButtons);
             connectCL();
@@ -187,25 +199,25 @@ function subjectClick(title, comment) {
 
         case 'Stabilize WIP':
             show(['CL', 'Performant', 'agile', 'Fragile', 'Semantic Monitoring', 'Lean PMO', 'Stabilize WIP', 'You build it, you run it'])
-            hide(['BDD', 'Automation', 'SCM', 'Code', 'Feature Toggles', 'Stories', 'Resilience', 'Feature Teams', 'AB Testing', 'CD', 'Small batches', 'Emergent Arch', 'TDD', 'Regression', 'TBD', 'CI', 'Stable', 'Economical'])
+            hide(['MVP', 'BDD', 'Automation', 'SCM', 'Code', 'Feature Toggles', 'Stories', 'Resilience', 'Feature Teams', 'AB Testing', 'CD', 'Small batches', 'Emergent Arch', 'TDD', 'Regression', 'TBD', 'CI', 'Stable', 'Economical'])
             connectWIP();
             break;
 
         case 'Feature Teams':
-            show(['CI', 'Regression', 'Small batches', 'CD', 'Fragile', 'Feature Teams', 'You build it, you run it'])
+            show(['MVP', 'CI', 'Regression', 'Small batches', 'CD', 'Fragile', 'Feature Teams', 'You build it, you run it'])
             hide(['Feature Toggles', 'Stories', 'Resilience', 'Performant', 'CL', 'AB Testing', 'agile', 'Stable', 'Code', 'SCM', 'agile', 'Automation', 'TBD', 'Economical', 'TDD', 'Emergent Arch', 'BDD', 'Semantic Monitoring', 'Lean PMO', 'Stabilize WIP'])
             connectTeams();
             break;
 
         case 'You build it, you run it':
             show(['Stabilize WIP', 'CL', 'agile', 'Fragile', 'Feature Teams', 'You build it, you run it'])
-            hide(['Feature Toggles', 'Stories', 'Resilience', 'AB Testing', 'CI', 'CD', 'Performant', 'Stable', 'Code', 'SCM', 'Automation', 'TBD', 'Economical', 'TDD', 'Emergent Arch', 'Regression', 'Small batches', 'BDD', 'Semantic Monitoring', 'Lean PMO'])
+            hide(['MVP', 'Feature Toggles', 'Stories', 'Resilience', 'AB Testing', 'CI', 'CD', 'Performant', 'Stable', 'Code', 'SCM', 'Automation', 'TBD', 'Economical', 'TDD', 'Emergent Arch', 'Regression', 'Small batches', 'BDD', 'Semantic Monitoring', 'Lean PMO'])
             connectBuildIt();
             break;
 
         case'AB Testing':
             show(['Feature Toggles', 'CD', 'CL', 'AB Testing', 'Fragile', 'Semantic Monitoring'])
-            hide(['BDD', 'Automation', 'SCM', 'Code', 'Stories', 'Resilience', 'Performant', 'agile', 'Economical', 'Small batches', 'TDD', 'Emergent Arch', 'CI', 'TBD', 'Regression', 'Stable', 'Stabilize WIP', 'Lean PMO', 'Feature Teams', 'You build it, you run it'])
+            hide(['MVP', 'BDD', 'Automation', 'SCM', 'Code', 'Stories', 'Resilience', 'Performant', 'agile', 'Economical', 'Small batches', 'TDD', 'Emergent Arch', 'CI', 'TBD', 'Regression', 'Stable', 'Stabilize WIP', 'Lean PMO', 'Feature Teams', 'You build it, you run it'])
             connectAB();
             break;
 
@@ -216,25 +228,25 @@ function subjectClick(title, comment) {
             break;
 
         case 'Stable':
-            show(['Feature Toggles', 'Stable', 'Code', 'SCM', 'TBD', 'Automation', 'CI'])
+            show(['MVP', 'Feature Toggles', 'Stable', 'Code', 'SCM', 'TBD', 'Automation', 'CI'])
             hide(['Stories', 'Resilience', 'CL', 'CD', 'Emergent Arch','AB Testing', 'TDD', 'BDD', 'Small batches', 'Regression', 'Economical', 'Fragile', 'Performant', 'agile', 'Semantic Monitoring', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
             connectStable();
             break;
 
         case 'Economical':
-            show(['Feature Toggles', 'Stories', 'Feature Teams', 'Code', 'SCM', 'CI', 'Small batches', 'Regression', 'Economical', 'TBD', 'Automation', 'BDD', 'TDD', 'Emergent Arch', 'CD'])
+            show(['MVP', 'Feature Toggles', 'Stories', 'Feature Teams', 'Code', 'SCM', 'CI', 'Small batches', 'Regression', 'Economical', 'TBD', 'Automation', 'BDD', 'TDD', 'Emergent Arch', 'CD'])
             hide(['Resilience', 'CL', 'AB Testing', 'Fragile', 'Performant', 'agile', 'Semantic Monitoring', 'Stable', 'Lean PMO', 'Stabilize WIP', 'You build it, you run it'])
             connectEconomical();
             break;
 
         case 'Performant':
-            show(['Feature Toggles', 'Stories', 'Resilience', 'AB Testing', 'Feature Teams', 'Semantic Monitoring', 'MVP', 'Lean PMO', 'Stabilize WIP', 'Performant', 'Code', 'SCM', 'CL', 'CI', 'Small batches', 'Regression', 'TBD', 'Automation', 'BDD', 'TDD', 'Emergent Arch', 'CD'])
+            show(['MVP', 'Feature Toggles', 'Stories', 'Resilience', 'AB Testing', 'Feature Teams', 'Semantic Monitoring', 'MVP', 'Lean PMO', 'Stabilize WIP', 'Performant', 'Code', 'SCM', 'CL', 'CI', 'Small batches', 'Regression', 'TBD', 'Automation', 'BDD', 'TDD', 'Emergent Arch', 'CD'])
             hide(['Fragile', 'Economical', 'agile', 'Stable', 'You build it, you run it'])
             connectPerformant();
             break;
 
         case 'agile':
-            show(['Feature Toggles', 'Stories', 'Resilience', 'AB Testing', 'You build it, you run it', 'agile', 'Feature Teams', 'Semantic Monitoring', 'MVP', 'Lean PMO', 'Stabilize WIP', 'Code', 'SCM', 'CL', 'CI', 'Small batches', 'Regression', 'TBD', 'Automation', 'BDD', 'TDD', 'Emergent Arch', 'CD'])
+            show(['MVP', 'Feature Toggles', 'Stories', 'Resilience', 'AB Testing', 'You build it, you run it', 'agile', 'Feature Teams', 'Semantic Monitoring', 'MVP', 'Lean PMO', 'Stabilize WIP', 'Code', 'SCM', 'CL', 'CI', 'Small batches', 'Regression', 'TBD', 'Automation', 'BDD', 'TDD', 'Emergent Arch', 'CD'])
             hide(['Economical', 'Stable', 'Performant', 'Fragile'])
             connectAgile();
             break;
