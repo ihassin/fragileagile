@@ -16,9 +16,10 @@ $(document).ready(function() {
     context.strokeStyle = "Blue";
 
     hide(allButtons);
+    show(['Clear goals', 'Common language', 'Value proposition']);
 
-    if(window.location.hash == '#stories') {
-        subjectClick("Stories", "comment")
+    if(window.location.hash == 'value') {
+        subjectClick("Value proposition", "comment")
     }
 
     canvas.onmousedown = function() {
@@ -29,11 +30,31 @@ $(document).ready(function() {
 
 } )
 
+function jumpto(title, location) {
+    window.location = location
+    window.open(gon[title].url)
+}
+
 function storyDblClick(title, comment) {
     switch(title) {
         case 'Value proposition':
-            context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-            window.location = 'https://docs.google.com/presentation/d/1lv9e0zPmNHfs9J1DLerLTEr2O2jGOM-BiwCJOSA-CXs/edit#slide=id.g126a8a42dc_0_41'
+            jumpto(title, '#value')
+            break;
+
+        case 'Rapid deployment':
+            jumpto(title, '#rapid')
+            break;
+
+        case 'Monitoring':
+            jumpto(title, '#semantic')
+            break;
+
+        case 'End-to-end':
+            jumpto(title, '#endtoend')
+            break;
+
+        case 'Meaningful feedback':
+            jumpto(title, '#feedback')
             break;
     }
 }

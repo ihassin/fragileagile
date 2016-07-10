@@ -17,8 +17,22 @@ $(document).ready(function() {
 
     hide(mvpButtons);
 
-    if(window.location.hash == '#stories') {
-        subjectClick("Stories", "comment")
+    switch(window.location.hash) {
+        case '#stories':
+            subjectClick("Stories", "comment")
+            break;
+
+        case '#rapid':
+            subjectClick("CD", "comment")
+            break;
+
+        case '#semantic':
+            subjectClick("Semantic Monitoring", "comment")
+            break;
+
+        case '#cl':
+            subjectClick("CL", "comment")
+            break;
     }
 
     canvas.onmousedown = function() {
@@ -37,11 +51,10 @@ function homeInit(s) {
 }
 
 function subjectDblClick(title, comment) {
-    window.location = '#stories'
     switch(title) {
         case 'Stories':
-            context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-            window.location = '/stories'
+            window.location = '#stories'
+            window.open('/stories')
             break;
     }
 }
@@ -266,6 +279,7 @@ function connectCode() {
     drawObject(gon["Code"], gon["Fragile"]);
     drawObject(gon["Code"], gon["Emergent Arch"]);
     drawObject(gon["Code"], gon["Small batches"]);
+    drawObject(gon["Code"], gon["Feature Toggles"]);
     MVPCode();
     CodeSCM();
 }
