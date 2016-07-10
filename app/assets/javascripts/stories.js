@@ -15,8 +15,6 @@ $(document).ready(function() {
     context = canvas.getContext('2d');
     context.strokeStyle = "Blue";
 
-    hide(allButtons);
-    show(['Clear goals', 'Common language', 'Value proposition']);
     storyClick("Clear goals")
 
     if(window.location.hash == 'value') {
