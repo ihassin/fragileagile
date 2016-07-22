@@ -30,6 +30,7 @@ class Subject < ActiveRecord::Base
     Subject.find_or_create_by!(title: 'CD',                       x: 1000, y:  450, comments: 'end-to-end, economics', url: 'https://www.thoughtworks.com/continuous-delivery')
     Subject.find_or_create_by!(title: 'Economical',               x: 1300, y:  450, comments: 'Economical', terminal: 1)
 
+    Subject.find_or_create_by!(title: 'IaC',                      x:  250, y:  550, comments: 'Infrastructure as code; Software Defined Networks, Containers')
     Subject.find_or_create_by!(title: 'Semantic Monitoring',      x:  450, y:  550, comments: 'Business monitors like server monitors')
     Subject.find_or_create_by!(title: 'CL',                       x: 1100, y:  550, comments: 'CL')
 
