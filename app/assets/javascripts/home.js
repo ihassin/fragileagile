@@ -178,8 +178,8 @@ function subjectClick(title) {
             break;
 
         case 'Semantic Monitoring':
-            show(['Stories', 'MVP', 'Semantic Monitoring', 'Fragile', 'BDD', 'Stabilize WIP','AB Testing'])
-            hide(['IaC', 'Adaptive planning', 'Code', 'SCM', 'Automation', 'Feature Toggles', 'Resilience', 'CL', 'CD', 'Small batches', 'Emergent Arch', 'TDD', 'Regression', 'TBD', 'CI', 'agile', 'Stable', 'Economical', 'Performant', 'Lean PMO', 'Feature Teams', 'You build it, you run it'])
+            show(['Adaptive planning', 'Stories', 'MVP', 'Semantic Monitoring', 'Fragile', 'BDD', 'Stabilize WIP','AB Testing'])
+            hide(['IaC', 'Code', 'SCM', 'Automation', 'Feature Toggles', 'Resilience', 'CL', 'CD', 'Small batches', 'Emergent Arch', 'TDD', 'Regression', 'TBD', 'CI', 'agile', 'Stable', 'Economical', 'Performant', 'Lean PMO', 'Feature Teams', 'You build it, you run it'])
             connectSemantic();
             break;
 
@@ -205,8 +205,8 @@ function subjectClick(title) {
             break;
 
         case 'Adaptive planning':
-            show(['Feature Teams', 'You build it, you run it', 'CL', 'Adaptive planning', 'Stabilize WIP', 'Performant', 'agile', 'Fragile'])
-            hide(['IaC', 'Semantic Monitoring', 'Lean PMO', 'MVP', 'BDD', 'Automation', 'SCM', 'Code', 'Feature Toggles', 'Stories', 'Resilience', 'AB Testing', 'CD', 'Small batches', 'Emergent Arch', 'TDD', 'Regression', 'TBD', 'CI', 'Stable', 'Economical'])
+            show(['Semantic Monitoring', 'Feature Teams', 'You build it, you run it', 'CL', 'Adaptive planning', 'Stabilize WIP', 'Performant', 'agile', 'Fragile'])
+            hide(['IaC', 'Lean PMO', 'MVP', 'BDD', 'Automation', 'SCM', 'Code', 'Feature Toggles', 'Stories', 'Resilience', 'AB Testing', 'CD', 'Small batches', 'Emergent Arch', 'TDD', 'Regression', 'TBD', 'CI', 'Stable', 'Economical'])
             connectAdaptive();
             break;
 
@@ -648,6 +648,7 @@ function connectSemantic() {
     drawObject(gon["BDD"], gon["Semantic Monitoring"]);
     drawObject(gon["MVP"], gon["Semantic Monitoring"]);
     drawObject(gon["Semantic Monitoring"], gon["Stabilize WIP"]);
+    drawObject(gon["Semantic Monitoring"], gon["Adaptive planning"]);
 
     drawObject(gon["Stories"], gon["Semantic Monitoring"]);
     drawObject(gon["Semantic Monitoring"], gon["AB Testing"]);
@@ -662,6 +663,7 @@ function connectWIP() {
 
 function connectAdaptive() {
     drawObject(gon["Stabilize WIP"], gon["Adaptive planning"]);
+    drawObject(gon["Semantic Monitoring"], gon["Adaptive planning"]);
     drawObject(gon["Adaptive planning"], gon["Performant"]);
     drawObject(gon["Adaptive planning"], gon["agile"]);
     drawObject(gon["CL"], gon["Performant"]);
