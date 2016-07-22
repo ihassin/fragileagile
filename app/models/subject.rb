@@ -35,8 +35,8 @@ class Subject < ActiveRecord::Base
     Subject.find_or_create_by!(title: 'CL',                       x: 1100, y:  550, comments: 'CL')
 
     Subject.find_or_create_by!(title: 'Lean PMO',                 x:  250, y:  650, comments: 'Autonomous project teams, MVP, reduce waste')
-    Subject.find_or_create_by!(title: 'Stabilize WIP',            x:  650, y:  650, comments: 'Remove unscheduled work, work to finish')
-    Subject.find_or_create_by!(title: 'Adaptive planning',        x:  850, y:  650, comments: 'Adaptive planning')
+    Subject.find_or_create_by!(title: 'Stabilize WIP',            x:  550, y:  650, comments: 'Remove unscheduled work, work to finish')
+    Subject.find_or_create_by!(title: 'Adaptive planning',        x:  750, y:  650, comments: 'Adaptive planning')
     Subject.find_or_create_by!(title: 'Performant',               x: 1300, y:  650, comments: 'Performant', terminal: 1)
 
     Subject.find_or_create_by!(title: 'Feature Teams',            x:  100, y:  750, comments: 'Break silos, end-to-end, co-located')
