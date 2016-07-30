@@ -34,6 +34,15 @@ Then(/^I see all my presentation's subjects$/) do
   end
 end
 
+Then(/^I see the stories page$/) do
+  expect(page).to have_content("Unbiased change")
+end
+
+When(/^I follow "([^"]*)"$/) do |button|
+  double_click(button)
+  switch_to_last_tab
+end
+
 def go_home
 #  visit 'http://localhost:3000'
   visit '/'
@@ -41,4 +50,12 @@ end
 
 def get_style(node)
   page.evaluate_script('document.getElementById("' + node + '");').attribute("style").to_json
+end
+
+def double_click button
+  page.driver.browser.mouse.double_click(page.find("\##{button}").native)
+end
+
+def switch_to_last_tab
+  page.driver.browser.switch_to.window(page.driver.browser.window_handles.last)
 end

@@ -22,3 +22,8 @@ Feature:
   Scenario: Clicking on an object shows far connections as dimmed
     When I select "CL"
     Then I see its far connections as dimmed
+
+  @selenium
+  Scenario: Clicking on stories brings up stories page
+    When I follow "Stories"
+    Then I see the stories page
