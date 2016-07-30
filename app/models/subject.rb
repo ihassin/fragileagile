@@ -1,4 +1,6 @@
 class Subject < ActiveRecord::Base
+  STORY_X_OFFSET = 60
+
   validates_presence_of :y, :x, :comments, :title
   validates_uniqueness_of :title
 
@@ -45,22 +47,29 @@ class Subject < ActiveRecord::Base
 
     # Stories
 
-    Subject.find_or_create_by!(title: 'Value proposition',        x:  100, y:  250, comments: 'Purpose', url: 'https://docs.google.com/presentation/d/1XvPd-pKKGqpyd4IVLXUOghJqFDDIDsL9_Pc2wylEGnA/edit#slide=id.g115924b1c4_0_0', stories: 1)
-    Subject.find_or_create_by!(title: 'Clear goals',              x:  100, y:  350, comments: 'Strategy to achieve value proposition', stories: 1)
-    Subject.find_or_create_by!(title: 'Common language',          x:  100, y:  450, comments: 'Domain language', stories: 1)
+    Subject.find_or_create_by!(title: 'Clear goals',              x: STORY_X_OFFSET + 10, y:  350, comments: 'Strategy to achieve value proposition', stories: 1)
 
-    Subject.find_or_create_by!(title: 'Discussion',               x:  320, y:  350, comments: 'Story lifecyle', stories: 1)
+    Subject.find_or_create_by!(title: 'Common language',          x: STORY_X_OFFSET + 200, y:  250, comments: 'Domain language', stories: 1)
+    Subject.find_or_create_by!(title: 'Business stressors',       x: STORY_X_OFFSET + 200, y:  350, comments: 'Economics', stories: 1)
+    Subject.find_or_create_by!(title: 'Discussion',               x: STORY_X_OFFSET + 200, y:  450, comments: 'Story lifecyle', stories: 1)
 
-    Subject.find_or_create_by!(title: 'Epics',                    x:  540, y:  150, comments: 'Translation of goals to high level plan', stories: 1)
-    Subject.find_or_create_by!(title: 'Story map',                x:  540, y:  250, comments: 'Mapping of stories to epics', stories: 1)
-    Subject.find_or_create_by!(title: 'Features',                 x:  540, y:  450, comments: 'Breakdown of epics', stories: 1)
-    Subject.find_or_create_by!(title: 'INVEST',                   x:  540, y:  550, comments: 'Independent, Negotiable, Valuable, Estimable, Testable', stories: 1)
+    Subject.find_or_create_by!(title: 'Epics',                    x: STORY_X_OFFSET + 400, y:  150, comments: 'Translation of goals to high level plan', stories: 1)
+    Subject.find_or_create_by!(title: 'Features',                 x: STORY_X_OFFSET + 400, y:  250, comments: 'Does not exist unless a user finds one', stories: 1)
+    Subject.find_or_create_by!(title: 'Story map',                x: STORY_X_OFFSET + 400, y:  350, comments: 'Mapping of stories to epics', stories: 1)
+    Subject.find_or_create_by!(title: 'INVEST',                   x: STORY_X_OFFSET + 400, y:  450, comments: 'Independent, Negotiable, Valuable, Estimable, Testable', stories: 1)
+    Subject.find_or_create_by!(title: 'End-to-end',               x: STORY_X_OFFSET + 400, y:  550, comments: 'DoD, CFCs', stories: 1, url: 'https://docs.google.com/presentation/d/1XvPd-pKKGqpyd4IVLXUOghJqFDDIDsL9_Pc2wylEGnA/edit#slide=id.g14b2c42c09_0_0')
 
-    Subject.find_or_create_by!(title: 'End-to-end',               x:  740, y:  350, comments: 'DoD, CFCs', stories: 1, url: 'https://docs.google.com/presentation/d/1XvPd-pKKGqpyd4IVLXUOghJqFDDIDsL9_Pc2wylEGnA/edit#slide=id.g14b2c42c09_0_0')
+    Subject.find_or_create_by!(title: 'Small changes',            x: STORY_X_OFFSET + 600, y:  250, comments: 'Economics', stories: 1)
+    Subject.find_or_create_by!(title: 'Right-size',               x: STORY_X_OFFSET + 600, y:  350, comments: 'Story scope should be inversely proportional to business risk', stories: 1)
 
-    Subject.find_or_create_by!(title: 'Rapid deployment',         x:  950, y:  350, comments: 'Visible progress, CD', stories: 1, url: '/#rapid')
-    Subject.find_or_create_by!(title: 'Meaningful feedback',      x: 1200, y:  350, comments: 'Continuous learning', stories: 1, terminal: 1, url: '/#cl')
+    Subject.find_or_create_by!(title: 'Rapid deployment',         x: STORY_X_OFFSET + 800,  y:  250, comments: 'Visible progress, CD', stories: 1, url: '/#rapid')
+    Subject.find_or_create_by!(title: 'Monitoring',               x: STORY_X_OFFSET + 800,  y:  350, comments: 'Business monitors', stories: 1, url: '/#semantic')
+    Subject.find_or_create_by!(title: 'Flexible planning',        x: STORY_X_OFFSET + 800,  y:  450, comments: 'Pivoting', stories: 1)
 
-    Subject.find_or_create_by!(title: 'Monitoring',               x: 1080, y:  450, comments: 'Business monitors', stories: 1, url: '/#semantic')
+    Subject.find_or_create_by!(title: 'Relinquish control',       x: STORY_X_OFFSET + 1000, y:  250, comments: 'Economics', stories: 1)
+    Subject.find_or_create_by!(title: 'Unbiased change',          x: STORY_X_OFFSET + 1000, y:  350, comments: 'Economics', stories: 1)
+
+
+    Subject.find_or_create_by!(title: 'Meaningful feedback',      x: STORY_X_OFFSET + 1200, y:  350, comments: 'Continuous learning', stories: 1, terminal: 1, url: '/#cl')
   end
 end
