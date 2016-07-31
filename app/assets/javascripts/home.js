@@ -19,23 +19,27 @@ $(document).ready(function() {
 
     switch(window.location.hash) {
         case '#stories':
-            subjectClick("Stories")
+            subjectClick("Stories");
             break;
 
         case '#rapid':
-            subjectClick("CD")
+            subjectClick("CD");
             break;
 
         case '#semantic':
-            subjectClick("Semantic Monitoring")
+            subjectClick("Semantic Monitoring");
             break;
 
         case '#cl':
-            subjectClick("CL")
+            subjectClick("CL");
+            break;
+
+        case '#ap':
+            subjectClick("Adaptive planning");
             break;
 
         case '#tdd':
-            subjectClick("TDD")
+            subjectClick("TDD");
             break;
     }
 
