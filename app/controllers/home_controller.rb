@@ -10,4 +10,10 @@ class HomeController < ApplicationController
 
     @s = Hash[@subjects.map { |s| [s.title, s] }].to_json
   end
+
+  def bdd
+    @subjects = Subject.where(bdd: 1)
+
+    @s = Hash[@subjects.map { |s| [s.title, s] }].to_json
+  end
 end

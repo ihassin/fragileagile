@@ -43,6 +43,10 @@ When(/^I follow "([^"]*)"$/) do |button|
   switch_to_last_tab
 end
 
+Then(/^I see the BDD page$/) do
+  expect(page).to have_content("DDD")
+end
+
 def go_home
 #  visit 'http://localhost:3000'
   visit '/'

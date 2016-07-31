@@ -18,6 +18,10 @@ $(document).ready(function() {
     hide(mvpButtons);
 
     switch(window.location.hash) {
+        case '#bdd':
+            subjectClick("BDD")
+            break;
+
         case '#stories':
             subjectClick("Stories")
             break;
@@ -63,6 +67,11 @@ function subjectDblClick(title, comment) {
         case 'Stories':
             window.location = '#stories';
             window.open('/stories');
+            break;
+
+        case 'BDD':
+            window.location = '#BDD';
+            window.open('/bdd');
             break;
 
         case 'SCM':

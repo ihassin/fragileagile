@@ -27,3 +27,8 @@ Feature:
   Scenario: Clicking on stories brings up stories page
     When I follow "Stories"
     Then I see the stories page
+
+  @selenium
+  Scenario: Clicking on BDD brings up stories page
+    When I follow "BDD"
+    Then I see the BDD page

@@ -72,5 +72,10 @@ class Subject < ActiveRecord::Base
 
 
     Subject.find_or_create_by!(title: 'Flexible planning',        x: STORY_X_OFFSET + 1200, y:  350, comments: 'Pivoting', stories: 1, terminal: 1, url: '/#ap')
+
+
+    # BDD
+    Subject.find_or_create_by!(title: 'DDD',          x: 10, y:  350, comments: 'Common language', bdd: 1)
+
   end
 end

@@ -10,6 +10,7 @@ class CreateSubjects < ActiveRecord::Migration
 
       t.integer :terminal, default: 0
       t.integer :stories, default: 0
+      t.integer :bdd, default: 0
 
       t.string :url, default: nil
 
