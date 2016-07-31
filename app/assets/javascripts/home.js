@@ -1,5 +1,5 @@
 var allButtons = ['Relinquish control', 'IaC', 'Adaptive planning', 'Feature Toggles', 'Stories', 'Resilience', 'AB Testing', 'MVP', 'Code', 'Fragile', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Performant', 'Feature Teams', 'You build it, you run it' , 'agile', 'Emergent Arch']
-var mvpButtons = ['IaC', 'Adaptive planning', 'Feature Toggles', 'Stories', 'SCM','AB Testing', 'Code', 'TBD', 'Automation', 'CI', 'TDD', 'Small batches', 'BDD', 'Regression', 'CD', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it', 'Emergent Arch', 'Resilience']
+var mvpButtons = ['Relinquish control', 'IaC', 'Adaptive planning', 'Feature Toggles', 'Stories', 'SCM','AB Testing', 'Code', 'TBD', 'Automation', 'CI', 'TDD', 'Small batches', 'BDD', 'Regression', 'CD', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it', 'Emergent Arch', 'Resilience']
 var fragileButtons = ['Feature Toggles', 'Stories', 'Resilience', 'AB Testing', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Performant', 'Feature Teams', 'You build it, you run it' , 'agile', 'Emergent Arch']
 var cdDimButtons = ['Feature Toggles', 'Stories', 'Code', 'MVP', 'SCM', 'TBD', 'Automation', 'CI']
 var clDimButtons = ['Feature Toggles', 'Stories', 'BDD', 'Regression', 'CD', 'TDD', 'Emergent Arch', 'Small batches']
@@ -97,8 +97,8 @@ function subjectClick(title) {
             break;
 
         case 'Resilience':
-            show(['Resilience', 'Code', 'Performant', 'agile']);
-            hide(['Relinquish control', 'MVP', 'IaC', 'Adaptive planning', 'Feature Toggles', 'Stories', 'Feature Teams', 'Semantic Monitoring', 'AB Testing', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'CL', 'Lean PMO', 'Stabilize WIP', 'Performant', 'You build it, you run it' , 'Emergent Arch']);
+            show(['Emergent Arch', 'Resilience', 'Code', 'Performant', 'agile']);
+            hide(['Relinquish control', 'MVP', 'IaC', 'Adaptive planning', 'Feature Toggles', 'Stories', 'Feature Teams', 'Semantic Monitoring', 'AB Testing', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'CL', 'Lean PMO', 'Stabilize WIP', 'Performant', 'You build it, you run it']);
             connectResilience();
             break;
 
@@ -169,8 +169,8 @@ function subjectClick(title) {
             break;
 
         case 'Emergent Arch':
-            show(['Code', 'Emergent Arch', 'BDD', 'Small batches', 'TDD', 'Fragile']);
-            hide(['Relinquish control', 'IaC', 'Adaptive planning', 'MVP', 'SCM', 'Automation', 'Feature Toggles', 'Stories', 'Resilience', 'AB Testing', 'Regression', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
+            show(['Resilience', 'Code', 'Emergent Arch', 'BDD', 'Small batches', 'TDD', 'Fragile']);
+            hide(['Relinquish control', 'IaC', 'Adaptive planning', 'MVP', 'SCM', 'Automation', 'Feature Toggles', 'Stories', 'AB Testing', 'Regression', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
             connectEmergent();
             break;
 
@@ -638,6 +638,7 @@ function connectEmergent() {
     drawObject(gon["BDD"], gon["Emergent Arch"]);
 
     drawObject(gon["Emergent Arch"], gon["Small batches"], true);
+    drawObject(gon["Emergent Arch"], gon["Resilience"]);
 }
 
 function connectBatches()
@@ -715,6 +716,7 @@ function connectMVP() {
 
 function connectResilience() {
     drawObject(gon["Code"], gon["Resilience"]);
+    drawObject(gon["Emergent Arch"], gon["Resilience"]);
     drawObject(gon["Resilience"], gon["Performant"]);
     drawObject(gon["Resilience"], gon["agile"]);
     setOpacity("Fragile", 1);
