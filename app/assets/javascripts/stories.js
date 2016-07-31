@@ -100,8 +100,8 @@ function storyClick(title) {
             break;
 
         case 'Small changes':
-            hide(['INVEST', 'Right size', 'End to end', 'Epics', 'Features', 'Story map', 'Common language', 'Business stressors', 'Discussion', 'Clear goals', 'Flexible planning', 'Unbiased change', 'Meaningful feedback' ]);
-            show(['Small changes', 'Rapid deployment', 'Monitoring' ]);
+            hide(['Monitoring', 'INVEST', 'Right size', 'End to end', 'Epics', 'Features', 'Story map', 'Common language', 'Business stressors', 'Discussion', 'Clear goals', 'Flexible planning', 'Unbiased change', 'Meaningful feedback' ]);
+            show(['Small changes', 'Rapid deployment']);
             connectSmall();
             break;
 
@@ -113,20 +113,26 @@ function storyClick(title) {
 
         case 'Rapid deployment':
         case 'Monitoring':
-            hide(['Small changes', 'INVEST', 'End to end', 'Epics', 'Features', 'Story map', 'Common language', 'Business stressors', 'Discussion', 'Clear goals' ]);
+            hide(['Right size', 'Small changes', 'INVEST', 'End to end', 'Epics', 'Features', 'Story map', 'Common language', 'Business stressors', 'Discussion', 'Clear goals' ]);
             show(['Rapid deployment', 'Monitoring', 'Unbiased change', 'Meaningful feedback']);
             connectMonitoring();
             break;
 
         case 'Meaningful feedback':
-            hide(['Right size', 'Rapid deployment', 'Monitoring', 'Unbiased change', 'Small changes', 'INVEST', 'End to end', 'Epics', 'Features', 'Story map', 'Common language', 'Business stressors', 'Discussion', 'Clear goals' ]);
-            show(['Meaningful feedback', 'Flexible planning']);
-            connectSemantic();
+            hide(['Right size', 'Monitoring', 'Small changes', 'INVEST', 'End to end', 'Epics', 'Features', 'Story map', 'Common language', 'Business stressors', 'Discussion', 'Clear goals' ]);
+            show(['Rapid deployment', 'Meaningful feedback', 'Flexible planning', 'Unbiased change']);
+            connectFeedback();
+            break;
+
+        case 'Unbiased change':
+            hide(['Right size', 'Rapid deployment', 'Small changes', 'INVEST', 'End to end', 'Epics', 'Features', 'Story map', 'Common language', 'Business stressors', 'Discussion', 'Clear goals' ]);
+            show(['Monitoring', 'Meaningful feedback', 'Flexible planning', 'Unbiased change']);
+            connectChange();
             break;
 
         case 'Flexible planning':
             show(['Right size', 'Meaningful feedback', 'Flexible planning', 'Rapid deployment', 'Monitoring', 'Unbiased change', 'Small changes', 'INVEST', 'End to end', 'Epics', 'Features', 'Story map', 'Common language', 'Business stressors', 'Discussion', 'Clear goals' ]);
-            connectBack();
+            connectPlanning();
             break;
     }
 }
@@ -156,7 +162,6 @@ function connectInvest() {
 
 function connectSmall() {
     drawObject(gon["Small changes"], gon["Rapid deployment"]);
-    drawObject(gon["Small changes"], gon["Monitoring"]);
 }
 
 function connectSize() {
@@ -165,19 +170,27 @@ function connectSize() {
 
 function connectMonitoring() {
     drawObject(gon["Rapid deployment"], gon["Meaningful feedback"]);
-    drawObject(gon["Rapid deployment"], gon["Unbiased change"]);
+    drawObject(gon["Monitoring"], gon["Unbiased change"]);
 }
 
-function connectSemantic() {
+function connectFeedback() {
+    drawObject(gon["Rapid deployment"], gon["Flexible planning"]);
     drawObject(gon["Meaningful feedback"], gon["Flexible planning"]);
+    drawObject(gon["Unbiased change"], gon["Flexible planning"]);
 }
 
-function connectBack() {
+function connectChange() {
+    drawObject(gon["Monitoring"], gon["Unbiased change"]);
+    drawObject(gon["Meaningful feedback"], gon["Flexible planning"]);
+    drawObject(gon["Unbiased change"], gon["Flexible planning"]);
+}
+
+function connectPlanning() {
     connectGoals();
     connectValue();
     connectInvest();
     connectSmall();
     connectMonitoring();
-    connectSemantic();
+    connectFeedback();
 }
 

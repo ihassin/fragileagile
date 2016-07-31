@@ -43,9 +43,9 @@ class Subject < ActiveRecord::Base
 
     Subject.find_or_create_by!(title: 'Feature Teams',            x:  100, y:  750, comments: 'Break silos, end-to-end, co-located')
     Subject.find_or_create_by!(title: 'You build it, you run it', x:  450, y:  750, comments: 'Mindset, culture')
+    Subject.find_or_create_by!(title: 'Relinquish control',       x:  750, y:  750, comments: 'To the business')
     Subject.find_or_create_by!(title: 'agile',                    x: 1300, y:  750, comments: 'Small a, innovate!', terminal: 1)
 
-    Subject.find_or_create_by!(title: 'Relinquish control',       x: STORY_X_OFFSET + 1200, y:  350, comments: 'Continuous learning', url: '/#cl')
 
     # Stories
 
