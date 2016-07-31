@@ -55,6 +55,10 @@ function storyDblClick(title) {
         case 'Meaningful feedback':
             jumpto(title, '#feedback')
             break;
+
+        case 'Deck':
+            window.open(gon[title].url);
+            break;
     }
 }
 

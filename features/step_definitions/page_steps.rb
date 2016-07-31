@@ -29,7 +29,7 @@ Then(/^I see its far connections as dimmed$/) do
 end
 
 Then(/^I see all my presentation's subjects$/) do
-  Subject.where(stories: 0).each do |subject|
+  Subject.where(home: 1).each do |subject|
     expect(page).to have_content(subject.title)
   end
 end
