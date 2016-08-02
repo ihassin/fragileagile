@@ -47,6 +47,10 @@ Then(/^I see the BDD page$/) do
   expect(page).to have_content("DDD")
 end
 
+Then(/^I see the TDD page$/) do
+  expect(page).to have_content("Test first")
+end
+
 def go_home
 #  visit 'http://localhost:3000'
   visit '/'

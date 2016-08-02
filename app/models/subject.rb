@@ -80,5 +80,13 @@ class Subject < ActiveRecord::Base
     # BDD
     Subject.find_or_create_by!(title: 'DDD',          x: 10, y:  350, comments: 'Common language', bdd: 1)
 
+    # TDD
+    Subject.find_or_create_by!(title: 'Test first',           x:   10, y:  350, comments: 'Common language', tdd: 1)
+    Subject.find_or_create_by!(title: 'Modular',              x:  200, y:  350, comments: 'Common language', tdd: 1)
+    Subject.find_or_create_by!(title: 'Loosely coupled',      x:  400, y:  350, comments: 'Common language', tdd: 1)
+    Subject.find_or_create_by!(title: 'High cohesion',        x:  600, y:  350, comments: 'Common language', tdd: 1)
+    Subject.find_or_create_by!(title: 'Separation concerns',  x:  800, y:  350, comments: 'Common language', tdd: 1)
+    Subject.find_or_create_by!(title: 'Information hiding',   x: 1000, y:  350, comments: 'Common language', tdd: 1)
+
   end
 end

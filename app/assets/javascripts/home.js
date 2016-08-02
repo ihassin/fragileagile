@@ -74,6 +74,11 @@ function subjectDblClick(title, comment) {
             window.open('/bdd');
             break;
 
+        case 'TDD':
+            window.location = '#TDD';
+            window.open('/tdd');
+            break;
+
         case 'SCM':
         case 'TBD':
         case 'Feature Toggles':
