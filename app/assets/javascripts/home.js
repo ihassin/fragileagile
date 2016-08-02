@@ -209,8 +209,8 @@ function subjectClick(title) {
             break;
 
         case 'CL':
-            show(['Relinquish control', 'Adaptive planning', 'Feature Toggles', 'Stories', 'Code', 'SCM', 'CL','AB Testing', 'agile', 'Economical', 'Semantic Monitoring', 'Performant', 'TBD', 'CI', 'CD', 'Small batches', 'Automation', 'TDD', 'Emergent Arch', 'BDD', 'Regression']);
-            hide(['SOA', 'You build it, you run it', 'IaC', 'Stabilize WIP', 'MVP', 'Resilience', 'Stable', 'Fragile', 'Lean PMO', 'Feature Teams'])
+            show(['Resilience', 'Relinquish control', 'Adaptive planning', 'Feature Toggles', 'Stories', 'Code', 'SCM', 'CL','AB Testing', 'agile', 'Economical', 'Semantic Monitoring', 'Performant', 'TBD', 'CI', 'CD', 'Small batches', 'Automation', 'TDD', 'Emergent Arch', 'BDD', 'Regression']);
+            hide(['SOA', 'You build it, you run it', 'IaC', 'Stabilize WIP', 'MVP', 'Stable', 'Fragile', 'Lean PMO', 'Feature Teams'])
             dim(cdDimButtons);
             dim(clDimButtons);
             connectCL();
@@ -604,6 +604,7 @@ function connectCL() {
     drawObject(gon["AB Testing"], gon["CL"]);
     drawObject(gon["CD"], gon["CL"]);
 
+    drawObject(gon["Resilience"], gon["Performant"]);
     drawObject(gon["CL"], gon["Performant"]);
     drawObject(gon["Adaptive planning"], gon["Performant"]);
     drawObject(gon["CL"], gon["agile"]);
