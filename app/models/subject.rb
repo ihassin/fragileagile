@@ -9,6 +9,7 @@ class Subject < ActiveRecord::Base
     # General
 
     Subject.find_or_create_by!(title: 'Code',                     x:  100, y:   50, comments: 'Any code, including POC, business, infra as code, tech debt', home: 1)
+    Subject.find_or_create_by!(title: 'SOA',                      x:  850, y:  150, comments: 'SOA, micro-services', home: 1)
     Subject.find_or_create_by!(title: 'Resilience',               x: 1000, y:   50, comments: 'Failsafe: a system fails in a safe way. Resilient systems: recover their original operational state', home: 1)
     Subject.find_or_create_by!(title: 'Fragile',                  x: 1300, y:   50, comments: 'No methodology, no tests, no feedback', terminal: 1, home: 1)
 
