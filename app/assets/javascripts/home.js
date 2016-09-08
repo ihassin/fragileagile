@@ -71,7 +71,7 @@ function subjectDblClick(title, comment) {
 
         case 'BDD':
             window.location = '#BDD';
-            window.open('/bdd');
+            window.open(gon[title].url);
             break;
 
         case 'TDD':
