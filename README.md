@@ -16,3 +16,6 @@ rake
 rails s
 http localhost:3000
 ```
+
+# to do
+Make a VM to show IaC

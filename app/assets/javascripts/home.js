@@ -177,8 +177,8 @@ function subjectClick(title) {
             break;
 
         case 'Stories':
-            show(['Semantic Monitoring', 'Stories', 'BDD', 'Automation']);
-            hide(['SOA', 'Relinquish control', 'MVP', 'IaC', 'Adaptive planning', 'Code', 'SCM', 'Feature Toggles', 'Regression', 'Emergent Arch', 'Resilience', 'AB Testing', 'TDD', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Small batches', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
+            show(['Semantic Monitoring', 'Stories', 'BDD', 'Automation', 'MVP']);
+            hide(['SOA', 'Relinquish control', 'IaC', 'Adaptive planning', 'Code', 'SCM', 'Feature Toggles', 'Regression', 'Emergent Arch', 'Resilience', 'AB Testing', 'TDD', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Small batches', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
             connectStories();
             break;
 
@@ -637,6 +637,7 @@ function connectBDD() {
 }
 
 function connectStories() {
+    drawObject(gon["MVP"], gon["Stories"]);
     drawObject(gon["Automation"], gon["BDD"]);
     drawObject(gon["Stories"], gon["BDD"]);
     drawObject(gon["Stories"], gon["Semantic Monitoring"]);
