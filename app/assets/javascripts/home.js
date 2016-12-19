@@ -246,8 +246,8 @@ function subjectClick(title) {
             break;
 
         case 'Relinquish control':
-            show(['CL', 'Adaptive planning', 'Performant', 'agile', 'Relinquish control', 'Fragile', 'You build it, you run it']);
-            hide(['SOA', 'Feature Teams', 'IaC', 'Stabilize WIP', 'MVP', 'Feature Toggles', 'Stories', 'Resilience', 'AB Testing', 'CI', 'CD', 'Stable', 'Code', 'SCM', 'Automation', 'TBD', 'Economical', 'TDD', 'Emergent Arch', 'Regression', 'Small batches', 'BDD', 'Semantic Monitoring', 'Lean PMO'])
+            show(['Adaptive planning', 'CL', 'agile', 'Relinquish control', 'Fragile', 'You build it, you run it']);
+            hide(['Performant', 'SOA', 'Feature Teams', 'IaC', 'Stabilize WIP', 'MVP', 'Feature Toggles', 'Stories', 'Resilience', 'AB Testing', 'CI', 'CD', 'Stable', 'Code', 'SCM', 'Automation', 'TBD', 'Economical', 'TDD', 'Emergent Arch', 'Regression', 'Small batches', 'BDD', 'Semantic Monitoring', 'Lean PMO'])
             connectRelinquish();
             break;
 
@@ -759,14 +759,11 @@ function connectBuildIt() {
 }
 
 function connectRelinquish() {
-    drawObject(gon["Adaptive planning"], gon["agile"]);
     drawObject(gon["CL"], gon["agile"]);
 
     drawObject(gon["You build it, you run it"], gon["Relinquish control"]);
-    drawObject(gon["Adaptive planning"], gon["Performant"]);
-    drawObject(gon["CL"], gon["Performant"]);
-    drawObject(gon["Relinquish control"], gon["Performant"]);
     drawObject(gon["Relinquish control"], gon["agile"]);
+    drawObject(gon["Adaptive planning"], gon["agile"]);
 }
 
 function connectIaC() {
