@@ -17,7 +17,7 @@ class Subject < ActiveRecord::Base
     Subject.find_or_create_by!(title: 'Feature Toggles',          x:  450, y:  100, comments: 'Blue/Green, Dark launching', url: 'http://martinfowler.com/articles/feature-toggles.html', home: 1)
     Subject.find_or_create_by!(title: 'TBD',                      x:  650, y:  150, comments: 'Not doing CI unless TBD', url: 'http://paulhammant.com/2013/04/05/what-is-trunk-based-development/', home: 1)
 
-    Subject.find_or_create_by!(title: 'Automation',               x:  200, y:  250, comments: 'Any automation, including Unit, Integration, Functional, UI, Infra', home: 1)
+    Subject.find_or_create_by!(title: 'Automation',               x:  200, y:  250, comments: 'Any automation, including Unit, Integration, Functional, UI, Infra, performance', home: 1)
     Subject.find_or_create_by!(title: 'CI',                       x:  850, y:  250, comments: 'Fan-in, fan-out, packaging, promotion', url: 'https://www.thoughtworks.com/continuous-integration', home: 1)
     Subject.find_or_create_by!(title: 'Stable',                   x: 1300, y:  250, comments: 'Meh.', terminal: 1, home: 1)
 
@@ -35,9 +35,9 @@ class Subject < ActiveRecord::Base
 
     Subject.find_or_create_by!(title: 'IaC',                      x:  250, y:  550, comments: 'Infrastructure as code; Software Defined Networks, Containers', home: 1)
     Subject.find_or_create_by!(title: 'Semantic Monitoring',      x:  450, y:  550, comments: 'Business monitors like server monitors', home: 1)
-    Subject.find_or_create_by!(title: 'CL',                       x: 1100, y:  550, comments: 'CL', home: 1)
+    Subject.find_or_create_by!(title: 'CL',                       x: 1100, y:  550, comments: 'Continuous learning', home: 1)
 
-    Subject.find_or_create_by!(title: 'Lean PMO',                 x:  250, y:  650, comments: 'Autonomous project teams, MVP, reduce waste', home: 1)
+    Subject.find_or_create_by!(title: 'Lean PMO',                 x:  250, y:  650, comments: 'Autonomous project teams, reduce waste, value-based portfolio, feature-based progress', home: 1)
     Subject.find_or_create_by!(title: 'Stabilize WIP',            x:  550, y:  650, comments: 'Remove unscheduled work, work to finish', home: 1)
     Subject.find_or_create_by!(title: 'Adaptive planning',        x:  750, y:  650, comments: 'Respond to changes', home: 1)
     Subject.find_or_create_by!(title: 'Performant',               x: 1300, y:  650, comments: 'Performant', terminal: 1, home: 1)
@@ -45,7 +45,7 @@ class Subject < ActiveRecord::Base
     Subject.find_or_create_by!(title: 'Feature Teams',            x:  100, y:  750, comments: 'Break silos, end-to-end, co-located', home: 1)
     Subject.find_or_create_by!(title: 'You build it, you run it', x:  450, y:  750, comments: 'Accountability, Responsibility mindset, culture', home: 1)
     Subject.find_or_create_by!(title: 'Relinquish control',       x:  750, y:  750, comments: 'To the business!', home: 1)
-    Subject.find_or_create_by!(title: 'agile',                    x: 1300, y:  750, comments: 'Small a, makes room for innovation', terminal: 1, home: 1)
+    Subject.find_or_create_by!(title: 'agile',                    x: 1300, y:  750, comments: 'Small a, is adaptable and makes room for innovation', terminal: 1, home: 1)
 
 
     # Stories

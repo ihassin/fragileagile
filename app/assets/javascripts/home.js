@@ -780,4 +780,3 @@ function connectTeams() {
     drawObject(gon["Feature Teams"], gon["CD"]);
     drawObject(gon["Feature Teams"], gon["You build it, you run it"]);
 }
-
