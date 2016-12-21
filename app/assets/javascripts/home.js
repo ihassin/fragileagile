@@ -177,8 +177,8 @@ function subjectClick(title) {
             break;
 
         case 'Stories':
-            show(['Feature Toggles', 'Semantic Monitoring', 'Stories', 'BDD', 'Automation', 'MVP']);
-            hide(['SOA', 'Relinquish control', 'IaC', 'Adaptive planning', 'Code', 'SCM', 'Regression', 'Emergent Arch', 'Resilience', 'AB Testing', 'TDD', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Small batches', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
+            show(['Semantic Monitoring', 'Stories', 'BDD', 'Automation', 'MVP']);
+            hide(['Feature Toggles', 'SOA', 'Relinquish control', 'IaC', 'Adaptive planning', 'Code', 'SCM', 'Regression', 'Emergent Arch', 'Resilience', 'AB Testing', 'TDD', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Small batches', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it'])
             connectStories();
             break;
 
@@ -644,7 +644,6 @@ function connectStories() {
     drawObject(gon["Automation"], gon["BDD"]);
     drawObject(gon["Stories"], gon["BDD"]);
     drawObject(gon["Stories"], gon["Semantic Monitoring"]);
-    drawObject(gon["Stories"], gon["Feature Toggles"]);
 }
 
 function connectRegression() {
