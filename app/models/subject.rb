@@ -25,7 +25,7 @@ class Subject < ActiveRecord::Base
     Subject.find_or_create_by!(title: 'TDD',                      x:  450, y:  350, comments: 'Just as agile experiments with MVP, so TDD experiments with arch. TDD Unit, integration, functional, performance, security', home: 1, url: 'https://docs.google.com/presentation/d/1TZeG83gKisvdr2Ox5U8vW2uBqfRcKrr2ohu527uF7Z0/edit#slide=id.p')
     Subject.find_or_create_by!(title: 'Emergent Arch',            x:  650, y:  350, comments: 'Last possible responsible moment.', home: 1)
     Subject.find_or_create_by!(title: 'Small batches',            x:  850, y:  350, comments: 'Reduce change sets to a minimum', home: 1)
-    Subject.find_or_create_by!(title: 'AB Testing',               x:  650, y:  550, comments: 'Only if we have a feedback cycle.', home: 1)
+    Subject.find_or_create_by!(title: 'AB Testing',               x:  850, y:  550, comments: 'Only if we have a feedback cycle.', home: 1)
 
     Subject.find_or_create_by!(title: 'MVP',                      x:   10, y:  450, comments: 'Purpose, 5-whys, Zappos', home: 1)
     Subject.find_or_create_by!(title: 'BDD',                      x:  250, y:  450, comments: 'Just as agile experiments with MVP, so BDD experiments with behaviour. Common business language, DDD', home: 1, url: 'https://docs.google.com/presentation/d/1TZeG83gKisvdr2Ox5U8vW2uBqfRcKrr2ohu527uF7Z0/edit#slide=id.p')
@@ -33,8 +33,8 @@ class Subject < ActiveRecord::Base
     Subject.find_or_create_by!(title: 'CD',                       x: 1000, y:  450, comments: 'End-to-end, economics', url: 'https://www.thoughtworks.com/continuous-delivery', home: 1)
     Subject.find_or_create_by!(title: 'Economical',               x: 1300, y:  450, comments: 'Economical', terminal: 1, home: 1)
 
-    Subject.find_or_create_by!(title: 'IaC',                      x:  250, y:  550, comments: 'Infrastructure as code; Software Defined Networks, Containers', home: 1)
-    Subject.find_or_create_by!(title: 'Semantic Monitoring',      x:  450, y:  550, comments: 'Business monitors like server monitors', home: 1)
+    Subject.find_or_create_by!(title: 'IaC',                      x:  450, y:  550, comments: 'Infrastructure as code; Software Defined Networks, Containers', home: 1)
+    Subject.find_or_create_by!(title: 'Semantic Monitoring',      x:  650, y:  550, comments: 'Business monitors like server monitors', home: 1)
     Subject.find_or_create_by!(title: 'CL',                       x: 1100, y:  550, comments: 'Continuous learning', home: 1)
 
     Subject.find_or_create_by!(title: 'Lean PMO',                 x:  250, y:  650, comments: 'Autonomous project teams, reduce waste, value-based portfolio, feature-based progress', home: 1)
