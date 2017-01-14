@@ -19,31 +19,31 @@ $(document).ready(function() {
 
     switch(window.location.hash) {
         case '#bdd':
-            subjectClick("BDD")
+            subjectClick("BDD");
             break;
 
         case '#stories':
-            subjectClick("Stories")
+            subjectClick("Stories");
             break;
 
         case '#rapid':
-            subjectClick("CD")
+            subjectClick("CD");
             break;
 
         case '#semantic':
-            subjectClick("Semantic Monitoring")
+            subjectClick("Semantic Monitoring");
             break;
 
         case '#cl':
-            subjectClick("CL")
+            subjectClick("CL");
             break;
 
         case '#ap':
-            subjectClick("Adaptive planning")
+            subjectClick("Adaptive planning");
             break;
 
         case '#tdd':
-            subjectClick("TDD")
+            subjectClick("TDD");
             break;
     }
 
@@ -105,7 +105,7 @@ function subjectClick(title) {
 
     switch(title) {
         case 'MVP':
-            show(['Stories', 'Code', 'Feature Teams', 'MVP', 'Semantic Monitoring', 'Lean PMO'])
+            show(['Stories', 'Code', 'Feature Teams', 'MVP', 'Semantic Monitoring', 'Lean PMO']);
             hide(['SOA', 'Relinquish control', 'IaC', 'Adaptive planning', 'Feature Toggles', 'Resilience', 'AB Testing', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'CL', 'Stabilize WIP', 'Performant', 'You build it, you run it' , 'agile', 'Emergent Arch'])
             connectMVP();
             break;
@@ -117,8 +117,8 @@ function subjectClick(title) {
             break;
 
         case 'Resilience':
-            show(['SOA', 'Emergent Arch', 'Resilience', 'Code', 'Performant', 'agile']);
-            hide(['Relinquish control', 'MVP', 'IaC', 'Adaptive planning', 'Feature Toggles', 'Stories', 'Feature Teams', 'Semantic Monitoring', 'AB Testing', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'CL', 'Lean PMO', 'Stabilize WIP', 'Performant', 'You build it, you run it']);
+            show(['IaC', 'SOA', 'Emergent Arch', 'Resilience', 'Code', 'Performant', 'agile']);
+            hide(['Relinquish control', 'MVP', 'Adaptive planning', 'Feature Toggles', 'Stories', 'Feature Teams', 'Semantic Monitoring', 'AB Testing', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'CL', 'Lean PMO', 'Stabilize WIP', 'Performant', 'You build it, you run it']);
             connectResilience();
             break;
 
@@ -752,6 +752,7 @@ function connectSOA() {
 }
 
 function connectResilience() {
+    drawObject(gon["IaC"], gon["Resilience"]);
     drawObject(gon["Code"], gon["Resilience"]);
     drawObject(gon["SOA"], gon["Resilience"]);
     drawObject(gon["Emergent Arch"], gon["Resilience"]);
