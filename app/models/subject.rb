@@ -36,10 +36,11 @@ class Subject < ActiveRecord::Base
 
     Subject.find_or_create_by!(title: 'Risk Control',             x:  250, y:  550, comments: 'Automated Risk and Controls', home: 1)
     Subject.find_or_create_by!(title: 'IaC',                      x:  450, y:  550, comments: 'Infrastructure as code; Software Defined Networks, Containers', home: 1)
+    Subject.find_or_create_by!(title: 'VSM',                      x:  350, y:  650, comments: 'Value Stream Map', home: 1)
     Subject.find_or_create_by!(title: 'Semantic Monitoring',      x:  650, y:  550, comments: 'Business monitors like server monitors', home: 1)
     Subject.find_or_create_by!(title: 'CL',                       x: 1100, y:  550, comments: 'Continuous learning', home: 1)
 
-    Subject.find_or_create_by!(title: 'Lean PMO',                 x:  250, y:  650, comments: 'Autonomous project teams, reduce waste, value-based portfolio, feature-based progress', home: 1)
+    Subject.find_or_create_by!(title: 'Lean PMO',                 x:  150, y:  650, comments: 'Autonomous project teams, reduce waste, value-based portfolio, feature-based progress', home: 1)
     Subject.find_or_create_by!(title: 'Stabilize WIP',            x:  550, y:  650, comments: 'Remove unscheduled work, work to finish', home: 1)
     Subject.find_or_create_by!(title: 'Adaptive planning',        x:  750, y:  650, comments: 'Respond to changes', home: 1)
     Subject.find_or_create_by!(title: 'Performant',               x: 1300, y:  650, comments: 'Performant', terminal: 1, home: 1)
