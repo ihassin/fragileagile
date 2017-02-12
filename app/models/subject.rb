@@ -11,11 +11,11 @@ class Subject < ActiveRecord::Base
     Subject.find_or_create_by!(title: 'Code',                     x:  100, y:   50, comments: 'Any code, including POC, business, infra as code, tech debt', home: 1)
     Subject.find_or_create_by!(title: 'SOA',                      x:  850, y:  150, comments: 'SOA, micro-services', home: 1)
     Subject.find_or_create_by!(title: 'Resilience',               x: 1000, y:   50, comments: 'Failsafe: a system fails in a safe way. Resilient systems: recover their original operational state', home: 1)
-    Subject.find_or_create_by!(title: 'Circuit Breaker',          x:  850, y:   50, comments: 'SOA, micro-services', home: 1)
+    Subject.find_or_create_by!(title: 'Circuit breaker',          x:  850, y:   50, comments: 'SOA, micro-services', home: 1)
     Subject.find_or_create_by!(title: 'Fragile',                  x: 1300, y:   50, comments: 'No methodology, no tests, no feedback', terminal: 1, home: 1)
 
     Subject.find_or_create_by!(title: 'SCM',                      x:  150, y:  150, comments: 'Distributed shared repos', url: 'https://www.thoughtworks.com/radar/tools/git', home: 1)
-    Subject.find_or_create_by!(title: 'Feature Toggles',          x:  450, y:  100, comments: 'Blue/Green, Dark launching', url: 'http://martinfowler.com/articles/feature-toggles.html', home: 1)
+    Subject.find_or_create_by!(title: 'Feature toggles',          x:  450, y:  100, comments: 'Blue/Green, Dark launching', url: 'http://martinfowler.com/articles/feature-toggles.html', home: 1)
     Subject.find_or_create_by!(title: 'TBD',                      x:  650, y:  150, comments: 'Not doing CI unless TBD', url: 'http://paulhammant.com/2013/04/05/what-is-trunk-based-development/', home: 1)
 
     Subject.find_or_create_by!(title: 'Automation',               x:  200, y:  250, comments: 'Any automation, including Unit, Integration, Functional, UI, Infra, performance', home: 1)
@@ -24,9 +24,9 @@ class Subject < ActiveRecord::Base
 
     Subject.find_or_create_by!(title: 'Stories',                  x:  150, y:  350, comments: 'End to end, value in production', home: 1)
     Subject.find_or_create_by!(title: 'TDD',                      x:  450, y:  350, comments: 'Just as agile experiments with MVP, so TDD experiments with arch. TDD Unit, integration, functional, performance, security', home: 1, url: 'https://docs.google.com/presentation/d/1TZeG83gKisvdr2Ox5U8vW2uBqfRcKrr2ohu527uF7Z0/edit#slide=id.p')
-    Subject.find_or_create_by!(title: 'Emergent Arch',            x:  650, y:  350, comments: 'Last possible responsible moment.', home: 1)
+    Subject.find_or_create_by!(title: 'Emergent arch',            x:  650, y:  350, comments: 'Last possible responsible moment.', home: 1)
     Subject.find_or_create_by!(title: 'Small batches',            x:  850, y:  350, comments: 'Reduce change sets to a minimum', home: 1)
-    Subject.find_or_create_by!(title: 'AB Testing',               x:  850, y:  550, comments: 'Only if we have a feedback cycle.', home: 1)
+    Subject.find_or_create_by!(title: 'AB testing',               x:  850, y:  550, comments: 'Only if we have a feedback cycle.', home: 1)
 
     Subject.find_or_create_by!(title: 'MVP',                      x:   10, y:  450, comments: 'Purpose, 5-whys, Zappos', home: 1)
     Subject.find_or_create_by!(title: 'BDD',                      x:  250, y:  450, comments: 'Just as agile experiments with MVP, so BDD experiments with behaviour. Common business language, DDD', home: 1, url: 'https://docs.google.com/presentation/d/1TZeG83gKisvdr2Ox5U8vW2uBqfRcKrr2ohu527uF7Z0/edit#slide=id.p')
@@ -34,10 +34,10 @@ class Subject < ActiveRecord::Base
     Subject.find_or_create_by!(title: 'CD',                       x: 1000, y:  450, comments: 'End-to-end, economics', url: 'https://www.thoughtworks.com/continuous-delivery', home: 1)
     Subject.find_or_create_by!(title: 'Economical',               x: 1300, y:  450, comments: 'Economical', terminal: 1, home: 1)
 
-    Subject.find_or_create_by!(title: 'Risk Control',             x:  250, y:  550, comments: 'Automated Risk and Controls', home: 1)
+    Subject.find_or_create_by!(title: 'Risk controls',             x:  250, y:  550, comments: 'Automated Risk and Controls', home: 1)
     Subject.find_or_create_by!(title: 'IaC',                      x:  450, y:  550, comments: 'Infrastructure as code; Software Defined Networks, Containers', home: 1)
     Subject.find_or_create_by!(title: 'VSM',                      x:  350, y:  650, comments: 'Value Stream Map', home: 1)
-    Subject.find_or_create_by!(title: 'Semantic Monitoring',      x:  650, y:  550, comments: 'Business monitors like server monitors', home: 1)
+    Subject.find_or_create_by!(title: 'Semantic monitoring',      x:  650, y:  550, comments: 'Business monitors like server monitors', home: 1)
     Subject.find_or_create_by!(title: 'CL',                       x: 1100, y:  550, comments: 'Continuous learning', home: 1)
 
     Subject.find_or_create_by!(title: 'Lean PMO',                 x:  150, y:  650, comments: 'Autonomous project teams, reduce waste, value-based portfolio, feature-based progress', home: 1)
@@ -45,8 +45,8 @@ class Subject < ActiveRecord::Base
     Subject.find_or_create_by!(title: 'Adaptive planning',        x:  750, y:  650, comments: 'Respond to changes', home: 1)
     Subject.find_or_create_by!(title: 'Performant',               x: 1300, y:  650, comments: 'Performant', terminal: 1, home: 1)
 
-    Subject.find_or_create_by!(title: 'Feature Teams',            x:  100, y:  750, comments: 'Break silos, end-to-end, co-located', home: 1)
-    Subject.find_or_create_by!(title: 'You build it, you run it', x:  450, y:  750, comments: 'Accountability, Responsibility mindset, culture', home: 1)
+    Subject.find_or_create_by!(title: 'Feature teams',            x:  100, y:  750, comments: 'Break silos, end-to-end, co-located', home: 1)
+    Subject.find_or_create_by!(title: 'You build it, you run it', x:  470, y:  750, comments: 'Accountability, Responsibility mindset, culture', home: 1)
     Subject.find_or_create_by!(title: 'Relinquish control',       x:  750, y:  750, comments: 'To the business!', home: 1)
     Subject.find_or_create_by!(title: 'agile',                    x: 1300, y:  750, comments: 'Small a, is adaptable and makes room for innovation', terminal: 1, home: 1)
 
