@@ -1,6 +1,6 @@
 var allButtons = ['VSM', 'Risk Control', 'Circuit Breaker', 'SOA', 'Relinquish control', 'IaC', 'Adaptive planning', 'Feature Toggles', 'Stories', 'Resilience', 'AB Testing', 'MVP', 'Code', 'Fragile', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Performant', 'Feature Teams', 'You build it, you run it' , 'agile', 'Emergent Arch']
 var mvpButtons = ['VSM', 'Risk Control', 'Circuit Breaker', 'SOA', 'Relinquish control', 'IaC', 'Adaptive planning', 'Feature Toggles', 'Stories', 'SCM','AB Testing', 'Code', 'TBD', 'Automation', 'CI', 'TDD', 'Small batches', 'BDD', 'Regression', 'CD', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature Teams', 'You build it, you run it', 'Emergent Arch', 'Resilience']
-var fragileButtons = ['Circuit Breaker', 'Risk Control', 'SOA', 'Relinquish control', 'IaC', 'Adaptive planning', 'Feature Toggles', 'Stories', 'Resilience', 'AB Testing', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Performant', 'Feature Teams', 'You build it, you run it' , 'agile', 'Emergent Arch']
+var fragileButtons = ['VSM', 'Circuit Breaker', 'Risk Control', 'SOA', 'Relinquish control', 'IaC', 'Adaptive planning', 'Feature Toggles', 'Stories', 'Resilience', 'AB Testing', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic Monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Performant', 'Feature Teams', 'You build it, you run it' , 'agile', 'Emergent Arch']
 var cdDimButtons = ['Feature Toggles', 'Stories', 'Code', 'MVP', 'SCM', 'TBD', 'Automation', 'CI']
 var clDimButtons = ['SOA', 'Feature Toggles', 'Stories', 'BDD', 'Regression', 'CD', 'TDD', 'Emergent Arch', 'Small batches']
 
@@ -300,8 +300,8 @@ function subjectClick(title) {
             break;
 
         case 'VSM':
-            show(['VSM', 'Risk Control', 'Circuit Breaker', 'SOA', 'Relinquish control', 'MVP', 'Feature Toggles', 'Stories', 'Resilience', 'AB Testing', 'Feature Teams', 'Semantic Monitoring', 'MVP', 'Performant', 'Code', 'SCM', 'CL', 'CI', 'Small batches', 'Regression', 'TBD', 'Automation', 'BDD', 'TDD', 'Emergent Arch', 'CD', 'IaC']);
-            hide(['Fragile', 'Economical', 'agile', 'Stable', 'You build it, you run it', 'Adaptive planning', 'Stabilize WIP', 'Lean PMO']);
+            show(['Relinquish control', 'Resilience', 'VSM', 'Performant', 'CL', 'IaC', 'Feature Teams', 'agile']);
+            hide(['Feature Toggles', 'Stories', 'Fragile', 'Economical', 'Stable', 'You build it, you run it', 'Adaptive planning', 'Stabilize WIP', 'Lean PMO', 'Risk Control', 'Circuit Breaker', 'SOA', 'MVP', 'Semantic Monitoring', 'MVP', 'Code', 'SCM', 'CI', 'Small batches', 'Regression', 'TBD', 'Automation', 'BDD', 'TDD', 'Emergent Arch', 'CD', 'AB Testing']);
             connectVSM();
             break;
 
@@ -426,7 +426,13 @@ function connectEconomical() {
 
 function connectVSM()
 {
-    connectPerformant();
+    drawObject(gon["Resilience"], gon["Performant"]);
+    drawObject(gon["IaC"], gon["Performant"]);
+    drawObject(gon["Relinquish control"], gon["Performant"]);
+    drawObject(gon["Feature Teams"], gon["Performant"]);
+    drawObject(gon["CL"], gon["Performant"]);
+    drawObject(gon["VSM"], gon["Performant"]);
+    drawObject(gon["VSM"], gon["agile"]);
 }
 
 function connectPerformant() {
