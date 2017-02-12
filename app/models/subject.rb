@@ -11,6 +11,7 @@ class Subject < ActiveRecord::Base
     Subject.find_or_create_by!(title: 'Code',                     x:  100, y:   50, comments: 'Any code, including POC, business, infra as code, tech debt', home: 1)
     Subject.find_or_create_by!(title: 'SOA',                      x:  850, y:  150, comments: 'SOA, micro-services', home: 1)
     Subject.find_or_create_by!(title: 'Resilience',               x: 1000, y:   50, comments: 'Failsafe: a system fails in a safe way. Resilient systems: recover their original operational state', home: 1)
+    Subject.find_or_create_by!(title: 'Circuit Breaker',          x:  850, y:   50, comments: 'SOA, micro-services', home: 1)
     Subject.find_or_create_by!(title: 'Fragile',                  x: 1300, y:   50, comments: 'No methodology, no tests, no feedback', terminal: 1, home: 1)
 
     Subject.find_or_create_by!(title: 'SCM',                      x:  150, y:  150, comments: 'Distributed shared repos', url: 'https://www.thoughtworks.com/radar/tools/git', home: 1)
@@ -33,6 +34,7 @@ class Subject < ActiveRecord::Base
     Subject.find_or_create_by!(title: 'CD',                       x: 1000, y:  450, comments: 'End-to-end, economics', url: 'https://www.thoughtworks.com/continuous-delivery', home: 1)
     Subject.find_or_create_by!(title: 'Economical',               x: 1300, y:  450, comments: 'Economical', terminal: 1, home: 1)
 
+    Subject.find_or_create_by!(title: 'Risk Control',             x:  250, y:  550, comments: 'Automated Risk and Controls', home: 1)
     Subject.find_or_create_by!(title: 'IaC',                      x:  450, y:  550, comments: 'Infrastructure as code; Software Defined Networks, Containers', home: 1)
     Subject.find_or_create_by!(title: 'Semantic Monitoring',      x:  650, y:  550, comments: 'Business monitors like server monitors', home: 1)
     Subject.find_or_create_by!(title: 'CL',                       x: 1100, y:  550, comments: 'Continuous learning', home: 1)
