@@ -141,8 +141,8 @@ function subjectClick(title) {
             break;
 
         case 'SCM':
-            show(['MVP', 'Code', 'TBD', 'SCM', 'Automation', 'Fragile']);
-            hide(['VSM', 'Risk controls', 'Circuit breaker', 'SOA', 'Relinquish control', 'IaC', 'Adaptive planning', 'Feature toggles', 'Stories', 'Resilience', 'Emergent arch', 'Small batches', 'AB testing', 'Economical', 'Performant', 'Stable', 'agile', 'Semantic monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature teams', 'You build it, you run it', 'CI', 'TDD', 'BDD', 'Regression', 'CD'])
+            show(['Code', 'TBD', 'SCM', 'Automation', 'Fragile']);
+            hide(['MVP', 'VSM', 'Risk controls', 'Circuit breaker', 'SOA', 'Relinquish control', 'IaC', 'Adaptive planning', 'Feature toggles', 'Stories', 'Resilience', 'Emergent arch', 'Small batches', 'AB testing', 'Economical', 'Performant', 'Stable', 'agile', 'Semantic monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature teams', 'You build it, you run it', 'CI', 'TDD', 'BDD', 'Regression', 'CD'])
             connectSCM();
             break;
 
@@ -165,8 +165,8 @@ function subjectClick(title) {
             break;
 
         case 'Automation':
-            show(['IaC', 'TBD', 'Automation', 'SCM', 'TDD', 'BDD', 'Regression', 'CI', 'Fragile', 'MVP', 'Code']);
-            hide(['VSM', 'Risk controls', 'Circuit breaker', 'SOA', 'Relinquish control', 'Adaptive planning', 'Feature toggles', 'Stories', 'Resilience', 'Stable','AB testing', 'CD', 'CL', 'Emergent arch', 'Small batches', 'agile', 'Economical', 'Performant', 'Semantic monitoring', 'Stabilize WIP', 'Lean PMO', 'Feature teams', 'You build it, you run it'])
+            show(['IaC', 'TBD', 'Automation', 'SCM', 'TDD', 'BDD', 'Regression', 'CI', 'Fragile']);
+            hide(['MVP', 'Code', 'VSM', 'Risk controls', 'Circuit breaker', 'SOA', 'Relinquish control', 'Adaptive planning', 'Feature toggles', 'Stories', 'Resilience', 'Stable','AB testing', 'CD', 'CL', 'Emergent arch', 'Small batches', 'agile', 'Economical', 'Performant', 'Semantic monitoring', 'Stabilize WIP', 'Lean PMO', 'Feature teams', 'You build it, you run it'])
             connectAutomation();
             break;
 
@@ -177,8 +177,8 @@ function subjectClick(title) {
             break;
 
         case 'BDD':
-            show(['MVP', 'IaC', 'Stories', 'BDD', 'Automation', 'Regression', 'Emergent arch', 'Fragile', 'Semantic monitoring']);
-            hide(['VSM', 'Risk controls', 'Circuit breaker', 'SOA', 'Relinquish control', 'Adaptive planning', 'Code', 'SCM', 'Feature toggles', 'Resilience', 'AB testing', 'TDD', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Small batches', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature teams', 'You build it, you run it'])
+            show(['IaC', 'Stories', 'BDD', 'Automation', 'Regression', 'Emergent arch', 'Fragile', 'Semantic monitoring']);
+            hide(['MVP', 'VSM', 'Risk controls', 'Circuit breaker', 'SOA', 'Relinquish control', 'Adaptive planning', 'Code', 'SCM', 'Feature toggles', 'Resilience', 'AB testing', 'TDD', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Small batches', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature teams', 'You build it, you run it'])
             connectBDD();
             break;
 
@@ -264,8 +264,8 @@ function subjectClick(title) {
             break;
 
         case 'IaC':
-            show(['Risk controls', 'Automation', 'TDD', 'BDD', 'IaC', 'Fragile', 'Feature teams', 'You build it, you run it', 'Resilience', 'Stories']);
-            hide(['VSM', 'Circuit breaker', 'SOA', 'Relinquish control', 'Adaptive planning', 'CL', 'agile', 'Stabilize WIP', 'MVP', 'Feature toggles', 'AB testing', 'CI', 'CD', 'Performant', 'Stable', 'Code', 'SCM', 'TBD', 'Economical', 'Emergent arch', 'Regression', 'Small batches', 'Semantic monitoring', 'Lean PMO'])
+            show(['Risk controls', 'Automation', 'TDD', 'BDD', 'IaC', 'Fragile', 'You build it, you run it', 'Resilience']);
+            hide(['Stories', 'Feature teams', 'VSM', 'Circuit breaker', 'SOA', 'Relinquish control', 'Adaptive planning', 'CL', 'agile', 'Stabilize WIP', 'MVP', 'Feature toggles', 'AB testing', 'CI', 'CD', 'Performant', 'Stable', 'Code', 'SCM', 'TBD', 'Economical', 'Emergent arch', 'Regression', 'Small batches', 'Semantic monitoring', 'Lean PMO'])
             connectIaC();
             break;
 
@@ -357,7 +357,6 @@ function connectCode() {
 
 function connectSCM() {
     CodeSCM();
-    drawObject(gon["MVP"], gon["Code"]);
     drawObject(gon["SCM"], gon["TBD"]);
     SCMAuto();
 }
@@ -677,7 +676,6 @@ function connectTDD() {
 
 function connectBDD() {
     drawObject(gon["Automation"], gon["BDD"]);
-    drawObject(gon["MVP"], gon["Stories"]);
     drawObject(gon["Stories"], gon["BDD"]);
 
     drawObject(gon["BDD"], gon["Semantic monitoring"]);
@@ -756,13 +754,11 @@ function connectPMO() {
 }
 
 function connectAutomation() {
-    MVPCode();
     SCMAuto();
 
     AutoOut();
     drawObject(gon["Automation"], gon["Regression"]);
     drawObject(gon["Automation"], gon["IaC"]);
-    drawObject(gon["Code"], gon["SCM"]);
 
     drawObject(gon["TBD"], gon["CI"]);
 }
@@ -829,14 +825,12 @@ function connectRelinquish() {
 }
 
 function connectIaC() {
-    drawObject(gon["BDD"], gon["IaC"]);
-    drawObject(gon["TDD"], gon["IaC"]);
+    drawObject(gon["BDD"], gon["IaC"], 1);
+    drawObject(gon["TDD"], gon["IaC"], 1);
     drawObject(gon["Code"], gon["IaC"], 1);
     drawObject(gon["Automation"], gon["IaC"]);
     drawObject(gon["IaC"], gon["You build it, you run it"]);
     drawObject(gon["IaC"], gon["Resilience"]);
-    drawObject(gon["Stories"], gon["BDD"]);
-    drawObject(gon["Feature teams"], gon["You build it, you run it"]);
     drawObject(gon["Risk controls"], gon["IaC"]);
 }
 
