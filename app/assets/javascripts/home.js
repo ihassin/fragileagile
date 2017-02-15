@@ -183,8 +183,8 @@ function subjectClick(title) {
             break;
 
         case 'Stories':
-            show(['Semantic monitoring', 'Stories', 'BDD', 'Automation', 'MVP']);
-            hide(['VSM', 'Risk controls', 'Circuit breaker', 'Feature toggles', 'SOA', 'Relinquish control', 'IaC', 'Adaptive planning', 'Code', 'SCM', 'Regression', 'Emergent arch', 'Resilience', 'AB testing', 'TDD', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Small batches', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature teams', 'You build it, you run it'])
+            show(['TDD', 'Semantic monitoring', 'Stories', 'BDD', 'Automation', 'MVP']);
+            hide(['VSM', 'Risk controls', 'Circuit breaker', 'Feature toggles', 'SOA', 'Relinquish control', 'IaC', 'Adaptive planning', 'Code', 'SCM', 'Regression', 'Emergent arch', 'Resilience', 'AB testing', 'TBD', 'CI', 'CD', 'agile', 'Stable', 'Economical', 'Performant', 'Small batches', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature teams', 'You build it, you run it'])
             connectStories();
             break;
 
@@ -671,7 +671,7 @@ function connectTDD() {
     drawObject(gon["Stories"], gon["TDD"]);
     drawObject(gon["Automation"], gon["TDD"]);
     drawObject(gon["TDD"], gon["Emergent arch"], 1);
-    drawObject(gon["TDD"], gon["Regression"]);
+    drawObject(gon["TDD"], gon["Regression"], 1);
     drawObject(gon["TDD"], gon["IaC"]);
 }
 
@@ -681,15 +681,17 @@ function connectBDD() {
 
     drawObject(gon["BDD"], gon["Semantic monitoring"]);
     drawObject(gon["BDD"], gon["Emergent arch"], 1);
-    drawObject(gon["BDD"], gon["Regression"]);
-    drawObject(gon["BDD"], gon["IaC"]);
+    drawObject(gon["BDD"], gon["Regression"], 1);
+    drawObject(gon["BDD"], gon["IaC"], 1);
 
 }
 
 function connectStories() {
     drawObject(gon["MVP"], gon["Stories"]);
     drawObject(gon["Automation"], gon["BDD"]);
+    drawObject(gon["Automation"], gon["TDD"]);
     drawObject(gon["Stories"], gon["BDD"]);
+    drawObject(gon["Stories"], gon["TDD"]);
     drawObject(gon["Stories"], gon["Semantic monitoring"]);
 }
 
@@ -705,8 +707,8 @@ function connectRegression() {
 }
 
 function connectEmergent() {
-    drawObject(gon["TDD"], gon["Emergent arch"]);
-    drawObject(gon["BDD"], gon["Emergent arch"]);
+    drawObject(gon["TDD"], gon["Emergent arch"], 1);
+    drawObject(gon["BDD"], gon["Emergent arch"], 1);
     drawObject(gon["Small batches"], gon["Emergent arch"], 1);
 
     drawObject(gon["Emergent arch"], gon["Resilience"], 1);
