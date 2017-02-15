@@ -189,8 +189,8 @@ function subjectClick(title) {
             break;
 
         case 'Regression':
-            show(['CI', 'Small batches', 'Regression', 'Automation', 'CD', 'TDD', 'Fragile', 'BDD']);
-            hide(['VSM', 'Risk controls', 'Circuit breaker', 'SOA', 'Relinquish control', 'IaC', 'Adaptive planning', 'MVP', 'Code', 'SCM', 'Feature toggles', 'Stories', 'Resilience', 'Economical','AB testing', 'TBD', 'agile', 'Stable', 'Performant', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature teams', 'You build it, you run it', 'Emergent arch', 'Semantic monitoring'])
+            show(['Feature teams', 'Risk controls', 'CI', 'Small batches', 'Regression', 'Automation', 'CD', 'TDD', 'Fragile', 'BDD']);
+            hide(['VSM', 'Circuit breaker', 'SOA', 'Relinquish control', 'IaC', 'Adaptive planning', 'MVP', 'Code', 'SCM', 'Feature toggles', 'Stories', 'Resilience', 'Economical','AB testing', 'TBD', 'agile', 'Stable', 'Performant', 'CL', 'Lean PMO', 'Stabilize WIP', 'You build it, you run it', 'Emergent arch', 'Semantic monitoring'])
             connectRegression();
             break;
 
@@ -207,8 +207,8 @@ function subjectClick(title) {
             break;
 
         case 'Semantic monitoring':
-            show(['Adaptive planning', 'Stories', 'MVP', 'Semantic monitoring', 'Fragile', 'BDD', 'Stabilize WIP','AB testing']);
-            hide(['VSM', 'Risk controls', 'Circuit breaker', 'SOA', 'Relinquish control', 'IaC', 'Code', 'SCM', 'Automation', 'Feature toggles', 'Resilience', 'CL', 'CD', 'Small batches', 'Emergent arch', 'TDD', 'Regression', 'TBD', 'CI', 'agile', 'Stable', 'Economical', 'Performant', 'Lean PMO', 'Feature teams', 'You build it, you run it'])
+            show(['Feature toggles', 'Adaptive planning', 'Stories', 'MVP', 'Semantic monitoring', 'Fragile', 'BDD', 'Stabilize WIP','AB testing']);
+            hide(['VSM', 'Risk controls', 'Circuit breaker', 'SOA', 'Relinquish control', 'IaC', 'Code', 'SCM', 'Automation', 'Resilience', 'CL', 'CD', 'Small batches', 'Emergent arch', 'TDD', 'Regression', 'TBD', 'CI', 'agile', 'Stable', 'Economical', 'Performant', 'Lean PMO', 'Feature teams', 'You build it, you run it'])
             connectSemantic();
             break;
 
@@ -219,8 +219,8 @@ function subjectClick(title) {
             break;
 
         case 'CD':
-            show(['MVP', 'Risk controls', 'Feature toggles', 'Stories', 'Feature teams', 'Code', 'SCM', 'CD', 'CL', 'CI', 'Small batches', 'Regression', 'Economical', 'Stable', 'TBD', 'Automation', 'BDD', 'TDD', 'Emergent arch']);
-            hide(['VSM', 'Circuit breaker', 'SOA', 'Relinquish control', 'IaC', 'Adaptive planning', 'Resilience', 'AB testing', 'Fragile', 'Performant', 'agile', 'Semantic monitoring', 'Lean PMO', 'Stabilize WIP', 'You build it, you run it'])
+            show([ 'AB testing', 'MVP', 'Risk controls', 'Feature toggles', 'Stories', 'Feature teams', 'Code', 'SCM', 'CD', 'CL', 'CI', 'Small batches', 'Regression', 'Economical', 'Stable', 'TBD', 'Automation', 'BDD', 'TDD', 'Emergent arch']);
+            hide(['VSM', 'Circuit breaker', 'SOA', 'Relinquish control', 'IaC', 'Adaptive planning', 'Resilience','Fragile', 'Performant', 'agile', 'Semantic monitoring', 'Lean PMO', 'Stabilize WIP', 'You build it, you run it'])
             dim(cdDimButtons);
             connectCD();
             break;
@@ -600,6 +600,7 @@ function connectCD() {
     drawObject(gon["Small batches"], gon["Emergent arch"]);
 
     drawObject(gon["CD"], gon["Economical"]);
+    drawObject(gon["AB testing"], gon["CL"]);
     drawObject(gon["CD"], gon["CL"]);
 
     TBDCI();
@@ -704,6 +705,8 @@ function connectRegression() {
     drawObject(gon["Regression"], gon["CD"]);
     drawObject(gon["Small batches"], gon["CD"]);
     drawObject(gon["CI"], gon["CD"]);
+    drawObject(gon["Risk controls"], gon["CD"]);
+    drawObject(gon["Feature teams"], gon["CD"]);
 }
 
 function connectEmergent() {
@@ -734,6 +737,7 @@ function connectSemantic() {
 
     drawObject(gon["Stories"], gon["Semantic monitoring"]);
     drawObject(gon["Semantic monitoring"], gon["AB testing"], 1);
+    drawObject(gon["Feature toggles"], gon["AB testing"], 1);
 }
 
 function connectWIP() {
