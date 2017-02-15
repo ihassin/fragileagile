@@ -141,20 +141,20 @@ function subjectClick(title) {
             break;
 
         case 'SCM':
-            show(['Code', 'TBD', 'SCM', 'Automation', 'Fragile']);
-            hide(['MVP', 'VSM', 'Risk controls', 'Circuit breaker', 'SOA', 'Relinquish control', 'IaC', 'Adaptive planning', 'Feature toggles', 'Stories', 'Resilience', 'Emergent arch', 'Small batches', 'AB testing', 'Economical', 'Performant', 'Stable', 'agile', 'Semantic monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature teams', 'You build it, you run it', 'CI', 'TDD', 'BDD', 'Regression', 'CD'])
+            show(['Code', 'TBD', 'SCM', 'Automation', 'Fragile', 'Feature toggles']);
+            hide(['MVP', 'VSM', 'Risk controls', 'Circuit breaker', 'SOA', 'Relinquish control', 'IaC', 'Adaptive planning', 'Stories', 'Resilience', 'Emergent arch', 'Small batches', 'AB testing', 'Economical', 'Performant', 'Stable', 'agile', 'Semantic monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature teams', 'You build it, you run it', 'CI', 'TDD', 'BDD', 'Regression', 'CD'])
             connectSCM();
             break;
 
         case 'Feature toggles':
-            show(['Stories', 'AB testing', 'Feature toggles', 'TBD', 'Code', 'Fragile']);
-            hide(['VSM', 'Risk controls', 'Circuit breaker', 'SOA', 'Relinquish control', 'IaC', 'Adaptive planning', 'MVP', 'SCM', 'CI', 'Automation', 'Resilience', 'Stable', 'agile', 'Economical', 'Performant', 'TDD', 'Emergent arch', 'Small batches', 'BDD', 'Regression', 'CD', 'Semantic monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature teams', 'You build it, you run it'])
+            show(['SCM', 'Stories', 'AB testing', 'Feature toggles', 'TBD', 'Code', 'Fragile']);
+            hide(['VSM', 'Risk controls', 'Circuit breaker', 'SOA', 'Relinquish control', 'IaC', 'Adaptive planning', 'MVP', 'CI', 'Automation', 'Resilience', 'Stable', 'agile', 'Economical', 'Performant', 'TDD', 'Emergent arch', 'Small batches', 'BDD', 'Regression', 'CD', 'Semantic monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature teams', 'You build it, you run it'])
             connectFeatures();
             break;
 
         case 'TBD':
-            show(['Feature toggles', 'TBD', 'CI', 'SCM', 'Fragile']);
-            hide(['VSM', 'Risk controls', 'Circuit breaker', 'SOA', 'Relinquish control', 'IaC', 'Adaptive planning', 'MVP', 'Automation', 'Code', 'Stories', 'Resilience', 'Stable','AB testing', 'agile', 'Economical', 'Performant', 'TDD', 'Emergent arch', 'Small batches', 'BDD', 'Regression', 'CD', 'Semantic monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature teams', 'You build it, you run it'])
+            show(['Automation', 'Feature toggles', 'TBD', 'CI', 'SCM', 'Fragile']);
+            hide(['VSM', 'Risk controls', 'Circuit breaker', 'SOA', 'Relinquish control', 'IaC', 'Adaptive planning', 'MVP', 'Code', 'Stories', 'Resilience', 'Stable','AB testing', 'agile', 'Economical', 'Performant', 'TDD', 'Emergent arch', 'Small batches', 'BDD', 'Regression', 'CD', 'Semantic monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature teams', 'You build it, you run it'])
             connectTBD();
             break;
 
@@ -358,6 +358,7 @@ function connectCode() {
 function connectSCM() {
     CodeSCM();
     drawObject(gon["SCM"], gon["TBD"]);
+    drawObject(gon["Feature toggles"], gon["TBD"]);
     SCMAuto();
 }
 
@@ -679,7 +680,7 @@ function connectBDD() {
     drawObject(gon["Stories"], gon["BDD"]);
 
     drawObject(gon["BDD"], gon["Semantic monitoring"]);
-    drawObject(gon["BDD"], gon["Emergent arch"]);
+    drawObject(gon["BDD"], gon["Emergent arch"], 1);
     drawObject(gon["BDD"], gon["Regression"]);
     drawObject(gon["BDD"], gon["IaC"]);
 
@@ -706,8 +707,8 @@ function connectRegression() {
 function connectEmergent() {
     drawObject(gon["TDD"], gon["Emergent arch"]);
     drawObject(gon["BDD"], gon["Emergent arch"]);
+    drawObject(gon["Small batches"], gon["Emergent arch"], 1);
 
-    drawObject(gon["Emergent arch"], gon["Small batches"], true);
     drawObject(gon["Emergent arch"], gon["Resilience"], 1);
     drawObject(gon["Emergent arch"], gon["SOA"], 1);
 }
@@ -717,7 +718,7 @@ function connectBatches()
     drawObject(gon["Code"], gon["Small batches"], true);
     drawObject(gon["Code"], gon["Emergent arch"], true);
 
-    drawObject(gon["Emergent arch"], gon["Small batches"]);
+    drawObject(gon["Emergent arch"], gon["Small batches"], 1);
     drawObject(gon["CI"], gon["CD"]);
     drawObject(gon["Small batches"], gon["CD"]);
     drawObject(gon["Regression"], gon["CD"]);
@@ -768,11 +769,13 @@ function connectTBD() {
 
     TBDCI();
     drawObject(gon["Feature toggles"], gon["TBD"]);
+    drawObject(gon["Automation"], gon["CI"]);
 }
 
 function connectFeatures() {
     drawObject(gon["Code"], gon["Feature toggles"]);
     drawObject(gon["Stories"], gon["Feature toggles"]);
+    drawObject(gon["SCM"], gon["TBD"]);
     drawObject(gon["Feature toggles"], gon["TBD"]);
     drawObject(gon["Feature toggles"], gon["AB testing"]);
     drawObject(gon["Feature toggles"], gon["Stories "]);
