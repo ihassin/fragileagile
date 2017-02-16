@@ -1,6 +1,6 @@
 var allButtons = ['VSM', 'Risk controls', 'Circuit breaker', 'SOA', 'Relinquish control', 'IaC', 'Adaptive planning', 'Feature toggles', 'Stories', 'Resilience', 'AB testing', 'MVP', 'Code', 'Fragile', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Performant', 'Feature teams', 'You build it, you run it' , 'agile', 'Emergent arch']
 var mvpButtons = ['VSM', 'Risk controls', 'Circuit breaker', 'SOA', 'Relinquish control', 'IaC', 'Adaptive planning', 'Feature toggles', 'Stories', 'SCM','AB testing', 'Code', 'TBD', 'Automation', 'CI', 'TDD', 'Small batches', 'BDD', 'Regression', 'CD', 'Semantic monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature teams', 'You build it, you run it', 'Emergent arch', 'Resilience']
-var fragileButtons = ['VSM', 'Circuit breaker', 'Risk controls', 'SOA', 'Relinquish control', 'IaC', 'Adaptive planning', 'Feature toggles', 'Stories', 'Resilience', 'AB testing', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Performant', 'Feature teams', 'You build it, you run it' , 'agile', 'Emergent arch']
+var fragileButtons = ['MVP', 'VSM', 'Circuit breaker', 'Risk controls', 'SOA', 'Relinquish control', 'IaC', 'Adaptive planning', 'Feature toggles', 'Stories', 'Resilience', 'AB testing', 'SCM', 'TBD', 'Automation', 'CI', 'Stable', 'TDD', 'Small batches', 'BDD', 'Regression', 'CD', 'Economical', 'Semantic monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Performant', 'Feature teams', 'You build it, you run it' , 'agile', 'Emergent arch']
 var cdDimButtons = ['Feature toggles', 'Stories', 'Code', 'MVP', 'SCM', 'TBD', 'Automation', 'CI']
 var clDimButtons = ['SOA', 'Feature toggles', 'Stories', 'BDD', 'Regression', 'CD', 'TDD', 'Emergent arch', 'Small batches']
 
@@ -136,7 +136,7 @@ function subjectClick(title) {
 
         case 'Code':
             show(['MVP', 'Feature toggles', 'Code', 'SCM', 'Fragile', 'Emergent arch', 'Small batches']);
-            hide(['VSM', 'Risk controls', 'Circuit breaker', 'SOA', 'Relinquish control', 'MVP', 'IaC', 'Adaptive planning', 'Stories', 'Resilience', 'AB testing', 'agile', 'Stable', 'Economical', 'Performant', 'TBD', 'Automation', 'CI', 'TDD', 'BDD', 'Regression', 'CD', 'Semantic monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature teams', 'You build it, you run it'])
+            hide(['VSM', 'Risk controls', 'Circuit breaker', 'SOA', 'Relinquish control', 'IaC', 'Adaptive planning', 'Stories', 'Resilience', 'AB testing', 'agile', 'Stable', 'Economical', 'Performant', 'TBD', 'Automation', 'CI', 'TDD', 'BDD', 'Regression', 'CD', 'Semantic monitoring', 'CL', 'Lean PMO', 'Stabilize WIP', 'Feature teams', 'You build it, you run it'])
             connectCode();
             break;
 
@@ -348,6 +348,7 @@ function AutoOut() {
 }
 
 function connectCode() {
+    drawObject(gon["MVP"], gon["Code"]);
     drawObject(gon["Code"], gon["Fragile"]);
     drawObject(gon["Code"], gon["Emergent arch"], 1);
     drawObject(gon["Code"], gon["Small batches"], 1);
