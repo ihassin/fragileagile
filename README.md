@@ -10,12 +10,21 @@ Doodling with Javascript
 rake
 ```
 
+# bootstrapping
+
+```
+bundle install
+bundle exec rake db:setup
+bundle exec rake db:migrate
+```
+
 # running
 
 ```
 rails s
 http localhost:3000
 ```
+
 
 # to do
 Make a VM to show IaC
