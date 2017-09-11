@@ -16,6 +16,7 @@ rake
 bundle install
 bundle exec rake db:setup
 bundle exec rake db:migrate
+bundle exec rake db:seed
 ```
 
 # running
