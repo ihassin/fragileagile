@@ -57,7 +57,8 @@ def go_home
 end
 
 def get_style(node)
-  page.evaluate_script('document.getElementById("' + node + '");').attribute("style").to_json
+  page.native.css_value(node)
+  #page.evaluate_script('document.getElementById("' + node + '");').attribute("style").to_json
 end
 
 def double_click button
