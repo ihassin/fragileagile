@@ -12,6 +12,11 @@ rake
 
 # bootstrapping
 
+Install ruby
+Install rails
+Install firefox (for tests)
+Install geckdriver (for tests)
+
 ```
 bundle install
 bundle exec rake db:setup
@@ -30,4 +35,3 @@ http localhost:3000
 # to do
 Make a VM to show IaC
 add 'refactoring' as a dependency on testing
-

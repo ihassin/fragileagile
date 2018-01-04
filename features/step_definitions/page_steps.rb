@@ -35,7 +35,7 @@ Then(/^I see all my presentation's subjects$/) do
 end
 
 Then(/^I see the stories page$/) do
-  expect(page).to have_content("Unbiased change")
+  expect(page).to have_content('End to end')
 end
 
 When(/^I follow "([^"]*)"$/) do |button|
@@ -57,12 +57,11 @@ def go_home
 end
 
 def get_style(node)
-  page.native.css_value(node)
-  #page.evaluate_script('document.getElementById("' + node + '");').attribute("style").to_json
+  page.find("#Code", :visible => :all)[:style]
 end
 
 def double_click button
-  page.driver.browser.mouse.double_click(page.find("\##{button}").native)
+  page.driver.browser.action.double_click(page.find("\##{button}").native)
 end
 
 def switch_to_last_tab
