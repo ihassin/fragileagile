@@ -1,24 +1,24 @@
 node {
     checkout scm
 
-    stage('init') {
+    stage('Init') {
         // sh '. ~/.bashrc'
         // sh 'env'
         // echo "PATH is $PATH"
         cleanWs()
     }
-    stage('git') {
+    stage('Get code') {
         git credentialsId: '94b9e957-0a7d-4b96-8d75-dd3a447b408a', url: 'git@github.com:ihassin/fragileagile.git'
     }
-    stage('gems') {
+    stage('Install dependencies') {
         sh 'gem install bundler'
         sh 'bundle install'
     }
-    stage('setup') {
+    stage('Prepare database') {
         sh 'RAILS_ENV=test bundle exec rake db:migrate'
         sh 'RAILS_ENV=test bundle exec rake db:seed'
     }
-    stage('tests') {
+    stage('Run tests') {
         sh 'bundle exec cucumber'
     }
 }
