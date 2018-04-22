@@ -2,9 +2,6 @@ node {
     checkout scm
 
     stage('Init') {
-        // sh '. ~/.bashrc'
-        // sh 'env'
-        // echo "PATH is $PATH"
         cleanWs()
     }
     stage('Get code') {
