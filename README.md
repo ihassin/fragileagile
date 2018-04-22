@@ -33,6 +33,8 @@ http localhost:3000
 
 # Jeknins
 
+Use the Jenkinsfile at the root of this repo
+
 # to do
 Make a VM to show IaC
 add 'refactoring' as a dependency on testing
