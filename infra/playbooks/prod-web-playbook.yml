@@ -1,0 +1,9 @@
+---
+- hosts: prod-web-server
+
+  tasks:
+     - debug: msg="web reading from {{env_name}}"
+
+  roles:
+    - fragileagile
+    - nginx

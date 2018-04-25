@@ -10,6 +10,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'sqlite3'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
+gem 'rake'
 
 group :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -21,6 +22,8 @@ group :test do
 end
 
 group :development do
+  gem "capistrano", "~> 3.10", require: false
+  gem "capistrano-rails", "~> 1.3", require: false
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
