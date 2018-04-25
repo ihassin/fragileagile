@@ -12,8 +12,7 @@ node {
         sh 'bundle install'
     }
     stage('Prepare database') {
-        sh 'RAILS_ENV=test bundle exec rake db:migrate'
-        sh 'RAILS_ENV=test bundle exec rake db:seed'
+        sh 'RAILS_ENV=test bundle exec rake db:drop db:create db:migrate db:seed'
     }
     stage('Run tests') {
         sh 'bundle exec cucumber'
