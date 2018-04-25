@@ -54,7 +54,7 @@ namespace :deploy do
   namespace :deploy do
     desc 'reload the database with seed data'
     task :seed do
-      on roles(:app), in: :sequence do
+      on roles(:app, :db), in: :sequence do
         info '*** Seeding DB'
         with rails_env: fetch(:rails_env) do
           begin
