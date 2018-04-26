@@ -30,7 +30,7 @@ Fm::Application.configure do
   # config.assets.compile = false
   config.assets.compile = true
   config.assets.initialize_on_precompile = false
-  config.serve_static_files
+  config.public_file_server.enabled
   config.serve_static_assets = true
 
   # Generate digests for assets URLs.
