@@ -31,11 +31,7 @@
 #      - samba-common-bin
       - ufw
       - xrdp
-      - bundler
-#      - libmysqlclient-dev
-      - libsqlite3-dev
       - build-essential
-      - nginx
       - keepalived
 #      - xvfb
 #      - glusterfs-server
