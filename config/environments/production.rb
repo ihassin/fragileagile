@@ -1,4 +1,4 @@
-Narui::Application.configure do
+Fm::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -31,6 +31,7 @@ Narui::Application.configure do
   config.assets.compile = true
   config.assets.initialize_on_precompile = false
   config.serve_static_files
+  config.serve_static_assets = true
 
   # Generate digests for assets URLs.
   config.assets.digest = true
