@@ -51,7 +51,7 @@ set :keep_releases, 3
 # set :keep_releases, 5
 
 namespace :deploy do
-  desc 'reload the database with seed data'
+  desc 'Load the database with seed data'
   task :seed do
     on roles(:app, :db), in: :sequence do
       info '*** Seeding DB'

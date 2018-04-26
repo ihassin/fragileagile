@@ -17,4 +17,7 @@ node {
     stage('Run tests') {
         sh 'bundle exec cucumber'
     }
+    stage('Deploy') {
+        sh 'bundle exec cap production deploy'
+    }
 }
