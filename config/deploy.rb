@@ -51,19 +51,17 @@ set :keep_releases, 3
 # set :keep_releases, 5
 
 namespace :deploy do
-  namespace :deploy do
-    desc 'reload the database with seed data'
-    task :seed do
-      on roles(:app, :db), in: :sequence do
-        info '*** Seeding DB'
-        with rails_env: fetch(:rails_env) do
-          begin
-            within current_path do
-              execute "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=production"
-            end
-          rescue Exception => ex
-            fatal '*** Cannot Run seed: ' + ex.message
+  desc 'reload the database with seed data'
+  task :seed do
+    on roles(:app, :db), in: :sequence do
+      info '*** Seeding DB'
+      with rails_env: fetch(:rails_env) do
+        begin
+          within current_path do
+            execute "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=production"
           end
+        rescue Exception => ex
+          fatal '*** Cannot Run seed: ' + ex.message
         end
       end
     end
@@ -116,5 +114,5 @@ namespace :deploy do
   end
 
   after :finished, :restart
-  after :finished, 'custom:seed'
+  after :finished, :seed
 end

@@ -5,5 +5,5 @@
      - debug: msg="web reading from {{env_name}}"
 
   roles:
-    - fragileagile
     - nginx
+    - fragileagile
