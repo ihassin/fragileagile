@@ -25,6 +25,7 @@ group :test do
   gem 'database_cleaner'
   gem 'poltergeist'
   gem 'rspec'
+  gem 'simplecov'
 end
 
 group :development do

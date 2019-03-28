@@ -108,6 +108,7 @@ GEM
     database_cleaner (1.7.0)
     debug_inspector (0.0.3)
     diff-lcs (1.3)
+    docile (1.3.1)
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.23)
@@ -219,6 +220,11 @@ GEM
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    simplecov (0.16.1)
+      docile (~> 1.1)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.2)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -287,6 +293,7 @@ DEPENDENCIES
   rspec
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  simplecov
   spring
   spring-watcher-listen (~> 2.0.0)
   sprockets-rails
@@ -298,4 +305,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.16.1
+   1.17.3
